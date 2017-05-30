@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>varset</name>
+  <uuid>d42b5c79-6622-49eb-925a-2d784d9b4c24</uuid>
+  <variables name="transaction" type="org.vda.PrivateVehicleTransfer" initialValue="" verbalization="the transaction"/>
+  <variables name="result" type="org.acme.vehicle.lifecycle.TransferSuspicionResult" initialValue="" verbalization="suspicion result"/>
+</ilog.rules.studio.model.base:VariableSet>

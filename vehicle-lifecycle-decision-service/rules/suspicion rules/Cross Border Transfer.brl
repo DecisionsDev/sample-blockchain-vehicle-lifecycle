@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>Cross Border Transfer</name>
+  <uuid>c9e40bf6-2412-43c9-9238-a99213a6c7c5</uuid>
+  <locale>en_US</locale>
+  <definition><![CDATA[if
+    the country of the address of the contact details of the buyer of 'the transaction' is not the country of the address of the contact details of the seller of 'the transaction'
+then
+    set the status of 'suspicion result' to "SUSPICION";
+    set the message of 'suspicion result' to "Cross Border Suspicious Transfer: please double check buyer regulation"; ]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

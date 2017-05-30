@@ -1,0 +1,374 @@
+# Vocabulary Properties
+uuid = c13fcfe8-853e-4854-8c9b-c77e8e65b245
+
+# composer.base.Address
+composer.base.Address#concept.label = address
+composer.base.Address.city#phrase.action = set the city of {this} to {city}
+composer.base.Address.city#phrase.navigation = {city} of {this}
+composer.base.Address.country#phrase.action = set the country of {this} to {country}
+composer.base.Address.country#phrase.navigation = {country} of {this}
+composer.base.Address.locality#phrase.action = set the locality of {this} to {locality}
+composer.base.Address.locality#phrase.navigation = {locality} of {this}
+composer.base.Address.postOfficeBoxNumber#phrase.action = set the post office box number of {this} to {post office box number}
+composer.base.Address.postOfficeBoxNumber#phrase.navigation = {post office box number} of {this}
+composer.base.Address.postalCode#phrase.action = set the postal code of {this} to {postal code}
+composer.base.Address.postalCode#phrase.navigation = {postal code} of {this}
+composer.base.Address.region#phrase.action = set the region of {this} to {region}
+composer.base.Address.region#phrase.navigation = {region} of {this}
+composer.base.Address.street#phrase.action = set the street of {this} to {street}
+composer.base.Address.street#phrase.navigation = {street} of {this}
+composer.base.Address.street2#phrase.action = set the street2 of {this} to {street2}
+composer.base.Address.street2#phrase.navigation = {street2} of {this}
+composer.base.Address.street3#phrase.action = set the street3 of {this} to {street3}
+composer.base.Address.street3#phrase.navigation = {street3} of {this}
+
+# composer.base.BirthDetails
+composer.base.BirthDetails#concept.label = birth details
+composer.base.BirthDetails.dateOfBirth#phrase.action = set the date of birth of {this} to {date of birth}
+composer.base.BirthDetails.dateOfBirth#phrase.navigation = {date of birth} of {this}
+composer.base.BirthDetails.placeOfBirth#phrase.action = set the place of birth of {this} to {place of birth}
+composer.base.BirthDetails.placeOfBirth#phrase.navigation = {place of birth} of {this}
+
+# composer.base.ContactDetails
+composer.base.ContactDetails#concept.label = contact details
+composer.base.ContactDetails.address#phrase.action = set the address of {this} to {address}
+composer.base.ContactDetails.address#phrase.navigation = {address} of {this}
+composer.base.ContactDetails.email#phrase.action = set the email of {this} to {email}
+composer.base.ContactDetails.email#phrase.navigation = {email} of {this}
+composer.base.ContactDetails.homePhone#phrase.action = set the home phone of {this} to {home phone}
+composer.base.ContactDetails.homePhone#phrase.navigation = {home phone} of {this}
+composer.base.ContactDetails.mobilePhone#phrase.action = set the mobile phone of {this} to {mobile phone}
+composer.base.ContactDetails.mobilePhone#phrase.navigation = {mobile phone} of {this}
+
+# composer.base.DeathDetails
+composer.base.DeathDetails#concept.label = death details
+composer.base.DeathDetails.dateOfDeath#phrase.action = set the date of death of {this} to {date of death}
+composer.base.DeathDetails.dateOfDeath#phrase.navigation = {date of death} of {this}
+composer.base.DeathDetails.placeOfDeath#phrase.action = set the place of death of {this} to {place of death}
+composer.base.DeathDetails.placeOfDeath#phrase.navigation = {place of death} of {this}
+
+# composer.base.Gender
+composer.base.Gender#concept.label = gender
+composer.base.Gender.FEMALE#instance.label = FEMALE
+composer.base.Gender.MALE#instance.label = MALE
+composer.base.Gender.OTHER#instance.label = OTHER
+
+# composer.base.Person
+composer.base.Person#concept.label = person
+composer.base.Person.birthDetails#phrase.action = set the birth details of {this} to {birth details}
+composer.base.Person.birthDetails#phrase.navigation = {birth details} of {this}
+composer.base.Person.contactDetails#phrase.action = set the contact details of {this} to {contact details}
+composer.base.Person.contactDetails#phrase.navigation = {contact details} of {this}
+composer.base.Person.deathDetails#phrase.action = set the death details of {this} to {death details}
+composer.base.Person.deathDetails#phrase.navigation = {death details} of {this}
+composer.base.Person.firstName#phrase.action = set the first name of {this} to {first name}
+composer.base.Person.firstName#phrase.navigation = {first name} of {this}
+composer.base.Person.gender#phrase.action = set the gender of {this} to {gender}
+composer.base.Person.gender#phrase.navigation = {gender} of {this}
+composer.base.Person.lastName#phrase.action = set the last name of {this} to {last name}
+composer.base.Person.lastName#phrase.navigation = {last name} of {this}
+composer.base.Person.middleNames#phrase.action = set the middle names of {this} to {middle name}
+composer.base.Person.middleNames#phrase.navigation = {middle name} of {this}
+composer.base.Person.nationalities#phrase.action = set the nationalities of {this} to {nationality}
+composer.base.Person.nationalities#phrase.navigation = {nationality} of {this}
+composer.base.Person.title#phrase.action = set the title of {this} to {title}
+composer.base.Person.title#phrase.navigation = {title} of {this}
+
+# composer.business.Business
+composer.business.Business#concept.label = business
+composer.business.Business.headquarters#phrase.action = set the headquarters of {this} to {headquarters}
+composer.business.Business.headquarters#phrase.navigation = {headquarters} of {this}
+composer.business.Business.managers#phrase.action = set the managers of {this} to {manager}
+composer.business.Business.managers#phrase.navigation = {manager} of {this}
+composer.business.Business.name#phrase.action = set the name of {this} to {name}
+composer.business.Business.name#phrase.navigation = {name} of {this}
+
+# composer.business.Employee
+composer.business.Employee#concept.label = employee
+composer.business.Employee.department#phrase.action = set the department of {this} to {department}
+composer.business.Employee.department#phrase.navigation = {department} of {this}
+composer.business.Employee.employer#phrase.action = set the employer of {this} to {employer}
+composer.business.Employee.employer#phrase.navigation = {employer} of {this}
+composer.business.Employee.employmentStatus#phrase.action = set the employment status of {this} to {employment status}
+composer.business.Employee.employmentStatus#phrase.navigation = {employment status} of {this}
+composer.business.Employee.jobRole#phrase.action = set the job role of {this} to {job role}
+composer.business.Employee.jobRole#phrase.navigation = {job role} of {this}
+composer.business.Employee.manager#phrase.action = set the manager of {this} to {manager}
+composer.business.Employee.manager#phrase.navigation = {manager} of {this}
+composer.business.Employee.startDate#phrase.action = set the start date of {this} to {start date}
+composer.business.Employee.startDate#phrase.navigation = {start date} of {this}
+
+# composer.business.Manager
+composer.business.Manager#concept.label = manager
+composer.business.Manager.directReports#phrase.action = set the direct reports of {this} to {direct report}
+composer.business.Manager.directReports#phrase.navigation = {direct report} of {this}
+
+# org.acme.vehicle.lifecycle.AuctionHouse
+org.acme.vehicle.lifecycle.AuctionHouse#concept.label = auction house
+
+# org.acme.vehicle.lifecycle.Company
+org.acme.vehicle.lifecycle.Company#concept.label = company
+org.acme.vehicle.lifecycle.Company.companyId#phrase.action = set the company id of {this} to {company id}
+org.acme.vehicle.lifecycle.Company.companyId#phrase.navigation = {company id} of {this}
+
+# org.acme.vehicle.lifecycle.PrivateOwner
+org.acme.vehicle.lifecycle.PrivateOwner#concept.label = private owner
+org.acme.vehicle.lifecycle.PrivateOwner.email#phrase.action = set the email of {this} to {email}
+org.acme.vehicle.lifecycle.PrivateOwner.email#phrase.navigation = {email} of {this}
+
+# org.acme.vehicle.lifecycle.Regulator
+org.acme.vehicle.lifecycle.Regulator#concept.label = regulator
+
+# org.acme.vehicle.lifecycle.ScrapMerchant
+org.acme.vehicle.lifecycle.ScrapMerchant#concept.label = scrap merchant
+
+# org.acme.vehicle.lifecycle.TransferSuspicionResult
+org.acme.vehicle.lifecycle.TransferSuspicionResult#concept.label = transfer suspicion result
+org.acme.vehicle.lifecycle.TransferSuspicionResult.message#phrase.action = set the message of {this} to {message}
+org.acme.vehicle.lifecycle.TransferSuspicionResult.message#phrase.navigation = {message} of {this}
+org.acme.vehicle.lifecycle.TransferSuspicionResult.status#phrase.action = set the status of {this} to {status}
+org.acme.vehicle.lifecycle.TransferSuspicionResult.status#phrase.navigation = {status} of {this}
+
+# org.acme.vehicle.lifecycle.manufacturer.Manufacturer
+org.acme.vehicle.lifecycle.manufacturer.Manufacturer#concept.label = manufacturer
+org.acme.vehicle.lifecycle.manufacturer.Manufacturer.companyId#phrase.action = set the company id of {this} to {company id}
+org.acme.vehicle.lifecycle.manufacturer.Manufacturer.companyId#phrase.navigation = {company id} of {this}
+
+# org.acme.vehicle.lifecycle.manufacturer.Order
+org.acme.vehicle.lifecycle.manufacturer.Order#concept.label = order
+org.acme.vehicle.lifecycle.manufacturer.Order.manufacturer#phrase.action = set the manufacturer of {this} to {manufacturer}
+org.acme.vehicle.lifecycle.manufacturer.Order.manufacturer#phrase.navigation = {manufacturer} of {this}
+org.acme.vehicle.lifecycle.manufacturer.Order.orderId#phrase.action = set the order id of {this} to {order id}
+org.acme.vehicle.lifecycle.manufacturer.Order.orderId#phrase.navigation = {order id} of {this}
+org.acme.vehicle.lifecycle.manufacturer.Order.orderStatus#phrase.action = set the order status of {this} to {order status}
+org.acme.vehicle.lifecycle.manufacturer.Order.orderStatus#phrase.navigation = {order status} of {this}
+org.acme.vehicle.lifecycle.manufacturer.Order.orderer#phrase.action = set the orderer of {this} to {orderer}
+org.acme.vehicle.lifecycle.manufacturer.Order.orderer#phrase.navigation = {orderer} of {this}
+org.acme.vehicle.lifecycle.manufacturer.Order.statusUpdates#phrase.action = set the status updates of {this} to {status update}
+org.acme.vehicle.lifecycle.manufacturer.Order.statusUpdates#phrase.navigation = {status update} of {this}
+org.acme.vehicle.lifecycle.manufacturer.Order.vehicleDetails#phrase.action = set the vehicle details of {this} to {vehicle details}
+org.acme.vehicle.lifecycle.manufacturer.Order.vehicleDetails#phrase.navigation = {vehicle details} of {this}
+
+# org.acme.vehicle.lifecycle.manufacturer.OrderStatus
+org.acme.vehicle.lifecycle.manufacturer.OrderStatus#concept.label = order status
+org.acme.vehicle.lifecycle.manufacturer.OrderStatus.DELIVERED#instance.label = DELIVERED
+org.acme.vehicle.lifecycle.manufacturer.OrderStatus.OWNER_ASSIGNED#instance.label = OWNER_ASSIGNED
+org.acme.vehicle.lifecycle.manufacturer.OrderStatus.PLACED#instance.label = PLACED
+org.acme.vehicle.lifecycle.manufacturer.OrderStatus.SCHEDULED_FOR_MANUFACTURE#instance.label = SCHEDULED_FOR_MANUFACTURE
+org.acme.vehicle.lifecycle.manufacturer.OrderStatus.VIN_ASSIGNED#instance.label = VIN_ASSIGNED
+
+# org.acme.vehicle.lifecycle.manufacturer.PlaceOrder
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder#concept.label = place order
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.manufacturer#phrase.action = set the manufacturer of {this} to {manufacturer}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.manufacturer#phrase.navigation = {manufacturer} of {this}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.orderId#phrase.action = set the order id of {this} to {order id}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.orderId#phrase.navigation = {order id} of {this}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.orderer#phrase.action = set the orderer of {this} to {orderer}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.orderer#phrase.navigation = {orderer} of {this}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.transactionId#phrase.action = set the transaction id of {this} to {transaction id}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.transactionId#phrase.navigation = {transaction id} of {this}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.vehicleDetails#phrase.action = set the vehicle details of {this} to {vehicle details}
+org.acme.vehicle.lifecycle.manufacturer.PlaceOrder.vehicleDetails#phrase.navigation = {vehicle details} of {this}
+
+# org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus#concept.label = update order status
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.numberPlate#phrase.action = set the number plate of {this} to {number plate}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.numberPlate#phrase.navigation = {number plate} of {this}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.order#phrase.action = set the order of {this} to {order}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.order#phrase.navigation = {order} of {this}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.orderStatus#phrase.action = set the order status of {this} to {order status}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.orderStatus#phrase.navigation = {order status} of {this}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.transactionId#phrase.action = set the transaction id of {this} to {transaction id}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.transactionId#phrase.navigation = {transaction id} of {this}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.v5c#phrase.action = set the v5c of {this} to {v5c}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.v5c#phrase.navigation = {v5c} of {this}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.vin#phrase.action = set the vin of {this} to {vin}
+org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus.vin#phrase.navigation = {vin} of {this}
+
+# org.vda.ApplicationForVehicleRegistrationCertificate
+org.vda.ApplicationForVehicleRegistrationCertificate#concept.label = application for vehicle registration certificate
+org.vda.ApplicationForVehicleRegistrationCertificate.driversLicenseNumber#phrase.action = set the drivers license number of {this} to {drivers license number}
+org.vda.ApplicationForVehicleRegistrationCertificate.driversLicenseNumber#phrase.navigation = {drivers license number} of {this}
+org.vda.ApplicationForVehicleRegistrationCertificate.dvlaFleetNumber#phrase.action = set the dvla fleet number of {this} to {dvla fleet number}
+org.vda.ApplicationForVehicleRegistrationCertificate.dvlaFleetNumber#phrase.navigation = {dvla fleet number} of {this}
+org.vda.ApplicationForVehicleRegistrationCertificate.keeper#phrase.action = set the keeper of {this} to {keeper}
+org.vda.ApplicationForVehicleRegistrationCertificate.keeper#phrase.navigation = {keeper} of {this}
+org.vda.ApplicationForVehicleRegistrationCertificate.mileage#phrase.action = set the mileage of {this} to {mileage}
+org.vda.ApplicationForVehicleRegistrationCertificate.mileage#phrase.navigation = {mileage} of {this}
+org.vda.ApplicationForVehicleRegistrationCertificate.previousPostCode#phrase.action = set the previous post code of {this} to {previous post code}
+org.vda.ApplicationForVehicleRegistrationCertificate.previousPostCode#phrase.navigation = {previous post code} of {this}
+org.vda.ApplicationForVehicleRegistrationCertificate.transactionId#phrase.action = set the transaction id of {this} to {transaction id}
+org.vda.ApplicationForVehicleRegistrationCertificate.transactionId#phrase.navigation = {transaction id} of {this}
+org.vda.ApplicationForVehicleRegistrationCertificate.vehicleDetails#phrase.action = set the vehicle details of {this} to {vehicle details}
+org.vda.ApplicationForVehicleRegistrationCertificate.vehicleDetails#phrase.navigation = {vehicle details} of {this}
+
+# org.vda.ExhaustEmissions
+org.vda.ExhaustEmissions#concept.label = exhaust emissions
+org.vda.ExhaustEmissions.co#phrase.action = set the co of {this} to {co}
+org.vda.ExhaustEmissions.co#phrase.navigation = {co} of {this}
+org.vda.ExhaustEmissions.hc#phrase.action = set the hc of {this} to {hc}
+org.vda.ExhaustEmissions.hc#phrase.navigation = {hc} of {this}
+org.vda.ExhaustEmissions.hc_plus_nox#phrase.action = set the hc plus nox of {this} to {hc plus nox}
+org.vda.ExhaustEmissions.hc_plus_nox#phrase.navigation = {hc plus nox} of {this}
+org.vda.ExhaustEmissions.nox#phrase.action = set the nox of {this} to {nox}
+org.vda.ExhaustEmissions.nox#phrase.navigation = {nox} of {this}
+org.vda.ExhaustEmissions.particulates#phrase.action = set the particulates of {this} to {particulates}
+org.vda.ExhaustEmissions.particulates#phrase.navigation = {particulates} of {this}
+
+# org.vda.PrivateVehicleTransfer
+org.vda.PrivateVehicleTransfer#concept.label = private vehicle transfer
+org.vda.PrivateVehicleTransfer.buyer#phrase.action = set the buyer of {this} to {buyer}
+org.vda.PrivateVehicleTransfer.buyer#phrase.navigation = {buyer} of {this}
+org.vda.PrivateVehicleTransfer.seller#phrase.action = set the seller of {this} to {seller}
+org.vda.PrivateVehicleTransfer.seller#phrase.navigation = {seller} of {this}
+org.vda.PrivateVehicleTransfer.specialNotes#phrase.action = set the special notes of {this} to {special notes}
+org.vda.PrivateVehicleTransfer.specialNotes#phrase.navigation = {special notes} of {this}
+
+# org.vda.ScrapVehicle
+org.vda.ScrapVehicle#concept.label = scrap vehicle
+org.vda.ScrapVehicle.logEntries#phrase.action = set the log entries of {this} to {log entry}
+org.vda.ScrapVehicle.logEntries#phrase.navigation = {log entry} of {this}
+
+# org.vda.SoundDetails
+org.vda.SoundDetails#concept.label = sound details
+org.vda.SoundDetails.driveBy#phrase.action = set the drive by of {this} to {drive by}
+org.vda.SoundDetails.driveBy#phrase.navigation = {drive by} of {this}
+org.vda.SoundDetails.engineSpeed#phrase.action = set the engine speed of {this} to {engine speed}
+org.vda.SoundDetails.engineSpeed#phrase.navigation = {engine speed} of {this}
+org.vda.SoundDetails.stationary#phrase.action = set the stationary of {this} to {stationary}
+org.vda.SoundDetails.stationary#phrase.navigation = {stationary} of {this}
+
+# org.vda.TaxClass
+org.vda.TaxClass#concept.label = tax class
+org.vda.TaxClass.ALTERNATIVE_FUEL_CAR#instance.label = ALTERNATIVE_FUEL_CAR
+org.vda.TaxClass.BUS#instance.label = BUS
+org.vda.TaxClass.CYCLE#instance.label = CYCLE
+org.vda.TaxClass.DIESEL_CAR#instance.label = DIESEL_CAR
+org.vda.TaxClass.ELECTRIC_M#instance.label = ELECTRIC_M
+org.vda.TaxClass.EMERGENCY_VEHICLE#instance.label = EMERGENCY_VEHICLE
+org.vda.TaxClass.EURO4_LIGHT_GOODS_VEHICLE#instance.label = EURO4_LIGHT_GOODS_VEHICLE
+org.vda.TaxClass.EURO5_LIGHT_GOODS_VEHICLE#instance.label = EURO5_LIGHT_GOODS_VEHICLE
+org.vda.TaxClass.EXCEMPT_VEHICLE#instance.label = EXCEMPT_VEHICLE
+org.vda.TaxClass.HAULAGE_VEHICLES#instance.label = HAULAGE_VEHICLES
+org.vda.TaxClass.HEAVY_GOODS_VEHICLE#instance.label = HEAVY_GOODS_VEHICLE
+org.vda.TaxClass.LIGHT_GOODS_VEHICLE#instance.label = LIGHT_GOODS_VEHICLE
+org.vda.TaxClass.L_CAR#instance.label = L_CAR
+org.vda.TaxClass.MOTORCYCLE#instance.label = MOTORCYCLE
+org.vda.TaxClass.NARY#instance.label = NARY
+org.vda.TaxClass.NCESSI#instance.label = NCESSI
+org.vda.TaxClass.PETR#instance.label = PETR
+org.vda.TaxClass.PRIVATE_HEAVY_GOODS_VEHICLE#instance.label = PRIVATE_HEAVY_GOODS_VEHICLE
+org.vda.TaxClass.PRIVATE_LIGHT_GOODS#instance.label = PRIVATE_LIGHT_GOODS
+org.vda.TaxClass.REC#instance.label = REC
+org.vda.TaxClass.SMALL_ISLAND_VEHICLES#instance.label = SMALL_ISLAND_VEHICLES
+org.vda.TaxClass.SPECIAL_C#instance.label = SPECIAL_C
+org.vda.TaxClass.SPECIAL_TYPES#instance.label = SPECIAL_TYPES
+org.vda.TaxClass.SPECIAL_VEHICLES#instance.label = SPECIAL_VEHICLES
+org.vda.TaxClass.T#instance.label = T
+org.vda.TaxClass.VERY_VEHICLE#instance.label = VERY_VEHICLE
+
+# org.vda.TrailerDetails
+org.vda.TrailerDetails#concept.label = trailer details
+org.vda.TrailerDetails.maxPermissibleTowableMassBraked#phrase.action = set the max permissible towable mass braked of {this} to {max permissible towable mass braked}
+org.vda.TrailerDetails.maxPermissibleTowableMassBraked#phrase.navigation = {max permissible towable mass braked} of {this}
+org.vda.TrailerDetails.maxPermissibleTowableMassUnbraked#phrase.action = set the max permissible towable mass unbraked of {this} to {max permissible towable mass unbraked}
+org.vda.TrailerDetails.maxPermissibleTowableMassUnbraked#phrase.navigation = {max permissible towable mass unbraked} of {this}
+
+# org.vda.UpdateSuspicious
+org.vda.UpdateSuspicious#concept.label = update suspicious
+org.vda.UpdateSuspicious.message#phrase.action = set the message of {this} to {message}
+org.vda.UpdateSuspicious.message#phrase.navigation = {message} of {this}
+
+# org.vda.Vehicle
+org.vda.Vehicle#concept.label = vehicle
+org.vda.Vehicle.logEntries#phrase.action = set the log entries of {this} to {log entry}
+org.vda.Vehicle.logEntries#phrase.navigation = {log entry} of {this}
+org.vda.Vehicle.numberPlate#phrase.action = set the number plate of {this} to {number plate}
+org.vda.Vehicle.numberPlate#phrase.navigation = {number plate} of {this}
+org.vda.Vehicle.owner#phrase.action = set the owner of {this} to {owner}
+org.vda.Vehicle.owner#phrase.navigation = {owner} of {this}
+org.vda.Vehicle.suspiciousMessage#phrase.action = set the suspicious message of {this} to {suspicious message}
+org.vda.Vehicle.suspiciousMessage#phrase.navigation = {suspicious message} of {this}
+org.vda.Vehicle.vehicleDetails#phrase.action = set the vehicle details of {this} to {vehicle details}
+org.vda.Vehicle.vehicleDetails#phrase.navigation = {vehicle details} of {this}
+org.vda.Vehicle.vehicleStatus#phrase.action = set the vehicle status of {this} to {vehicle status}
+org.vda.Vehicle.vehicleStatus#phrase.navigation = {vehicle status} of {this}
+org.vda.Vehicle.vin#phrase.action = set the vin of {this} to {vin}
+org.vda.Vehicle.vin#phrase.navigation = {vin} of {this}
+
+# org.vda.VehicleDetails
+org.vda.VehicleDetails#concept.label = vehicle details
+org.vda.VehicleDetails.bodyType#phrase.action = set the body type of {this} to {body type}
+org.vda.VehicleDetails.bodyType#phrase.navigation = {body type} of {this}
+org.vda.VehicleDetails.co2#phrase.action = set the co2 of {this} to {co2}
+org.vda.VehicleDetails.co2#phrase.navigation = {co2} of {this}
+org.vda.VehicleDetails.colour#phrase.action = set the colour of {this} to {colour}
+org.vda.VehicleDetails.colour#phrase.navigation = {colour} of {this}
+org.vda.VehicleDetails.cylinderCapacity#phrase.action = set the cylinder capacity of {this} to {cylinder capacity}
+org.vda.VehicleDetails.cylinderCapacity#phrase.navigation = {cylinder capacity} of {this}
+org.vda.VehicleDetails.engineNumber#phrase.action = set the engine number of {this} to {engine number}
+org.vda.VehicleDetails.engineNumber#phrase.navigation = {engine number} of {this}
+org.vda.VehicleDetails.exhaustEmissions#phrase.action = set the exhaust emissions of {this} to {exhaust emissions}
+org.vda.VehicleDetails.exhaustEmissions#phrase.navigation = {exhaust emissions} of {this}
+org.vda.VehicleDetails.make#phrase.action = set the make of {this} to {make}
+org.vda.VehicleDetails.make#phrase.navigation = {make} of {this}
+org.vda.VehicleDetails.massInService#phrase.action = set the mass in service of {this} to {mass in service}
+org.vda.VehicleDetails.massInService#phrase.navigation = {mass in service} of {this}
+org.vda.VehicleDetails.maxNetPower#phrase.action = set the max net power of {this} to {max net power}
+org.vda.VehicleDetails.maxNetPower#phrase.navigation = {max net power} of {this}
+org.vda.VehicleDetails.maxPermissibleMass#phrase.action = set the max permissible mass of {this} to {max permissible mass}
+org.vda.VehicleDetails.maxPermissibleMass#phrase.navigation = {max permissible mass} of {this}
+org.vda.VehicleDetails.modelType#phrase.action = set the model type of {this} to {model type}
+org.vda.VehicleDetails.modelType#phrase.navigation = {model type} of {this}
+org.vda.VehicleDetails.modelVariant#phrase.action = set the model variant of {this} to {model variant}
+org.vda.VehicleDetails.modelVariant#phrase.navigation = {model variant} of {this}
+org.vda.VehicleDetails.modelVersion#phrase.action = set the model version of {this} to {model version}
+org.vda.VehicleDetails.modelVersion#phrase.navigation = {model version} of {this}
+org.vda.VehicleDetails.numberOfSeats#phrase.action = set the number of seats of {this} to {number of seats}
+org.vda.VehicleDetails.numberOfSeats#phrase.navigation = {number of seats} of {this}
+org.vda.VehicleDetails.numberOfStandingPlaces#phrase.action = set the number of standing places of {this} to {number of standing places}
+org.vda.VehicleDetails.numberOfStandingPlaces#phrase.navigation = {number of standing places} of {this}
+org.vda.VehicleDetails.powerWeightRatio#phrase.action = set the power weight ratio of {this} to {power weight ratio}
+org.vda.VehicleDetails.powerWeightRatio#phrase.navigation = {power weight ratio} of {this}
+org.vda.VehicleDetails.revenueWeight#phrase.action = set the revenue weight of {this} to {revenue weight}
+org.vda.VehicleDetails.revenueWeight#phrase.navigation = {revenue weight} of {this}
+org.vda.VehicleDetails.soundDetails#phrase.action = set the sound details of {this} to {sound details}
+org.vda.VehicleDetails.soundDetails#phrase.navigation = {sound details} of {this}
+org.vda.VehicleDetails.taxationClass#phrase.action = set the taxation class of {this} to {taxation class}
+org.vda.VehicleDetails.taxationClass#phrase.navigation = {taxation class} of {this}
+org.vda.VehicleDetails.trailerDetails#phrase.action = set the trailer details of {this} to {trailer details}
+org.vda.VehicleDetails.trailerDetails#phrase.navigation = {trailer details} of {this}
+org.vda.VehicleDetails.typeApprovalNumber#phrase.action = set the type approval number of {this} to {type approval number}
+org.vda.VehicleDetails.typeApprovalNumber#phrase.navigation = {type approval number} of {this}
+org.vda.VehicleDetails.typeOfFuel#phrase.action = set the type of fuel of {this} to {type of fuel}
+org.vda.VehicleDetails.typeOfFuel#phrase.navigation = {type of fuel} of {this}
+org.vda.VehicleDetails.vehicleCategory#phrase.action = set the vehicle category of {this} to {vehicle category}
+org.vda.VehicleDetails.vehicleCategory#phrase.navigation = {vehicle category} of {this}
+org.vda.VehicleDetails.vin#phrase.action = set the vin of {this} to {vin}
+org.vda.VehicleDetails.vin#phrase.navigation = {vin} of {this}
+org.vda.VehicleDetails.wheelPlan#phrase.action = set the wheel plan of {this} to {wheel plan}
+org.vda.VehicleDetails.wheelPlan#phrase.navigation = {wheel plan} of {this}
+
+# org.vda.VehicleStatus
+org.vda.VehicleStatus#concept.label = vehicle status
+org.vda.VehicleStatus.ACTIVE#instance.label = ACTIVE
+org.vda.VehicleStatus.OFF_THE_ROAD#instance.label = OFF_THE_ROAD
+org.vda.VehicleStatus.SCRAPPED#instance.label = SCRAPPED
+
+# org.vda.VehicleTransaction
+org.vda.VehicleTransaction#concept.label = vehicle transaction
+org.vda.VehicleTransaction.transactionId#phrase.action = set the transaction id of {this} to {transaction id}
+org.vda.VehicleTransaction.transactionId#phrase.navigation = {transaction id} of {this}
+org.vda.VehicleTransaction.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+org.vda.VehicleTransaction.vehicle#phrase.navigation = {vehicle} of {this}
+
+# org.vda.VehicleTransferLogEntry
+org.vda.VehicleTransferLogEntry#concept.label = vehicle transfer log entry
+org.vda.VehicleTransferLogEntry.buyer#phrase.action = set the buyer of {this} to {buyer}
+org.vda.VehicleTransferLogEntry.buyer#phrase.navigation = {buyer} of {this}
+org.vda.VehicleTransferLogEntry.seller#phrase.action = set the seller of {this} to {seller}
+org.vda.VehicleTransferLogEntry.seller#phrase.navigation = {seller} of {this}
+org.vda.VehicleTransferLogEntry.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+org.vda.VehicleTransferLogEntry.timestamp#phrase.navigation = {timestamp} of {this}
+org.vda.VehicleTransferLogEntry.vehicle#phrase.action = set the vehicle of {this} to {vehicle}
+org.vda.VehicleTransferLogEntry.vehicle#phrase.navigation = {vehicle} of {this}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionservice:Operation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" xmlns:ilog.rules.studio.model.query.extractor="http://ilog.rules.studio/model/query/extractor.ecore" rulesetName="isSuspiciousEntryPoint" usingRuleflow="true" ruleflowName="main" targetRuleProjectName="vehicle-lifecycle-decision-service">
+  <name>isSuspiciousEntryPoint</name>
+  <uuid>8b4e97b3-1d19-41d0-b763-43ab14ea906e</uuid>
+  <referencedVariables variableName="transaction" variableSetName="varset">
+    <variableSet href="../rules/varset.var#d42b5c79-6622-49eb-925a-2d784d9b4c24"/>
+  </referencedVariables>
+  <referencedVariables variableName="result" variableSetName="varset" direction="OUT">
+    <variableSet href="../rules/varset.var#d42b5c79-6622-49eb-925a-2d784d9b4c24"/>
+  </referencedVariables>
+  <ruleflow href="../rules/main.rfl#de5f3a77-949f-4174-b700-31a3f891f12f"/>
+  <extractor xsi:type="ilog.rules.studio.model.query.extractor:QueryExtractor" name="isSuspiciousEntryPoint_extractor" validator="Default Validator"/>
+  <targetRuleProject href="../../vehicle-lifecycle-decision-service#27124c73-66d2-4e13-b554-9b34c6333e5a"/>
+</com.ibm.rules.studio.model.decisionservice:Operation>

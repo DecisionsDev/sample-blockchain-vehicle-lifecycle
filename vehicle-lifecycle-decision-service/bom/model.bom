@@ -1,0 +1,390 @@
+
+property loadGetterSetterAsProperties "true"
+property origin "xom:/vehicle-lifecycle-decision-service//vehicle-lifecycle-xom"
+property uuid "b7876fa8-27ab-4b32-ae6f-2978626ebfcf"
+package composer.base;
+
+
+public class Address
+{
+    public string city;
+    public string country;
+    public string locality;
+    public string postOfficeBoxNumber;
+    public string postalCode;
+    public string region domain {"CA", "TX", "FL", "MA", "NY", "CT", "NC", "DC", "NH", "RI", "NV", "IL"};
+    public string street;
+    public string street2;
+    public string street3;
+    public Address();
+}
+
+public class BirthDetails
+{
+    public java.util.Date dateOfBirth;
+    public string placeOfBirth;
+    public BirthDetails();
+}
+
+public class ContactDetails
+{
+    public composer.base.Address address;
+    public string email;
+    public string homePhone;
+    public string mobilePhone;
+    public ContactDetails();
+}
+
+public class DeathDetails
+{
+    public java.util.Date dateOfDeath;
+    public string placeOfDeath;
+    public DeathDetails();
+}
+
+public final class Gender
+        extends java.lang.Enum
+{
+    domain {static MALE, static FEMALE, static OTHER}
+    public static final readonly composer.base.Gender FEMALE;
+    public static final readonly composer.base.Gender MALE;
+    public static final readonly composer.base.Gender OTHER;
+    public static composer.base.Gender valueOf(string arg);
+    public static composer.base.Gender[] values();
+}
+
+public abstract class Person
+{
+    public composer.base.BirthDetails birthDetails;
+    public composer.base.ContactDetails contactDetails;
+    public composer.base.DeathDetails deathDetails;
+    public string firstName;
+    public composer.base.Gender gender;
+    public string lastName;
+    public java.util.ArrayList middleNames domain 0,* class string;
+    public java.util.ArrayList nationalities domain 0,* class string;
+    public string title;
+    public Person();
+}
+
+package composer.business;
+
+
+public class Business
+{
+    public composer.base.Address headquarters;
+    public java.util.ArrayList managers domain 0,* class composer.business.Manager;
+    public string name;
+    public Business();
+}
+
+public class Employee
+        extends composer.base.Person
+{
+    public string department;
+    public composer.business.Business employer;
+    public string employmentStatus;
+    public string jobRole;
+    public composer.business.Manager manager;
+    public java.util.Date startDate;
+    public Employee();
+}
+
+public class Manager
+        extends composer.business.Employee
+{
+    public java.util.ArrayList directReports domain 0,* class composer.business.Employee;
+    public Manager();
+}
+
+package org.acme.vehicle.lifecycle;
+
+
+public class AuctionHouse
+        extends org.acme.vehicle.lifecycle.Company
+{
+    public AuctionHouse();
+}
+
+public class Company
+        extends composer.business.Business
+{
+    public string companyId;
+    public Company();
+}
+
+public class PrivateOwner
+        extends composer.base.Person
+{
+    public string email;
+    public PrivateOwner();
+}
+
+public class Regulator
+        extends org.acme.vehicle.lifecycle.Company
+{
+    public Regulator();
+}
+
+public class ScrapMerchant
+        extends org.acme.vehicle.lifecycle.Company
+{
+    public ScrapMerchant();
+}
+
+public class TransferSuspicionResult
+{
+    public string message;
+    public string status domain {"ACCEPTED", "SUSPICION", "REJECTED"};
+    public TransferSuspicionResult();
+}
+
+package org.acme.vehicle.lifecycle.manufacturer;
+
+
+public class Manufacturer
+        extends composer.business.Business
+{
+    public string companyId;
+    public Manufacturer();
+}
+
+public class Order
+{
+    public org.acme.vehicle.lifecycle.manufacturer.Manufacturer manufacturer;
+    public string orderId;
+    public org.acme.vehicle.lifecycle.manufacturer.OrderStatus orderStatus;
+    public composer.base.Person orderer;
+    public java.util.ArrayList statusUpdates domain 0,* class org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus;
+    public org.vda.VehicleDetails vehicleDetails;
+    public Order();
+}
+
+public final class OrderStatus
+        extends java.lang.Enum
+{
+    domain {static PLACED, static SCHEDULED_FOR_MANUFACTURE, static VIN_ASSIGNED, static OWNER_ASSIGNED, static DELIVERED}
+    public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus DELIVERED;
+    public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus OWNER_ASSIGNED;
+    public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus PLACED;
+    public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus SCHEDULED_FOR_MANUFACTURE;
+    public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus VIN_ASSIGNED;
+    public static org.acme.vehicle.lifecycle.manufacturer.OrderStatus valueOf(string arg);
+    public static org.acme.vehicle.lifecycle.manufacturer.OrderStatus[] values();
+}
+
+public class PlaceOrder
+{
+    public org.acme.vehicle.lifecycle.manufacturer.Manufacturer manufacturer;
+    public string orderId;
+    public composer.base.Person orderer;
+    public string transactionId;
+    public org.vda.VehicleDetails vehicleDetails;
+    public PlaceOrder();
+}
+
+public class UpdateOrderStatus
+{
+    public string numberPlate;
+    public org.acme.vehicle.lifecycle.manufacturer.Order order;
+    public org.acme.vehicle.lifecycle.manufacturer.OrderStatus orderStatus;
+    public string transactionId;
+    public string v5c;
+    public string vin;
+    public UpdateOrderStatus();
+}
+
+package org.vda;
+
+
+public class ApplicationForVehicleRegistrationCertificate
+{
+    public string driversLicenseNumber;
+    public string dvlaFleetNumber;
+    public composer.base.Person keeper;
+    public long mileage;
+    public string previousPostCode;
+    public string transactionId;
+    public org.vda.VehicleDetails vehicleDetails;
+    public ApplicationForVehicleRegistrationCertificate();
+}
+
+public class ExhaustEmissions
+{
+    public double co;
+    public double hc;
+    public double hc_plus_nox;
+    public double nox;
+    public double particulates;
+    public ExhaustEmissions();
+}
+
+public class PrivateVehicleTransfer
+        extends org.vda.VehicleTransaction
+{
+    public composer.base.Person buyer;
+    public composer.base.Person seller;
+    public string specialNotes;
+    public PrivateVehicleTransfer();
+}
+
+public class ScrapVehicle
+        extends org.vda.VehicleTransaction
+{
+    public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransaction;
+    public ScrapVehicle();
+}
+
+public class SoundDetails
+{
+    public double driveBy;
+    public double engineSpeed;
+    public double stationary;
+    public SoundDetails();
+}
+
+public final class TaxClass
+        extends java.lang.Enum
+{
+    domain 
+    {
+        static PRIVATE_LIGHT_GOODS,
+        static PETR,
+        static L_CAR,
+        static DIESEL_CAR,
+        static ALTERNATIVE_FUEL_CAR,
+        static LIGHT_GOODS_VEHICLE,
+        static EURO4_LIGHT_GOODS_VEHICLE,
+        static EURO5_LIGHT_GOODS_VEHICLE,
+        static HEAVY_GOODS_VEHICLE,
+        static PRIVATE_HEAVY_GOODS_VEHICLE,
+        static SPECIAL_TYPES,
+        static HAULAGE_VEHICLES,
+        static BUS,
+        static MOTORCYCLE,
+        static ELECTRIC_M,
+        static T,
+        static CYCLE,
+        static SPECIAL_VEHICLES,
+        static SMALL_ISLAND_VEHICLES,
+        static REC,
+        static VERY_VEHICLE,
+        static SPECIAL_C,
+        static NCESSI,
+        static NARY,
+        static EMERGENCY_VEHICLE,
+        static EXCEMPT_VEHICLE
+    }
+    public static final readonly org.vda.TaxClass ALTERNATIVE_FUEL_CAR;
+    public static final readonly org.vda.TaxClass BUS;
+    public static final readonly org.vda.TaxClass CYCLE;
+    public static final readonly org.vda.TaxClass DIESEL_CAR;
+    public static final readonly org.vda.TaxClass ELECTRIC_M;
+    public static final readonly org.vda.TaxClass EMERGENCY_VEHICLE;
+    public static final readonly org.vda.TaxClass EURO4_LIGHT_GOODS_VEHICLE;
+    public static final readonly org.vda.TaxClass EURO5_LIGHT_GOODS_VEHICLE;
+    public static final readonly org.vda.TaxClass EXCEMPT_VEHICLE;
+    public static final readonly org.vda.TaxClass HAULAGE_VEHICLES;
+    public static final readonly org.vda.TaxClass HEAVY_GOODS_VEHICLE;
+    public static final readonly org.vda.TaxClass LIGHT_GOODS_VEHICLE;
+    public static final readonly org.vda.TaxClass L_CAR;
+    public static final readonly org.vda.TaxClass MOTORCYCLE;
+    public static final readonly org.vda.TaxClass NARY;
+    public static final readonly org.vda.TaxClass NCESSI;
+    public static final readonly org.vda.TaxClass PETR;
+    public static final readonly org.vda.TaxClass PRIVATE_HEAVY_GOODS_VEHICLE;
+    public static final readonly org.vda.TaxClass PRIVATE_LIGHT_GOODS;
+    public static final readonly org.vda.TaxClass REC;
+    public static final readonly org.vda.TaxClass SMALL_ISLAND_VEHICLES;
+    public static final readonly org.vda.TaxClass SPECIAL_C;
+    public static final readonly org.vda.TaxClass SPECIAL_TYPES;
+    public static final readonly org.vda.TaxClass SPECIAL_VEHICLES;
+    public static final readonly org.vda.TaxClass T;
+    public static final readonly org.vda.TaxClass VERY_VEHICLE;
+    public static org.vda.TaxClass valueOf(string arg);
+    public static org.vda.TaxClass[] values();
+}
+
+public class TrailerDetails
+{
+    public double maxPermissibleTowableMassBraked;
+    public double maxPermissibleTowableMassUnbraked;
+    public TrailerDetails();
+}
+
+public class UpdateSuspicious
+        extends org.vda.VehicleTransaction
+{
+    public string message;
+    public UpdateSuspicious();
+}
+
+public class Vehicle
+{
+    public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransferLogEntry;
+    public string numberPlate;
+    public composer.base.Person owner;
+    public string suspiciousMessage;
+    public org.vda.VehicleDetails vehicleDetails;
+    public org.vda.VehicleStatus vehicleStatus;
+    public string vin;
+    public Vehicle();
+}
+
+public class VehicleDetails
+{
+    public string bodyType;
+    public java.lang.Double co2;
+    public string colour;
+    public java.lang.Integer cylinderCapacity;
+    public string engineNumber;
+    public org.vda.ExhaustEmissions exhaustEmissions;
+    public string make domain {"Toyota", "BMW", "Mercedes", "Porshe", "Chevrolet", "Ford", "Ferrari"};
+    public java.lang.Double massInService;
+    public java.lang.Double maxNetPower;
+    public java.lang.Double maxPermissibleMass;
+    public string modelType;
+    public string modelVariant;
+    public string modelVersion;
+    public java.lang.Integer numberOfSeats;
+    public java.lang.Integer numberOfStandingPlaces;
+    public java.lang.Double powerWeightRatio;
+    public java.lang.Integer revenueWeight;
+    public org.vda.SoundDetails soundDetails;
+    public org.vda.TaxClass taxationClass;
+    public org.vda.TrailerDetails trailerDetails;
+    public string typeApprovalNumber;
+    public string typeOfFuel;
+    public string vehicleCategory;
+    public string vin;
+    public string wheelPlan;
+    public VehicleDetails();
+}
+
+public final class VehicleStatus
+        extends java.lang.Enum
+{
+    domain {static ACTIVE, static OFF_THE_ROAD, static SCRAPPED}
+    public static final readonly org.vda.VehicleStatus ACTIVE;
+    public static final readonly org.vda.VehicleStatus OFF_THE_ROAD;
+    public static final readonly org.vda.VehicleStatus SCRAPPED;
+    public static org.vda.VehicleStatus valueOf(string arg);
+    public static org.vda.VehicleStatus[] values();
+}
+
+public class VehicleTransaction
+{
+    public string transactionId;
+    public org.vda.Vehicle vehicle;
+    public VehicleTransaction();
+}
+
+public class VehicleTransferLogEntry
+{
+    public composer.base.Person buyer;
+    public composer.base.Person seller;
+    public java.util.Date timestamp;
+    public org.vda.Vehicle vehicle;
+    public VehicleTransferLogEntry();
+}
+
