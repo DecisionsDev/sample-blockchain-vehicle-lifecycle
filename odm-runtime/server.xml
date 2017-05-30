@@ -1,0 +1,78 @@
+<server description="teamserver">
+	<!-- Enable features -->
+	<featureManager>
+		<feature>servlet-3.0</feature>
+		<feature>jndi-1.0</feature>
+		<feature>jsp-2.2</feature>
+		<feature>jdbc-4.0</feature>
+		<feature>ssl-1.0</feature>
+		<feature>appSecurity-2.0</feature>
+	</featureManager>
+	
+	<!--  host="*" -->
+	<httpEndpoint id="defaultHttpEndpoint" enableWelcomePage="true" host="*" httpPort="9060" httpsPort="9453" />
+	
+	<!-- Datasource and libraries -->
+	<variable name="defaultHostName" value="localhost" />
+
+		<!-- RES datasource -->
+	<library id="DerbyLib">
+   		 <fileset dir="${server.config.dir}/resources"/>
+	</library>
+	<jdbcDriver id="DerbyJdbcDriver" libraryRef="DerbyLib" />
+	<dataSource id="jdbc/resdatasource" jndiName="jdbc/resdatasource" jdbcDriverRef="DerbyJdbcDriver">
+		<properties.derby.embedded createDatabase="create" user="RES" password="RES" databaseName="${server.config.dir}/dbdata/resdb" />	</dataSource>
+		
+	<!-- Logging -->
+	<logging traceSpecification="*=audit:com.ibm.rules.*=all:com.ibm.rules.res.execution.*=all:com.ibm.rules.res.execution=all" consoleLogLevel="INFO"/>
+
+	
+	<!-- Web application security -->
+	<basicRegistry id="basic" realm="customRealm">
+		<!-- For the runtime user -->
+		<user name="resAdmin" password="resAdmin"/>
+		<user name="resDeployer" password="resDeployer"/>
+		<user name="resMonitor" password="resMonitor"/>
+
+
+	
+		<group name="resAdministrators">
+			<member name="resAdmin" />
+		</group>
+		<group name="resDeployers">
+			<member name="resAdmin" />
+			<member name="resDeployer" />
+		</group>
+		<group name="resMonitors">
+			<member name="resAdmin" />
+			<member name="resDeployer" />
+			<member name="resMonitor" />
+		</group>
+
+	</basicRegistry>
+	
+
+	
+	<!-- Decision Server console -->
+	<application type="war" id="res" name="res" location="${server.config.dir}/apps/res.war">
+		<application-bnd>
+			<security-role name="resAdministrators">
+				<group name="resAdministrators" />
+			</security-role>
+			<security-role name="resDeployers">
+				<group name="resDeployers" />
+			</security-role>
+			<security-role name="resMonitors">
+				<group name="resMonitors" />
+			</security-role>
+		</application-bnd>
+	</application>
+
+	<!-- Decision Server Runtime -->
+	<application type="war" autoStart="true" id="DecisionService" name="DecisionService" location="${server.config.dir}/apps/DecisionService.war">
+	</application>
+
+
+	<webContainer deferServletLoad="false" enableDefaultIsElIgnoredInTag="true" enableJspMappingOverride="true" />
+	<applicationMonitor updateTrigger="mbean" />
+</server>
