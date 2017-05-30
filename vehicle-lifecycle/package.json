@@ -1,0 +1,11 @@
+{
+	"name": "vehicle-lifecycle",
+	"version": "1.0.0",
+	"description": "Example of a Blockchain application using ODM Business Rules in Smart Contracts",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"No test specified\""
+	},
+	"author": "IBM",
+	"license": "IBM"
+}
