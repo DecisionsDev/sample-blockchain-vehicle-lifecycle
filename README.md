@@ -17,6 +17,13 @@ vehicle-lifecycle-decision-service
 -----------------------------------
 is the ODM Decision Service that implement the decision logique invoked from the Smart Contract
 
+odm-runtime
+-------------------
+An odm docker image that contain RES / HTDS and a DB in a docker image.
+TODO : 
+	- Add a bna to call this res.
+	- Deploy the vehicule xom and ruleset by default in this image
+
 sample-rest-service
 -------------------
 a very basic implementation of a REST service in NodeJS called by the http-post-network@0.0.1.bna Composer basic sample.
