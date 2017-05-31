@@ -2,7 +2,6 @@ package composer.base;
 
 import java.util.ArrayList;
 
-import javax.xml.bind.annotation.XmlTransient;
 
 public  class Person 
 {
