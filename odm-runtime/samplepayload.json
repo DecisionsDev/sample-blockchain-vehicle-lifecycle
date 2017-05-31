@@ -1,0 +1,248 @@
+{
+
+    "transaction": {
+        "transactionId": "string",
+        "vehicle": {
+            "vin": "string",
+            "vehicleDetails": {
+                "make": "string",
+                "modelType": "string",
+                "colour": "string",
+                "vin": "string",
+                "modelVariant": "string",
+                "modelVersion": "string",
+                "bodyType": "string",
+                "taxationClass": "SPECIAL_VEHICLES",
+                "revenueWeight": 3,
+                "cylinderCapacity": 3,
+                "co2": 1.051732E7,
+                "typeOfFuel": "string",
+                "numberOfSeats": 3,
+                "numberOfStandingPlaces": 3,
+                "wheelPlan": "string",
+                "vehicleCategory": "string",
+                "typeApprovalNumber": "string",
+                "maxNetPower": 1.051732E7,
+                "engineNumber": "string",
+                "maxPermissibleMass": 1.051732E7,
+                "massInService": 1.051732E7,
+                "powerWeightRatio": 1.051732E7,
+                "trailerDetails": {
+                    "maxPermissibleTowableMassBraked": 1.051732E7,
+                    "maxPermissibleTowableMassUnbraked": 1.051732E7
+                },
+                "soundDetails": {
+                    "stationary": 1.051732E7,
+                    "engineSpeed": 1.051732E7,
+                    "driveBy": 1.051732E7
+                },
+                "exhaustEmissions": {
+                    "co": 1.051732E7,
+                    "hc": 1.051732E7,
+                    "nox": 1.051732E7,
+                    "hc_plus_nox": 1.051732E7,
+                    "particulates": 1.051732E7
+                }
+            },
+            "vehicleStatus": "OFF_THE_ROAD",
+            "owner": {
+                "title": "string",
+                "firstName": "string",
+                "lastName": "string",
+                "middleNames": [
+                    "string"
+                ],
+                "gender": "FEMALE",
+                "nationalities": [
+                    "string"
+                ],
+                "contactDetails": {
+                    "email": "string",
+                    "mobilePhone": "string",
+                    "homePhone": "string",
+                    "address": {
+                        "city": "string",
+                        "country": "string",
+                        "locality": "string",
+                        "region": "string",
+                        "street": "string",
+                        "street2": "string",
+                        "street3": "string",
+                        "postalCode": "string",
+                        "postOfficeBoxNumber": "string"
+                    }
+                },
+                "birthDetails": {
+                    "dateOfBirth": "2014-09-18T23:18:33.000+0000",
+                    "placeOfBirth": "string"
+                },
+                "deathDetails": {
+                    "dateOfDeath": "2006-08-19T17:27:14.000+0000",
+                    "placeOfDeath": "string"
+                }
+            },
+            "numberPlate": "string",
+            "suspiciousMessage": "string",
+            "logEntries": [
+                {
+                    "vehicle": {
+                        "vin": null,
+                        "vehicleDetails": null,
+                        "vehicleStatus": null,
+                        "owner": null,
+                        "numberPlate": null,
+                        "suspiciousMessage": null,
+                        "logEntries": null
+                    },
+                    "buyer": {
+                        "title": "string",
+                        "firstName": "string",
+                        "lastName": "string",
+                        "middleNames": [
+                            "string"
+                        ],
+                        "gender": "FEMALE",
+                        "nationalities": [
+                            "string"
+                        ],
+                        "contactDetails": {
+                            "email": "string",
+                            "mobilePhone": "string",
+                            "homePhone": "string",
+                            "address": {
+                                "city": "string",
+                                "country": "string",
+                                "locality": "string",
+                                "region": "string",
+                                "street": "string",
+                                "street2": "string",
+                                "street3": "string",
+                                "postalCode": "string",
+                                "postOfficeBoxNumber": "string"
+                            }
+                        },
+                        "birthDetails": {
+                            "dateOfBirth": "2013-05-22T01:02:49.000+0000",
+                            "placeOfBirth": "string"
+                        },
+                        "deathDetails": {
+                            "dateOfDeath": "2002-11-05T08:01:03.000+0000",
+                            "placeOfDeath": "string"
+                        }
+                    },
+                    "seller": {
+                        "title": "string",
+                        "firstName": "string",
+                        "lastName": "string",
+                        "middleNames": [
+                            "string"
+                        ],
+                        "gender": "OTHER",
+                        "nationalities": [
+                            "string"
+                        ],
+                        "contactDetails": {
+                            "email": "string",
+                            "mobilePhone": "string",
+                            "homePhone": "string",
+                            "address": {
+                                "city": "string",
+                                "country": "string",
+                                "locality": "string",
+                                "region": "string",
+                                "street": "string",
+                                "street2": "string",
+                                "street3": "string",
+                                "postalCode": "string",
+                                "postOfficeBoxNumber": "string"
+                            }
+                        },
+                        "birthDetails": {
+                            "dateOfBirth": "2016-01-01T19:07:42.000+0000",
+                            "placeOfBirth": "string"
+                        },
+                        "deathDetails": {
+                            "dateOfDeath": "2012-01-07T19:42:56.000+0000",
+                            "placeOfDeath": "string"
+                        }
+                    },
+                    "timestamp": "2014-10-27T09:44:59.000+0000"
+                }
+            ]
+        },
+        "seller": {
+            "title": "string",
+            "firstName": "string",
+            "lastName": "string",
+            "middleNames": [
+                "string"
+            ],
+            "gender": "FEMALE",
+            "nationalities": [
+                "string"
+            ],
+            "contactDetails": {
+                "email": "string",
+                "mobilePhone": "string",
+                "homePhone": "string",
+                "address": {
+                    "city": "string",
+                    "country": "string",
+                    "locality": "string",
+                    "region": "string",
+                    "street": "string",
+                    "street2": "string",
+                    "street3": "string",
+                    "postalCode": "string",
+                    "postOfficeBoxNumber": "string"
+                }
+            },
+            "birthDetails": {
+                "dateOfBirth": "2017-11-01T08:15:53.000+0000",
+                "placeOfBirth": "string"
+            },
+            "deathDetails": {
+                "dateOfDeath": "2014-06-10T18:33:25.000+0000",
+                "placeOfDeath": "string"
+            }
+        },
+        "buyer": {
+            "title": "string",
+            "firstName": "string",
+            "lastName": "string",
+            "middleNames": [
+                "string"
+            ],
+            "gender": "FEMALE",
+            "nationalities": [
+                "string"
+            ],
+            "contactDetails": {
+                "email": "string",
+                "mobilePhone": "string",
+                "homePhone": "string",
+                "address": {
+                    "city": "string",
+                    "country": "string",
+                    "locality": "string",
+                    "region": "string",
+                    "street": "string",
+                    "street2": "string",
+                    "street3": "string",
+                    "postalCode": "string",
+                    "postOfficeBoxNumber": "string"
+                }
+            },
+            "birthDetails": {
+                "dateOfBirth": "2015-08-23T23:09:23.000+0000",
+                "placeOfBirth": "string"
+            },
+            "deathDetails": {
+                "dateOfDeath": "2015-06-17T22:07:00.000+0000",
+                "placeOfDeath": "string"
+            }
+        },
+        "specialNotes": "string"
+    }
+
+}

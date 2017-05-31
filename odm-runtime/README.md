@@ -7,14 +7,26 @@ First download res artifact:
 mvn clean install
 
 To create a Docker image from the dockerfile in this directory:
-docker build -t smartcontract/odm-runtime .
+docker-compose build
+
+To run the docker image:
+docker-compose run
+
+
+To Generate the sample payload : 
+http://localhost:9060/DecisionService/rest/vehicule/1.0/vehicule/1.0/json?trace=false
+
+To invoke the a sample payload with curl : 
+curl -H "Content-Type: application/json" -X POST -d @samplepayload.json http://localhost:9060/DecisionService/rest/vehicule/1.0/vehicule/1.0/
 
 
 Deploy Fabric 1.0 alpha + 0.7.3 Composer: 
 - run the following script to start Fabric & Composer: 
   curl -sSL http://hyperledger.github.io/composer/install-hlfv1.sh | bash
-- run the following command to add the sample-rest-service: 
-  docker run --network composer_default --name odm-runtime --publish 1880:1880 --detach smartcontract/odm-runtime 
+- run the following command to add the odm-runtime: 
+  docker-compose run
+
+  TODO TO BE Modified
 - import and deploy http-post-network@0.0.1.bna from Composer UI
 - play with it
         in 'Test' section of Composer Playground, create an asset with assetID: "a1" and value: "10"
