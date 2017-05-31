@@ -24,7 +24,7 @@
 		<properties.derby.embedded createDatabase="create" user="RES" password="RES" databaseName="${server.config.dir}/dbdata/resdb" />	</dataSource>
 		
 	<!-- Logging -->
-	<logging traceSpecification="*=audit:com.ibm.rules.*=all:com.ibm.rules.res.execution.*=all:com.ibm.rules.res.execution=all" consoleLogLevel="INFO"/>
+	<logging traceSpecification="*=audit:com.ibm.rules.*=INFO:com.ibm.rules.res.execution.*=INFO:com.ibm.rules.res.execution=INFO" consoleLogLevel="INFO"/>
 
 	
 	<!-- Web application security -->
