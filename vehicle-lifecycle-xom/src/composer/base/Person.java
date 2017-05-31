@@ -2,7 +2,9 @@ package composer.base;
 
 import java.util.ArrayList;
 
-public abstract class Person 
+import javax.xml.bind.annotation.XmlTransient;
+
+public  class Person 
 {
 	public String title ;
 	public String firstName ;  
