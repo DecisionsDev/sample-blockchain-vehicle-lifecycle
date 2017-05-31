@@ -24,6 +24,7 @@ function setupDemo(setupDemo) {
     var NS_M = 'org.acme.vehicle.lifecycle.manufacturer';
     var NS = 'org.acme.vehicle.lifecycle';
     var NS_D = 'org.vda';
+    var NS_B = 'composer.base';
 
     var names = ['dan', 'simon', 'jake', 'anastasia', 'matthew', 'mark', 'fenglian', 'sam', 'james', 'nick', 'caroline', 'rachel', 'john', 'rob', 'tom', 'paul', 'ed', 'dave', 'anthony', 'toby', 'ant', 'matt', 'anna'];
     var vehicles = {
@@ -127,7 +128,7 @@ function setupDemo(setupDemo) {
 
    for(var i=0; i<names.length; i++) {
        var name = names[i];
-       var privateOwner = factory.newResource(NS, 'PrivateOwner', name);
+       var privateOwner = factory.newResource(NS_B, 'Person', name);
        privateOwners.push(privateOwner);
    }
 
@@ -148,7 +149,7 @@ function setupDemo(setupDemo) {
             return manufacturerRegistry.addAll(manufacturers);
         })
         .then(function() {
-            return getParticipantRegistry(NS + '.PrivateOwner');
+            return getParticipantRegistry(NS_B + '.Person');
         })
         .then(function(privateOwnerRegistry) {
             return privateOwnerRegistry.addAll(privateOwners);
@@ -166,7 +167,7 @@ function setupDemo(setupDemo) {
                     for(var i=0; i<model.length; i++) {
                         var vehicleTemplate = model[i];
                         var vehicle = factory.newResource(NS_D, 'Vehicle', vehicleTemplate.vin);
-                        vehicle.owner = factory.newRelationship(NS, 'PrivateOwner', names[carCount]);
+                        vehicle.owner = factory.newRelationship(NS_B, 'Person', names[carCount]);
                         vehicle.vehicleStatus = vehicleTemplate.vehicleStatus;
                         vehicle.vehicleDetails = factory.newConcept(NS_D, 'VehicleDetails');
                         vehicle.vehicleDetails.make = mName; 
@@ -184,7 +185,7 @@ function setupDemo(setupDemo) {
 
                         var logEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
                         logEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicleTemplate.vin);
-                        logEntry.buyer = factory.newRelationship(NS, 'PrivateOwner', names[carCount]);
+                        logEntry.buyer = factory.newRelationship(NS_B, 'Person', names[carCount]);
                         logEntry.timestamp = setupDemo.timestamp
 
                         vehicle.logEntries.push(logEntry);

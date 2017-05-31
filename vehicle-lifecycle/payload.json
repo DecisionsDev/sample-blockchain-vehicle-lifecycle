@@ -1,0 +1,38 @@
+{
+    "$class": "org.vda.PrivateVehicleTransfer",
+    "seller": {
+        "$class": "composer.base.Person",
+        "ssn": "dan"
+    },
+    "buyer": {
+        "$class": "composer.base.Person",
+        "ssn": "anthony"
+    },
+    "specialNotes": "Dan selling a car to Anthony",
+    "transactionId": "85bdf491-8719-4926-aa6d-c9ad77df3aa6",
+    "vehicle": {
+        "$class": "org.vda.Vehicle",
+        "vin": "156478954",
+        "vehicleDetails": {
+            "$class": "org.vda.VehicleDetails",
+            "make": "Arium",
+            "modelType": "Nova",
+            "colour": "white",
+            "vin": "156478954"
+        },
+        "vehicleStatus": "ACTIVE",
+        "owner": {
+            "$class": "composer.base.Person",
+            "ssn": "dan"
+        },
+        "logEntries": [
+            {
+                "$class": "org.vda.VehicleTransferLogEntry",
+                "vehicle": "resource:org.vda.Vehicle#156478954",
+                "buyer": "resource:composer.base.Person#dan",
+                "timestamp": "2017-05-31T07:29:44.197Z"
+            }
+        ]
+    },
+    "timestamp": "2017-05-31T07:30:41.101Z"
+}

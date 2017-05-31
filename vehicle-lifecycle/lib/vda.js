@@ -27,6 +27,7 @@ function privateVehicleTransfer(privateVehicleTransfer) {
     var NS_M = 'org.acme.vehicle.lifecycle.manufacturer';
     var NS = 'org.acme.vehicle.lifecycle';
     var NS_D = 'org.vda';
+    var NS_B = 'composer.base';
     var factory = getFactory();
 
     var seller = privateVehicleTransfer.seller;
@@ -40,6 +41,12 @@ function privateVehicleTransfer(privateVehicleTransfer) {
     // The Decision Service receives all the data about the current transaction: buyer, seller and the vehicle
 
     // TODO call the Decision Service
+    var url = 'http://sample-rest-service:1880/compute';
+
+    post( url, privateVehicleTransfer)
+      .then(function (result) {
+        console.log("Receiving answer from REST service: " + JSON.stringify(result));
+      });
 
     //change vehicle owner
     vehicle.owner = buyer;
@@ -48,8 +55,8 @@ function privateVehicleTransfer(privateVehicleTransfer) {
     var vehicleTransferLogEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
     vehicleTransferLogEntry.transactionId = privateVehicleTransfer.transactionId;
     vehicleTransferLogEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicle.getIdentifier());
-    vehicleTransferLogEntry.seller = factory.newRelationship(NS, 'PrivateOwner', seller.getIdentifier());
-    vehicleTransferLogEntry.buyer = factory.newRelationship(NS, 'PrivateOwner', buyer.getIdentifier());
+    vehicleTransferLogEntry.seller = factory.newRelationship(NS_B, 'Person', seller.getIdentifier());
+    vehicleTransferLogEntry.buyer = factory.newRelationship(NS_B, 'Person', buyer.getIdentifier());
     vehicleTransferLogEntry.timestamp = privateVehicleTransfer.timestamp;
     if (!vehicle.logEntries) {
         vehicle.logEntries = [];
