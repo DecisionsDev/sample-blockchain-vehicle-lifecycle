@@ -1,0 +1,22 @@
+version: '2'
+services:
+  # This following property is defined in the .env file. It's allow to customize your docker images.
+  # ODMVERSION : The Operational Decision Management version
+  # ODMDOCKERDIR : The Directory where this 
+  odm-runtime:
+    image: smartcontract/odm-runtime:8.9.0
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+    - 9060:9060
+    volumes:
+    - ./:/config/dbdata/
+
+
+networks:
+  default:
+    external:
+      name: composer_default
+   
+    
