@@ -2,6 +2,7 @@ package org.vda;
 
 public class VehicleDetails 
 {
+	public String $class;
 	  public String make;
 	  public String modelType;
 	  public String colour;

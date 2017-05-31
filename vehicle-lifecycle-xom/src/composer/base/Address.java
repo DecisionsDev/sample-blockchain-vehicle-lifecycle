@@ -2,6 +2,7 @@ package composer.base;
 
 public class Address 
 {
+	public String $class;
 	public String city ;
 	public String country ;
 	public String locality ;

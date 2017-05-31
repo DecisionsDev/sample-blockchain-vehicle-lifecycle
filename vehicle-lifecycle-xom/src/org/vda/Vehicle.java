@@ -6,6 +6,7 @@ import composer.base.Person;
 
 public class Vehicle 
 {
+	public String $class;
 	public String vin;
 	public VehicleDetails vehicleDetails;
 	public VehicleStatus vehicleStatus;

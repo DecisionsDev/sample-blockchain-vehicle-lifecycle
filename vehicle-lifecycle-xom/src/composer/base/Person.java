@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public  class Person 
 {
+	public String $class;
 	public String title ;
 	public String firstName ;  
 	public String lastName ;  

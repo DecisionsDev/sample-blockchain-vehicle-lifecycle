@@ -7,6 +7,7 @@ package composer.base;
 
 public class Address
 {
+    public string $class;
     public string city;
     public string country;
     public string locality;
@@ -21,6 +22,7 @@ public class Address
 
 public class BirthDetails
 {
+    public string $class;
     public java.util.Date dateOfBirth;
     public string placeOfBirth;
     public BirthDetails();
@@ -28,6 +30,7 @@ public class BirthDetails
 
 public class ContactDetails
 {
+    public string $class;
     public composer.base.Address address;
     public string email;
     public string homePhone;
@@ -37,6 +40,7 @@ public class ContactDetails
 
 public class DeathDetails
 {
+    public string $class;
     public java.util.Date dateOfDeath;
     public string placeOfDeath;
     public DeathDetails();
@@ -46,6 +50,7 @@ public final class Gender
         extends java.lang.Enum
 {
     domain {static MALE, static FEMALE, static OTHER}
+    public string $class;
     public static final readonly composer.base.Gender FEMALE;
     public static final readonly composer.base.Gender MALE;
     public static final readonly composer.base.Gender OTHER;
@@ -53,8 +58,9 @@ public final class Gender
     public static composer.base.Gender[] values();
 }
 
-public abstract class Person
+public class Person
 {
+    public string $class;
     public composer.base.BirthDetails birthDetails;
     public composer.base.ContactDetails contactDetails;
     public composer.base.DeathDetails deathDetails;
@@ -72,6 +78,7 @@ package composer.business;
 
 public class Business
 {
+    public string $class;
     public composer.base.Address headquarters;
     public java.util.ArrayList managers domain 0,* class composer.business.Manager;
     public string name;
@@ -81,6 +88,7 @@ public class Business
 public class Employee
         extends composer.base.Person
 {
+    public string $class;
     public string department;
     public composer.business.Business employer;
     public string employmentStatus;
@@ -93,6 +101,7 @@ public class Employee
 public class Manager
         extends composer.business.Employee
 {
+    public string $class;
     public java.util.ArrayList directReports domain 0,* class composer.business.Employee;
     public Manager();
 }
@@ -103,12 +112,14 @@ package org.acme.vehicle.lifecycle;
 public class AuctionHouse
         extends org.acme.vehicle.lifecycle.Company
 {
+    public string $class;
     public AuctionHouse();
 }
 
 public class Company
         extends composer.business.Business
 {
+    public string $class;
     public string companyId;
     public Company();
 }
@@ -116,6 +127,7 @@ public class Company
 public class PrivateOwner
         extends composer.base.Person
 {
+    public string $class;
     public string email;
     public PrivateOwner();
 }
@@ -123,17 +135,20 @@ public class PrivateOwner
 public class Regulator
         extends org.acme.vehicle.lifecycle.Company
 {
+    public string $class;
     public Regulator();
 }
 
 public class ScrapMerchant
         extends org.acme.vehicle.lifecycle.Company
 {
+    public string $class;
     public ScrapMerchant();
 }
 
 public class TransferSuspicionResult
 {
+    public string $class;
     public string message;
     public string status domain {"ACCEPTED", "SUSPICION", "REJECTED"};
     public TransferSuspicionResult();
@@ -145,12 +160,14 @@ package org.acme.vehicle.lifecycle.manufacturer;
 public class Manufacturer
         extends composer.business.Business
 {
+    public string $class;
     public string companyId;
     public Manufacturer();
 }
 
 public class Order
 {
+    public string $class;
     public org.acme.vehicle.lifecycle.manufacturer.Manufacturer manufacturer;
     public string orderId;
     public org.acme.vehicle.lifecycle.manufacturer.OrderStatus orderStatus;
@@ -164,6 +181,7 @@ public final class OrderStatus
         extends java.lang.Enum
 {
     domain {static PLACED, static SCHEDULED_FOR_MANUFACTURE, static VIN_ASSIGNED, static OWNER_ASSIGNED, static DELIVERED}
+    public string $class;
     public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus DELIVERED;
     public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus OWNER_ASSIGNED;
     public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus PLACED;
@@ -175,6 +193,7 @@ public final class OrderStatus
 
 public class PlaceOrder
 {
+    public string $class;
     public org.acme.vehicle.lifecycle.manufacturer.Manufacturer manufacturer;
     public string orderId;
     public composer.base.Person orderer;
@@ -185,6 +204,7 @@ public class PlaceOrder
 
 public class UpdateOrderStatus
 {
+    public string $class;
     public string numberPlate;
     public org.acme.vehicle.lifecycle.manufacturer.Order order;
     public org.acme.vehicle.lifecycle.manufacturer.OrderStatus orderStatus;
@@ -199,6 +219,7 @@ package org.vda;
 
 public class ApplicationForVehicleRegistrationCertificate
 {
+    public string $class;
     public string driversLicenseNumber;
     public string dvlaFleetNumber;
     public composer.base.Person keeper;
@@ -211,6 +232,7 @@ public class ApplicationForVehicleRegistrationCertificate
 
 public class ExhaustEmissions
 {
+    public string $class;
     public double co;
     public double hc;
     public double hc_plus_nox;
@@ -222,6 +244,7 @@ public class ExhaustEmissions
 public class PrivateVehicleTransfer
         extends org.vda.VehicleTransaction
 {
+    public string $class;
     public composer.base.Person buyer;
     public composer.base.Person seller;
     public string specialNotes;
@@ -231,12 +254,14 @@ public class PrivateVehicleTransfer
 public class ScrapVehicle
         extends org.vda.VehicleTransaction
 {
+    public string $class;
     public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransaction;
     public ScrapVehicle();
 }
 
 public class SoundDetails
 {
+    public string $class;
     public double driveBy;
     public double engineSpeed;
     public double stationary;
@@ -275,6 +300,7 @@ public final class TaxClass
         static EMERGENCY_VEHICLE,
         static EXCEMPT_VEHICLE
     }
+    public string $class;
     public static final readonly org.vda.TaxClass ALTERNATIVE_FUEL_CAR;
     public static final readonly org.vda.TaxClass BUS;
     public static final readonly org.vda.TaxClass CYCLE;
@@ -307,6 +333,7 @@ public final class TaxClass
 
 public class TrailerDetails
 {
+    public string $class;
     public double maxPermissibleTowableMassBraked;
     public double maxPermissibleTowableMassUnbraked;
     public TrailerDetails();
@@ -315,12 +342,14 @@ public class TrailerDetails
 public class UpdateSuspicious
         extends org.vda.VehicleTransaction
 {
+    public string $class;
     public string message;
     public UpdateSuspicious();
 }
 
 public class Vehicle
 {
+    public string $class;
     public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransferLogEntry;
     public string numberPlate;
     public composer.base.Person owner;
@@ -333,6 +362,7 @@ public class Vehicle
 
 public class VehicleDetails
 {
+    public string $class;
     public string bodyType;
     public java.lang.Double co2;
     public string colour;
@@ -365,6 +395,7 @@ public final class VehicleStatus
         extends java.lang.Enum
 {
     domain {static ACTIVE, static OFF_THE_ROAD, static SCRAPPED}
+    public string $class;
     public static final readonly org.vda.VehicleStatus ACTIVE;
     public static final readonly org.vda.VehicleStatus OFF_THE_ROAD;
     public static final readonly org.vda.VehicleStatus SCRAPPED;
@@ -374,6 +405,7 @@ public final class VehicleStatus
 
 public class VehicleTransaction
 {
+    public string $class;
     public string transactionId;
     public org.vda.Vehicle vehicle;
     public VehicleTransaction();
@@ -381,6 +413,7 @@ public class VehicleTransaction
 
 public class VehicleTransferLogEntry
 {
+    public string $class;
     public composer.base.Person buyer;
     public composer.base.Person seller;
     public java.util.Date timestamp;

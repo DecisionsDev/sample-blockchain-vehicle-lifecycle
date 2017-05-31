@@ -4,5 +4,6 @@ import composer.business.Business;
 
 public class Company extends Business 
 {
+	public String $class;
 	public String companyId;
 }
