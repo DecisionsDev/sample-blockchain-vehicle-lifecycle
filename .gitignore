@@ -1,2 +1,6 @@
 .metadata/**
 **/composer-data/**
+**/reports/**
+**/.settings/**
+**/.project
+**/META-INF/**
