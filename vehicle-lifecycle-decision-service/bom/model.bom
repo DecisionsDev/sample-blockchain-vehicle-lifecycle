@@ -69,6 +69,7 @@ public class Person
     public string lastName;
     public java.util.ArrayList middleNames domain 0,* class string;
     public java.util.ArrayList nationalities domain 0,* class string;
+    public string ssn;
     public string title;
     public Person();
 }
@@ -406,6 +407,7 @@ public final class VehicleStatus
 public class VehicleTransaction
 {
     public string $class;
+    public string timestamp;
     public string transactionId;
     public org.vda.Vehicle vehicle;
     public VehicleTransaction();

@@ -71,6 +71,8 @@ composer.base.Person.middleNames#phrase.action = set the middle names of {this} 
 composer.base.Person.middleNames#phrase.navigation = {middle name} of {this}
 composer.base.Person.nationalities#phrase.action = set the nationalities of {this} to {nationality}
 composer.base.Person.nationalities#phrase.navigation = {nationality} of {this}
+composer.base.Person.ssn#phrase.action = set the ssn of {this} to {ssn}
+composer.base.Person.ssn#phrase.navigation = {ssn} of {this}
 composer.base.Person.title#phrase.action = set the title of {this} to {title}
 composer.base.Person.title#phrase.navigation = {title} of {this}
 
@@ -357,6 +359,8 @@ org.vda.VehicleStatus.SCRAPPED#instance.label = SCRAPPED
 
 # org.vda.VehicleTransaction
 org.vda.VehicleTransaction#concept.label = vehicle transaction
+org.vda.VehicleTransaction.timestamp#phrase.action = set the timestamp of {this} to {timestamp}
+org.vda.VehicleTransaction.timestamp#phrase.navigation = {timestamp} of {this}
 org.vda.VehicleTransaction.transactionId#phrase.action = set the transaction id of {this} to {transaction id}
 org.vda.VehicleTransaction.transactionId#phrase.navigation = {transaction id} of {this}
 org.vda.VehicleTransaction.vehicle#phrase.action = set the vehicle of {this} to {vehicle}

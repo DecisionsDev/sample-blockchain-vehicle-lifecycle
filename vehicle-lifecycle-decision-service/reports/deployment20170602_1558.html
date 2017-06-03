@@ -1,0 +1,149 @@
+<html xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Deployment Report - deployer</title>
+<style type="text/css">
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: x-small;
+}
+
+table {
+    margin-bottom: 5px;
+    background-image: url(img/bg_header.jpg);
+    width: 100%;
+    border-collapse:collapse;
+}
+
+span.title {
+    color: #FFFFFF;
+    font-size: medium;
+    margin: 0;
+    padding: 0 0 0 10px;
+    width: 105%;
+}
+
+span.section {
+    color: #003366;
+    border-bottom: 1px solid #00000;
+    font-size: small;
+    margin: 0 3% 0 3%;
+    padding: 3px;
+    width: 94%;
+}
+
+span.end {
+    border: 0;
+}
+
+span.value {
+    font-variant: italic;
+    margin-right: 5px;
+    background-color: #EEEEEE;
+}
+
+ul {
+    width: 94%;
+    margin: 0 3% 10px 3%;
+    padding: 0;
+}
+
+li {
+    padding: 1px 1px 1px 7px;
+    list-style: none;
+    background-color: #FFFFFF;
+    vertical-align: top;
+}
+
+li.bandit {
+    background-color: #F9F9FD;
+}
+
+span.message {
+    vertical-align: top;
+}
+
+div.exception {
+    margin: 0 5px 5px 10px;
+    padding: 3px;
+    background-color: #EEEEEE;
+    border: 1px solid #999999;
+}
+        </style>
+</head>
+<body>
+<table>
+<tr>
+<td nowrap="nowrap" style="background-image:url(img/bg_header.jpg);">
+<table>
+<tr>
+<td valign="middle" nowrap="nowrap" style="background-image:url(img/title_left.jpg)"><span class="title">Deployment Report - deployer</span>
+<br>
+</td><td><img src="img/title_right.jpg" alt=""></td>
+</tr>
+</table>
+</td><td valign="middle" align="right" nowrap="nowrap" style="padding-right:10px;"><img src="img/IBM_1px_white_no_border.gif" alt=""></td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="middle" height="20"></td>
+</tr>
+</table>
+<span class="section">RuleApp Information - deployer</span>
+<ul>
+<li>
+<img src="img/info.png" alt="File name: vehicle.jar"><span class="message">File name: vehicle.jar</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="Version: 1.0"><span class="message">Version: 1.0</span>
+</li>
+</ul>
+<span class="section">Ruleset Information - isSuspiciousEntryPoint</span>
+<ul>
+<li>
+<img src="img/info.png" alt="File name: isSuspiciousEntryPoint.jar"><span class="message">File name: isSuspiciousEntryPoint.jar</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="Version: 1.0"><span class="message">Version: 1.0</span>
+</li>
+</ul>
+<span class="section">XOM Deployment</span>
+<ul>
+<li>
+<img src="img/info.png" alt="The decision operation 'isSuspiciousEntryPoint' references the following target Rule project: [vehicle-lifecycle-decision-service]."><span class="message">The decision operation 'isSuspiciousEntryPoint' references the following target Rule project: [vehicle-lifecycle-decision-service].</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="The following XOM resources were found for Rule project 'vehicle-lifecycle-decision-service': [vehicle-lifecycle-xom]."><span class="message">The following XOM resources were found for Rule project 'vehicle-lifecycle-decision-service': [vehicle-lifecycle-xom].</span>
+</li>
+<li>
+<img src="img/info.png" alt="The resource 'vehicle-lifecycle-xom.zip' was successfully deployed with version '2.0' on Blockchain RES (http://localhost:9060/res)."><span class="message">The resource 'vehicle-lifecycle-xom.zip' was successfully deployed with version '2.0' on Blockchain RES (http://localhost:9060/res).</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="A new resource has been deployed to Blockchain RES (http://localhost:9060/res): a new version of library 'vehicle_1.0' is thus required."><span class="message">A new resource has been deployed to Blockchain RES (http://localhost:9060/res): a new version of library 'vehicle_1.0' is thus required.</span>
+</li>
+<li>
+<img src="img/info.png" alt="The library 'vehicle_1.0' was successfully deployed with version '1.1' on Blockchain RES (http://localhost:9060/res)."><span class="message">The library 'vehicle_1.0' was successfully deployed with version '1.1' on Blockchain RES (http://localhost:9060/res).</span>
+</li>
+</ul>
+<span class="section">RuleApp Build Status</span>
+<ul>
+<li>
+<img src="img/info.png" alt="RuleApp file written to: /Users/stephanemery/Dev/SmartContractODM/vehicle-lifecycle-decision-service/output/vehicle.jar"><span class="message">RuleApp file written to: /Users/stephanemery/Dev/SmartContractODM/vehicle-lifecycle-decision-service/output/vehicle.jar</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="RuleApp build finished with no errors."><span class="message">RuleApp build finished with no errors.</span>
+</li>
+</ul>
+<span class="section">RuleApp Deployment</span>
+<ul>
+<li>
+<img src="img/info.png" alt="The version '1.0' of the ruleset 'isSuspiciousEntryPoint' was successfully deployed to Blockchain RES (http://localhost:9060/res)."><span class="message">The version '1.0' of the ruleset 'isSuspiciousEntryPoint' was successfully deployed to Blockchain RES (http://localhost:9060/res).</span>
+</li>
+<li class="bandit">
+<img src="img/info.png" alt="The RuleApp was successfully deployed to Blockchain RES (http://localhost:9060/res)."><span class="message">The RuleApp was successfully deployed to Blockchain RES (http://localhost:9060/res).</span>
+</li>
+</ul>
+<span class="section end">Deployment successful</span>
+</body>
+</html>
