@@ -117,6 +117,66 @@ function setupDemo(setupDemo) {
             ]
         }
     };
+
+    var persons = {
+    'dan' : {
+        'firstName' : 'Dan',
+        'lastName' : 'Selman',
+        'gender' : 'MALE',
+        'nationalities' : ['French' , 'UK'],
+        'contactDetails' : {
+            'email' : 'dan@acme.org',
+            'address' : {
+                'city' :  'Winchester',                
+                'region' :  'England',                
+                'country' : 'UK'
+            }
+        },
+        'birthDetails' : {
+            'dateOfBirth' : '1972-06-01T20:41:46.568Z',
+            'placeOfBirth' : 'London'
+        }
+    }, 
+    'simon' : {}, 
+    'jake' : {}, 
+    'anastasia' : {}, 
+    'matthew' : {}, 
+    'mark' : {}, 
+    'fenglian' : {}, 
+    'sam' : {}, 
+    'james' : {}, 
+    'nick' : {}, 
+    'caroline' : {}, 
+    'rachel' : {}, 
+    'john' : {}, 
+    'rob' : {}, 
+    'tom' : {}, 
+    'paul' : {}, 
+    'ed' : {}, 
+    'dave' : {}, 
+    'anthony' : {
+        'firstName' : 'Anthony',
+        'lastName' : 'Michel',
+        'gender' : 'MALE',
+        'nationalities' : ['French'],
+        'contactDetails' : {
+            'email' : 'anthony@acme.org',
+            'address' : {
+                'city' :  'Paris',                
+                'region' :  'IDF',                
+                'country' : 'France'
+            }
+        },
+        'birthDetails' : {
+            'dateOfBirth' : '1975-07-01T20:41:46.568Z',
+            'placeOfBirth' : 'Calais'
+        }
+    }, 
+    'toby' : {}, 
+    'ant' : {}, 
+    'matt' : {}, 
+    'anna' : {}
+    };
     
     var manufacturers = [];
     var privateOwners = [];
@@ -129,6 +189,19 @@ function setupDemo(setupDemo) {
    for(var i=0; i<names.length; i++) {
        var name = names[i];
        var privateOwner = factory.newResource(NS_B, 'Person', name);
+       var personData = persons[name];
+       privateOwner.firstName = personData.firstName;
+       privateOwner.lastName = personData.lastName;
+       privateOwner.gender = personData.gender;
+       privateOwner.nationalities = personData.nationalities;
+       if (personData.contactDetails) {
+        privateOwner.contactDetails = factory.newConcept(NS_B, 'ContactDetails');
+        privateOwner.contactDetails.email = personData.contactDetails.email;
+        privateOwner.contactDetails.address = factory.newConcept(NS_B, 'Address');
+        privateOwner.contactDetails.address.city = personData.contactDetails.address.city;
+        privateOwner.contactDetails.address.region = personData.contactDetails.address.region;
+        privateOwner.contactDetails.address.country = personData.contactDetails.address.country;           
+       }
        privateOwners.push(privateOwner);
    }
 
@@ -186,8 +259,7 @@ function setupDemo(setupDemo) {
                         var logEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
                         logEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicleTemplate.vin);
                         logEntry.buyer = factory.newRelationship(NS_B, 'Person', names[carCount]);
-                        logEntry.timestamp = setupDemo.timestamp
-
+                        logEntry.timestamp = setupDemo.timestamp;
                         vehicle.logEntries.push(logEntry);
 
                         vs.push(vehicle);

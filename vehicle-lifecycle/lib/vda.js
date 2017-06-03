@@ -19,11 +19,15 @@
  * @transaction
  */
 function privateVehicleTransfer(privateVehicleTransfer) {
-    console.log('privateVehicleTransfer');
+    console.log('processing a privateVehicleTransfer');
+    var options = {};
+    //options.convertResourcesToRelationships = true;
+    options.permitResourcesForRelationships = true;
+    var data = getSerializer().toJSON(privateVehicleTransfer, options);
+    console.log(data);
 
     var currentParticipant = getCurrentParticipant();
     
-
     var NS_M = 'org.acme.vehicle.lifecycle.manufacturer';
     var NS = 'org.acme.vehicle.lifecycle';
     var NS_D = 'org.vda';
@@ -34,40 +38,63 @@ function privateVehicleTransfer(privateVehicleTransfer) {
     var buyer = privateVehicleTransfer.buyer;
     var vehicle = privateVehicleTransfer.vehicle;
 
+    // HACK remove log entries because relationships in there are serialized as string
+    // and the XOM does not support it yet
+    var storeLogEntries = privateVehicleTransfer.vehicle.logEntries;
+    privateVehicleTransfer.vehicle.logEntries = [];
+
     // this is where we're calling out to a Decision Service to determine of the transaction is suspicious or not
-    // The Decision Service returns a 'status' and a 'message'. 'status' could be ACCEPTED, REJECTED, ACCEPTED_WITH_SUSPICION. 
-    // If REJECTED, the transaction should aborted with the 'message' indicating why. If ACCEPTED_WITH_SUSPICION, the 'message' 
+    // The Decision Service returns a 'status' and a 'message'. 'status' could be ACCEPTED, REJECTED, SUSPICION. 
+    // If REJECTED, the transaction should aborted with the 'message' indicating why. If SUSPICION, the 'message' 
     // should be assigned to the Vehicle.suspiciousMessage field
     // The Decision Service receives all the data about the current transaction: buyer, seller and the vehicle
 
-    // TODO call the Decision Service
-    var url = 'http://sample-rest-service:1880/compute';
+    // var url = 'http://sample-rest-service:1880/compute';
+    var url = 'http://odmruntime_odm-runtime_1:9060/DecisionService/rest/vehicle/1.0/isSuspiciousEntryPoint/1.0';
 
-    post( url, privateVehicleTransfer)
+    var wrapper = factory.newResource(NS, 'TransactionWrapper', 'dummy');
+    wrapper.transaction = privateVehicleTransfer;
+
+    post( url, wrapper)
       .then(function (result) {
-        console.log("Receiving answer from REST service: " + JSON.stringify(result));
+        console.log("Receiving answer from ODM Decision Service: " + JSON.stringify(result));
+        if (result.body.result['status'] != null) {
+            if (result.body.result.status === "REJECTED") {
+                // TODO: need to throw an exception to reject the transaction
+            } else if (result.body.result.status === "SUSPICION") {
+                vehicle.suspiciousMessage = result.body.result.message;
+            }
+        } 
+      }).catch(function (error) {
+          console.log("Error calling out the decision service");
+          console.log(error);
+          vehicle.suspiciousMessage = "Call to the Decision Service failed";
+      }).then(function () { 
+
+        // HACK restore the log entries
+        privateVehicleTransfer.vehicle.logEntries = storeLogEntries;
+
+        //change vehicle owner
+        vehicle.owner = buyer;
+
+        //PrivateVehicleTransaction for log
+        var vehicleTransferLogEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
+        vehicleTransferLogEntry.transactionId = privateVehicleTransfer.transactionId;
+        vehicleTransferLogEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicle.getIdentifier());
+        vehicleTransferLogEntry.seller = factory.newRelationship(NS_B, 'Person', seller.getIdentifier());
+        vehicleTransferLogEntry.buyer = factory.newRelationship(NS_B, 'Person', buyer.getIdentifier());
+        vehicleTransferLogEntry.timestamp = privateVehicleTransfer.timestamp;
+        if (!vehicle.logEntries) {
+            vehicle.logEntries = [];
+        }
+
+        vehicle.logEntries.push(vehicleTransferLogEntry);
+
+        return getAssetRegistry(vehicle.getFullyQualifiedType())
+            .then(function(ar) {
+                return ar.update(vehicle);
+            });
       });
-
-    //change vehicle owner
-    vehicle.owner = buyer;
-
-    //PrivateVehicleTransaction for log
-    var vehicleTransferLogEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
-    vehicleTransferLogEntry.transactionId = privateVehicleTransfer.transactionId;
-    vehicleTransferLogEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicle.getIdentifier());
-    vehicleTransferLogEntry.seller = factory.newRelationship(NS_B, 'Person', seller.getIdentifier());
-    vehicleTransferLogEntry.buyer = factory.newRelationship(NS_B, 'Person', buyer.getIdentifier());
-    vehicleTransferLogEntry.timestamp = privateVehicleTransfer.timestamp;
-    if (!vehicle.logEntries) {
-        vehicle.logEntries = [];
-    }
-
-    vehicle.logEntries.push(vehicleTransferLogEntry);
-
-    return getAssetRegistry(vehicle.getFullyQualifiedType())
-        .then(function(ar) {
-            return ar.update(vehicle);
-        });
 }
 
 /**

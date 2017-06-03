@@ -10,14 +10,23 @@ To create a Docker image from the dockerfile in this directory:
 docker-compose build
 
 To run the docker image:
-docker-compose run
+docker-compose run odm-runtime
 
 
 To Generate the sample payload : 
 http://localhost:9060/DecisionService/rest/vehicule/1.0/vehicule/1.0/json?trace=false
 
 To invoke the a sample payload with curl : 
-curl -H "Content-Type: application/json" -X POST -d @samplepayload.json http://localhost:9060/DecisionService/rest/vehicule/1.0/vehicule/1.0/
+curl -H "Content-Type: application/json" -X POST -d @sample_suspicious_transaction.json http://localhost:9060/DecisionService/rest/vehicle/1.0/isSuspiciousEntryPoint/1.0
+
+curl -H "Content-Type: application/json" -X POST -d @sample_suspicious_transaction.json http://odmruntime_odm-runtime_1:9060/DecisionService/rest/vehicle/1.0/isSuspiciousEntryPoint/1.0
+
+
+To launch the RES Console: http://localhost:9060/res
+user and passwd are resAdmin
+
+Connecting inside the container: docker exec -it <containerIdOrName> bash
+to see the logs: docker-compose logs
 
 
 Deploy Fabric 1.0 alpha + 0.7.3 Composer: 

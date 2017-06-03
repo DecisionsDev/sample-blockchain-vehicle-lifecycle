@@ -4,8 +4,26 @@
 	"description": "Example of a Blockchain application using ODM Business Rules in Smart Contracts",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"No test specified\""
+		"test": "echo \"No test specified\"",
+		"deploy": "composer archive create --sourceName . --sourceType dir && composer network deploy --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i admin -s adminpw && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
+		"update": "composer archive create --sourceName . --sourceType dir && composer network update --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i admin -s adminpw && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
+		"listVehicles": "node cli.js listVehicles",
+		"makeSuspiciousTransfer": "node cli.js makeSuspiciousTransfer",
+		"clean": "node cli.js clean",
+		"setup": "node cli.js setup",
+		"demo": "npm run clean && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer && npm run listVehicles"
 	},
 	"author": "IBM",
-	"license": "IBM"
+	"license": "IBM",
+	"dependencies": {
+    	"cli-table": "^0.3.1",
+    	"composer-admin": "^0.7.3",
+    	"composer-client": "^0.7.3",
+    	"config": "^1.24.0",
+    	"jsonfile": "^2.4.0",
+    	"lodash": "^4.17.4",
+    	"sprintf-js": "^1.0.3",
+    	"winston": "^2.3.0",
+    	"yargs": "^6.5.0"
+  }
 }
