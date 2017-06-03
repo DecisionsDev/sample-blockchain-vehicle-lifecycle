@@ -20,9 +20,6 @@ is the ODM Decision Service that implement the decision logique invoked from the
 odm-runtime
 -------------------
 An odm docker image that contain RES / HTDS and a DB in a docker image.
-TODO : 
-	- Add a bna to call this res.
-	- Deploy the vehicule xom and ruleset by default in this image
 
 sample-rest-service
 -------------------
