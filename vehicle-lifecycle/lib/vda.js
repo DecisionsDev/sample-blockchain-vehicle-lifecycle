@@ -40,8 +40,9 @@ function privateVehicleTransfer(privateVehicleTransfer) {
 
     // HACK remove log entries because relationships in there are serialized as string
     // and the XOM does not support it yet
-    var storeLogEntries = privateVehicleTransfer.vehicle.logEntries;
-    privateVehicleTransfer.vehicle.logEntries = [];
+    // --> no more necessary, XOM has been fixed
+    //var storeLogEntries = privateVehicleTransfer.vehicle.logEntries;
+    //privateVehicleTransfer.vehicle.logEntries = [];
 
     // this is where we're calling out to a Decision Service to determine of the transaction is suspicious or not
     // The Decision Service returns a 'status' and a 'message'. 'status' could be ACCEPTED, REJECTED, SUSPICION. 
@@ -72,7 +73,8 @@ function privateVehicleTransfer(privateVehicleTransfer) {
       }).then(function () { 
 
         // HACK restore the log entries
-        privateVehicleTransfer.vehicle.logEntries = storeLogEntries;
+        // --> no more necessary, XOM has been fixed
+        //privateVehicleTransfer.vehicle.logEntries = storeLogEntries;
 
         //change vehicle owner
         vehicle.owner = buyer;

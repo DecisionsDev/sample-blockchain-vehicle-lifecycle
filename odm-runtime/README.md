@@ -21,6 +21,8 @@ curl -H "Content-Type: application/json" -X POST -d @sample_suspicious_transacti
 
 curl -H "Content-Type: application/json" -X POST -d @sample_suspicious_transaction.json http://odmruntime_odm-runtime_1:9060/DecisionService/rest/vehicle/1.0/isSuspiciousEntryPoint/1.0
 
+curl -H "Content-Type: application/json" -X POST -d @sample_suspicious_transaction.json http://localhost:9070/DecisionService/rest/vehicle/1.0/isSuspiciousEntryPoint/1.0
+
 
 To launch the RES Console: http://localhost:9060/res
 user and passwd are resAdmin

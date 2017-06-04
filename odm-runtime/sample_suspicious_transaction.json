@@ -78,6 +78,12 @@
                 }
             },
             "logEntries": [
+                {
+                    "$class" :"org.vda.VehicleTransferLogEntry",
+                    "vehicle" : "resource:org.vda.Vehicle:156478954",
+                    "buyer" : "resource:composer.base:anthony",
+                    "timestamp": "2017-06-02T09:47:14.903Z"                    
+                }
             ]
         },
         "timestamp": "2017-06-02T09:47:14.903Z"

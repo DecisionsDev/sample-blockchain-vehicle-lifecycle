@@ -33,9 +33,11 @@ service call from the JS smart contract
     @JsonIgnoreProperties(ignoreUnknown = true)
     @JsonTypeInfo(use = "$class", include = JsonTypeInfo.As.PROPERTY)
     - remove $class fields
+    - support custom deserialization to support objects graph (see comment in vda.js)
 - Decision Service
     - automate build of the XOM and the Ruleapp in scripts
     - script to deploy Ruleapp and XOM to the RES running in Docker
+    - code a cto -> XOM generator
 - odm-runtime
     - remove the ruleset.jar and the xom from the image
 - deployment to Fabric
