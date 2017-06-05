@@ -21,7 +21,7 @@ public class VehicleTransferLogEntryDeserializer extends JsonDeserializer<Vehicl
 	public static String getId(String fqn) 
 	{
 		int idx = -1;
-		if (fqn != null && (idx = fqn.lastIndexOf(":")) != -1) {
+		if (fqn != null && (idx = fqn.lastIndexOf("#")) != -1) {
 			return fqn.substring(idx + 1);			
 		}
 		return null;

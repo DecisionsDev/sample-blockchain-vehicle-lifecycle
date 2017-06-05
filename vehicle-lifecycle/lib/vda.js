@@ -62,6 +62,7 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         if (result.body.result['status'] != null) {
             if (result.body.result.status === "REJECTED") {
                 // TODO: need to throw an exception to reject the transaction
+                vehicle.suspiciousMessage = "REJECTED: " + result.body.result.message;
             } else if (result.body.result.status === "SUSPICION") {
                 vehicle.suspiciousMessage = result.body.result.message;
             }

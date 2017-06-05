@@ -49,6 +49,8 @@ Refer to the README.md in odm-runtime project
 
 # creating and deploying the business network archive for vehicle-lifecycle 
 
+Don't forget to use node 6.10.3: nvm use 6.10.3
+
 Please refer to https://hyperledger.github.io/composer/reference/commands.html for more documentation about
 the commands to use.
 
@@ -67,6 +69,7 @@ composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw
 Note that you can use the following commands:
 npm run deploy
 npm run update
+npm run list
 
 # initializing the Business Network
 
@@ -86,9 +89,27 @@ npm run clean
 # submitting a suspicious transaction
 
 You submit a suspicious transaction with:
-npm run makeSuspiciousTransfer
+npm run makeSuspiciousTransfer1
 
 You can run 'npm run listVehicles' to see that the suspicious message of vehicle 156478954 is now "Cross Border Suspicious Transfer: please double check buyer regulation"
+
+├────────────┼───────────┼────────┼─────────┼────────────────────────────────────────────────────────────────────────┤
+│ 156478954  │ anthony   │ Arium  │ Nova    │ Cross Border Suspicious Transfer: please double check buyer regulation │
+├────────────┼───────────┼────────┼─────────┼────────────────────────────────────────────────────────────────────────┤
+
+npm run makeSuspiciousTransfer2
+
+├────────────┼───────────┼────────┼─────────┼────────────────────────────────────────────────────────────────────────┤
+│ 123456789  │ anthony   │ Porshe │ Cayenne │ Suspicious sale: Expensive car identified as special                   │
+├────────────┼───────────┼────────┼─────────┼────────────────────────────────────────────────────────────────────────┤
+
+npm run makeSuspiciousTransfer3
+
+├────────────┼───────────┼────────┼─────────┼────────────────────────────────────────────────────────────────────────┤
+│ 234567890  │ anthony   │ BMW    │ X5      │ REJECTED: Can't sell Emergency Vehicle in California                   │
+├────────────┼───────────┼────────┼─────────┼────────────────────────────────────────────────────────────────────────┤
+
+
 
 # Summary
 The full demo is played by running the following command: 'npm run demo'

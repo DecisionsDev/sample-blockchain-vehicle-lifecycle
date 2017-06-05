@@ -12,6 +12,11 @@
     </Properties>
     <Structure>
       <ConditionDefinitions>
+        <ConditionDefinition Id="C3">
+          <ExpressionDefinition>
+            <Text><![CDATA[the country of the address of the contact details of the buyer of 'the transaction' is <a string>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
         <ConditionDefinition Id="C0">
           <ExpressionDefinition>
             <Text><![CDATA[the region of the address of the contact details of the buyer of 'the transaction' is <a string>]]></Text>
@@ -42,15 +47,209 @@
       </ActionDefinitions>
     </Structure>
     <Contents>
-      <Partition DefId="C0">
+      <Partition DefId="C3">
         <Condition>
           <Expression>
-            <Param><![CDATA["CA"]]></Param>
+            <Param><![CDATA["France"]]></Param>
           </Expression>
-          <Partition DefId="C1">
+          <Partition DefId="C0">
             <Condition>
               <Expression>
-                <Param><![CDATA["Porshe"]]></Param>
+                <Param><![CDATA["IDF"]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["Porshe"]]></Param>
+                  </Expression>
+                  <Partition DefId="C2">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[SPECIAL_VEHICLES]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA["SUSPICION"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["Suspicious sale: Expensive car identified as special"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression/>
+                  <Partition DefId="C2">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[EMERGENCY_VEHICLE]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA["REJECTED"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["Can't sell Emergency Vehicle in California"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["UK"]]></Param>
+          </Expression>
+          <Partition DefId="C0">
+            <Condition>
+              <Expression>
+                <Param><![CDATA["England"]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["BMW"]]></Param>
+                  </Expression>
+                  <Partition DefId="C2">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[EXCEMPT_VEHICLE]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA["SUSPICION"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["Please double check the sale"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA["Ferrari"]]></Param>
+                  </Expression>
+                  <Partition DefId="C2">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[DIESEL_CAR]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA["SUSPICION"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["Improbable Desiel sale"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+          </Partition>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA["US"]]></Param>
+          </Expression>
+          <Partition DefId="C0">
+            <Condition>
+              <Expression>
+                <Param><![CDATA["CA"]]></Param>
+              </Expression>
+              <Partition DefId="C1">
+                <Condition>
+                  <Expression>
+                    <Param/>
+                  </Expression>
+                  <Partition DefId="C2">
+                    <Condition>
+                      <Expression>
+                        <Param><![CDATA[EMERGENCY_VEHICLE]]></Param>
+                      </Expression>
+                      <ActionSet>
+                        <Action DefId="A0">
+                          <Expression>
+                            <Param><![CDATA["SUSPICION"]]></Param>
+                          </Expression>
+                        </Action>
+                        <Action DefId="A1">
+                          <Expression>
+                            <Param><![CDATA["Emergency Vehicle Sale"]]></Param>
+                          </Expression>
+                        </Action>
+                      </ActionSet>
+                    </Condition>
+                  </Partition>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["CT"]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[EURO4_LIGHT_GOODS_VEHICLE]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA["SUSPICION"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["European Vehicle Sale"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[EURO5_LIGHT_GOODS_VEHICLE]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA["SUSPICION"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["European Vehicle Sale"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["DC"]]></Param>
               </Expression>
               <Partition DefId="C2">
                 <Condition>
@@ -65,7 +264,7 @@
                     </Action>
                     <Action DefId="A1">
                       <Expression>
-                        <Param><![CDATA["Expensive car identified as special"]]></Param>
+                        <Param><![CDATA["Special Car Sale"]]></Param>
                       </Expression>
                     </Action>
                   </ActionSet>
@@ -73,21 +272,136 @@
               </Partition>
             </Condition>
             <Condition>
-              <Expression/>
+              <Expression>
+                <Param><![CDATA["TX"]]></Param>
+              </Expression>
               <Partition DefId="C2">
                 <Condition>
                   <Expression>
-                    <Param><![CDATA[EMERGENCY_VEHICLE]]></Param>
+                    <Param><![CDATA[ELECTRIC_MOTOCYCLE]]></Param>
                   </Expression>
                   <ActionSet>
                     <Action DefId="A0">
                       <Expression>
-                        <Param><![CDATA["REJECTED"]]></Param>
+                        <Param><![CDATA["SUSPICION"]]></Param>
                       </Expression>
                     </Action>
                     <Action DefId="A1">
                       <Expression>
-                        <Param><![CDATA["Can't sell Emergency Vehicle in California"]]></Param>
+                        <Param><![CDATA["Review Electric Car Sale"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["FL"]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[SMALL_ISLAND_VEHICLES]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA["SUSPICION"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["Small Island Sale"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["RI"]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[SMALL_ISLAND_VEHICLES]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA["SUSPICION"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["Small Island Sale"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["IL"]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[ELECTRIC_MOTOCYCLE]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA["SUSPICION"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["Review Electric Car Sale"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+              </Partition>
+            </Condition>
+            <Condition>
+              <Expression>
+                <Param><![CDATA["MA"]]></Param>
+              </Expression>
+              <Partition DefId="C2">
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[EURO4_LIGHT_GOODS_VEHICLE]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA["SUSPICION"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["European Vehicle Sale"]]></Param>
+                      </Expression>
+                    </Action>
+                  </ActionSet>
+                </Condition>
+                <Condition>
+                  <Expression>
+                    <Param><![CDATA[EURO5_LIGHT_GOODS_VEHICLE]]></Param>
+                  </Expression>
+                  <ActionSet>
+                    <Action DefId="A0">
+                      <Expression>
+                        <Param><![CDATA["SUSPICION"]]></Param>
+                      </Expression>
+                    </Action>
+                    <Action DefId="A1">
+                      <Expression>
+                        <Param><![CDATA["European Vehicle Sale"]]></Param>
                       </Expression>
                     </Action>
                   </ActionSet>
@@ -96,230 +410,23 @@
             </Condition>
           </Partition>
         </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression/>
-          <ActionSet>
-            <Action DefId="A0">
-              <Expression/>
-            </Action>
-            <Action DefId="A1">
-              <Expression/>
-            </Action>
-          </ActionSet>
-        </Condition>
       </Partition>
     </Contents>
   </Body>
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[Suspicion Status]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[188]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[152]]></Data>
       <Data Name="Definitions(A1)#HeaderText"><![CDATA[Message]]></Data>
-      <Data Name="Definitions(A1)#Width"><![CDATA[187]]></Data>
-      <Data Name="Definitions(C0)#HeaderText"><![CDATA[State]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[179]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[152]]></Data>
+      <Data Name="Definitions(C0)#HeaderText"><![CDATA[Buyer Region]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[166]]></Data>
       <Data Name="Definitions(C1)#HeaderText"><![CDATA[Car Make]]></Data>
-      <Data Name="Definitions(C1)#Width"><![CDATA[170]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[160]]></Data>
       <Data Name="Definitions(C2)#HeaderText"><![CDATA[Tax Class]]></Data>
-      <Data Name="Definitions(C2)#Width"><![CDATA[224]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[191]]></Data>
+      <Data Name="Definitions(C3)#HeaderText"><![CDATA[Buyer Country]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[137]]></Data>
     </ResourceSet>
   </Resources>
 </DT>

@@ -9,11 +9,11 @@ public class Address
 {
     public string $class;
     public string city;
-    public string country;
+    public string country domain {"France", "UK", "US"};
     public string locality;
     public string postOfficeBoxNumber;
     public string postalCode;
-    public string region domain {"CA", "TX", "FL", "MA", "NY", "CT", "NC", "DC", "NH", "RI", "NV", "IL"};
+    public string region domain {"CA", "TX", "FL", "MA", "NY", "CT", "NC", "DC", "NH", "RI", "NV", "IL", "IDF", "PACA", "Brittany", "England", "Wales", "Scotland"};
     public string street;
     public string street2;
     public string street3;
@@ -72,6 +72,12 @@ public class Person
     public string ssn;
     public string title;
     public Person();
+    public string getCity();
+    public string getCountry();
+    public string getEmail();
+    public string getMobilePhone();
+    public string getPhone();
+    public string getRegion();
 }
 
 package composer.business;
@@ -275,8 +281,7 @@ public final class TaxClass
     domain 
     {
         static PRIVATE_LIGHT_GOODS,
-        static PETR,
-        static L_CAR,
+        static PETROL_CAR,
         static DIESEL_CAR,
         static ALTERNATIVE_FUEL_CAR,
         static LIGHT_GOODS_VEHICLE,
@@ -288,25 +293,19 @@ public final class TaxClass
         static HAULAGE_VEHICLES,
         static BUS,
         static MOTORCYCLE,
-        static ELECTRIC_M,
-        static T,
-        static CYCLE,
+        static ELECTRIC_MOTOCYCLE,
         static SPECIAL_VEHICLES,
         static SMALL_ISLAND_VEHICLES,
-        static REC,
-        static VERY_VEHICLE,
-        static SPECIAL_C,
-        static NCESSI,
-        static NARY,
+        static RECOVERY_VEHICLE,
+        static SPECIAL_CONCESSIONARY,
         static EMERGENCY_VEHICLE,
         static EXCEMPT_VEHICLE
     }
     public string $class;
     public static final readonly org.vda.TaxClass ALTERNATIVE_FUEL_CAR;
     public static final readonly org.vda.TaxClass BUS;
-    public static final readonly org.vda.TaxClass CYCLE;
     public static final readonly org.vda.TaxClass DIESEL_CAR;
-    public static final readonly org.vda.TaxClass ELECTRIC_M;
+    public static final readonly org.vda.TaxClass ELECTRIC_MOTOCYCLE;
     public static final readonly org.vda.TaxClass EMERGENCY_VEHICLE;
     public static final readonly org.vda.TaxClass EURO4_LIGHT_GOODS_VEHICLE;
     public static final readonly org.vda.TaxClass EURO5_LIGHT_GOODS_VEHICLE;
@@ -314,20 +313,15 @@ public final class TaxClass
     public static final readonly org.vda.TaxClass HAULAGE_VEHICLES;
     public static final readonly org.vda.TaxClass HEAVY_GOODS_VEHICLE;
     public static final readonly org.vda.TaxClass LIGHT_GOODS_VEHICLE;
-    public static final readonly org.vda.TaxClass L_CAR;
     public static final readonly org.vda.TaxClass MOTORCYCLE;
-    public static final readonly org.vda.TaxClass NARY;
-    public static final readonly org.vda.TaxClass NCESSI;
-    public static final readonly org.vda.TaxClass PETR;
+    public static final readonly org.vda.TaxClass PETROL_CAR;
     public static final readonly org.vda.TaxClass PRIVATE_HEAVY_GOODS_VEHICLE;
     public static final readonly org.vda.TaxClass PRIVATE_LIGHT_GOODS;
-    public static final readonly org.vda.TaxClass REC;
+    public static final readonly org.vda.TaxClass RECOVERY_VEHICLE;
     public static final readonly org.vda.TaxClass SMALL_ISLAND_VEHICLES;
-    public static final readonly org.vda.TaxClass SPECIAL_C;
+    public static final readonly org.vda.TaxClass SPECIAL_CONCESSIONARY;
     public static final readonly org.vda.TaxClass SPECIAL_TYPES;
     public static final readonly org.vda.TaxClass SPECIAL_VEHICLES;
-    public static final readonly org.vda.TaxClass T;
-    public static final readonly org.vda.TaxClass VERY_VEHICLE;
     public static org.vda.TaxClass valueOf(string arg);
     public static org.vda.TaxClass[] values();
 }

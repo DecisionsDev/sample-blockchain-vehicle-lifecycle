@@ -8,10 +8,13 @@
 		"deploy": "composer archive create --sourceName . --sourceType dir && composer network deploy --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i admin -s adminpw && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
 		"update": "composer archive create --sourceName . --sourceType dir && composer network update --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i admin -s adminpw && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
 		"listVehicles": "node cli.js listVehicles",
-		"makeSuspiciousTransfer": "node cli.js makeSuspiciousTransfer",
+		"list": "composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
+		"makeSuspiciousTransfer1": "node cli.js makeSuspiciousTransfer1",
+		"makeSuspiciousTransfer2": "node cli.js makeSuspiciousTransfer2",
+		"makeSuspiciousTransfer3": "node cli.js makeSuspiciousTransfer3",
 		"clean": "node cli.js clean",
 		"setup": "node cli.js setup",
-		"demo": "npm run clean && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer && npm run listVehicles"
+		"demo": "npm run clean && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles"
 	},
 	"author": "IBM",
 	"license": "IBM",

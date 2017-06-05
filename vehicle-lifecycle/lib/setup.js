@@ -33,14 +33,16 @@ function setupDemo(setupDemo) {
                 {
                     'vin': '156478954',
                     'colour': 'white',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }
             ],
             'Nebula': [
                 {
                     'vin': '652345894',
                     'colour': 'blue',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }
             ]
         }, 
@@ -50,35 +52,41 @@ function setupDemo(setupDemo) {
                     'vin': '6437956437', 
                     'colour': 'black',
                     'vehicleStatus': 'ACTIVE', 
-                    'suspiciousMessage': 'Mileage anomaly'
+                    'suspiciousMessage': 'Mileage anomaly',
+                    'taxationClass': 'PETROL_CAR'
                 },
                 {
                     'vin': '857642213', 
                     'colour': 'red',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 },
                 {
                     'vin': '542376495', 
                     'colour': 'silver',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }
             ],
             'Pluto': [
                 {
                     'vin': '976431649', 
                     'colour': 'white',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'ELECTRIC_MOTOCYCLE'
                 },
                 {
                     'vin': '564215468', 
                     'colour': 'green',
-                    'vehicleStatus': 'ACTIVE', 
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR', 
                     'suspiciousMessage': 'Insurance write-off but still active'
                 },
                 {
                     'vin': '784512464', 
                     'colour': 'grey',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }
             ]
         },
@@ -87,18 +95,21 @@ function setupDemo(setupDemo) {
                 {
                     'vin': '457645764',
                     'colour': 'red',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 },
                 {
                     'vin': '312457645',
                     'colour': 'white',
-                    'vehicleStatus': 'ACTIVE', 
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR', 
                     'suspiciousMessage': 'Suspicious ownership sequence'
                 },
                 {
                     'vin': '65235647',
                     'colour': 'silver',
-                    'vehicleStatus': 'ACTIVE', 
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR', 
                     'suspiciousMessage': 'Untaxed vehicle'
                 }
             ], 
@@ -106,16 +117,54 @@ function setupDemo(setupDemo) {
                 {
                     'vin': '85654575',
                     'colour': 'blue',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }, 
                 {
                     'vin': '326548754',
                     'colour': 'white',
-                    'vehicleStatus': 'ACTIVE', 
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR', 
                     'suspiciousMessage': 'Uninsured vehicle'
                 }
             ]
-        }
+        },
+        'Porshe': {
+            'Cayenne': [
+                {
+                    'vin': '123456789',
+                    'colour': 'black',
+                    'vehicleStatus': 'ACTIVE', 
+                    'taxationClass': 'SPECIAL_VEHICLES'
+                }
+            ], 
+            '911': [
+                {
+                    'vin': '012345678',
+                    'colour': 'blue',
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
+                }                 
+            ]
+        },
+        'BMW': {
+            'X5': [
+                {
+                    'vin': '234567890',
+                    'colour': 'grey',
+                    'vehicleStatus': 'ACTIVE', 
+                    'taxationClass': 'EMERGENCY_VEHICLE'
+                }
+            ], 
+            'Z1': [
+                {
+                    'vin': '345678901',
+                    'colour': 'blue',
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'EXCEMPT_VEHICLE'
+                }                 
+            ]
+        }        
     };
 
     var persons = {
@@ -156,7 +205,7 @@ function setupDemo(setupDemo) {
     'dave' : {}, 
     'anthony' : {
         'firstName' : 'Anthony',
-        'lastName' : 'Michel',
+        'lastName' : 'Smith',
         'gender' : 'MALE',
         'nationalities' : ['French'],
         'contactDetails' : {
@@ -247,6 +296,7 @@ function setupDemo(setupDemo) {
                         vehicle.vehicleDetails.modelType = mModel; 
                         vehicle.vehicleDetails.colour = vehicleTemplate.colour; 
                         vehicle.vehicleDetails.vin = vehicleTemplate.vin;
+                        vehicle.vehicleDetails.taxationClass = vehicleTemplate.taxationClass;
 
                         if (vehicleTemplate.suspiciousMessage) {
                             vehicle.suspiciousMessage = vehicleTemplate.suspiciousMessage;

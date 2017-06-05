@@ -15,6 +15,46 @@
         </attribute>
     </class>
     <class>
+        <businessName>composer.base.Person</businessName>
+        <import>composer.base.ContactDetails</import>
+        <method>
+            <name>getCity</name>
+            <body language="irl"><![CDATA[
+            return this.contactDetails.address.city;
+            ]]></body>
+        </method>
+        <method>
+            <name>getCountry</name>
+            <body language="irl"><![CDATA[
+            return this.contactDetails.address.country;
+            ]]></body>
+        </method>
+        <method>
+            <name>getEmail</name>
+            <body language="irl"><![CDATA[
+            return this.contactDetails.email;
+            ]]></body>
+        </method>
+        <method>
+            <name>getMobilePhone</name>
+            <body language="irl"><![CDATA[
+            return this.contactDetails.mobilePhone;
+            ]]></body>
+        </method>
+        <method>
+            <name>getPhone</name>
+            <body language="irl"><![CDATA[
+            return this.contactDetails.homePhone;
+            ]]></body>
+        </method>
+        <method>
+            <name>getRegion</name>
+            <body language="irl"><![CDATA[
+            return this.contactDetails.address.region;
+            ]]></body>
+        </method>
+    </class>
+    <class>
         <businessName>org.acme.vehicle.lifecycle.manufacturer.OrderStatus</businessName>
         <attribute>
             <name>$class</name>

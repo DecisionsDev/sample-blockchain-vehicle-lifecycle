@@ -103,15 +103,15 @@ class VehicleLifecycle {
     }
 
 
-    makeSuspiciousTransfer() 
+    makeSuspiciousTransfer1() 
     {
-        const METHOD = 'makeSuspiciousTransfer';
+        const METHOD = 'makeSuspiciousTransfer1';
 	    let factory        = this.businessNetworkDefinition.getFactory();
 	    let transaction    = factory.newTransaction('org.vda','PrivateVehicleTransfer');		
 		transaction.seller  = factory.newRelationship('composer.base', 'Person', 'dan');
 		transaction.buyer  = factory.newRelationship('composer.base', 'Person', 'anthony');
 		transaction.vehicle = factory.newRelationship('org.vda', 'Vehicle', '156478954'); 	
-        transaction.specialNotes = "Dan selling a car to Anthony Michel";
+        transaction.specialNotes = "Dan selling a car to Anthony Smith";
         
         var serializer = this.businessNetworkDefinition.getSerializer();
         var transactionObject = serializer.toJSON(transaction);
@@ -133,6 +133,84 @@ class VehicleLifecycle {
             return cnx.getAssetRegistry('org.vda.Vehicle');
         }).then(function (registry) {
             return registry.get('156478954');
+        }).then(function (vehicle) {
+            transactionObject.vehicle = serializer.toJSON(vehicle);
+        }).then(function () {
+            LOG.info(METHOD, 'Submitting transaction');
+            LOG.info(METHOD, JSON.stringify(transactionObject, null, 4));        
+            return cnx.submitTransaction(transaction);
+        });
+    }
+
+    makeSuspiciousTransfer2() 
+    {
+        const METHOD = 'makeSuspiciousTransfer2';
+	    let factory        = this.businessNetworkDefinition.getFactory();
+	    let transaction    = factory.newTransaction('org.vda','PrivateVehicleTransfer');		
+		transaction.seller  = factory.newRelationship('composer.base', 'Person', 'dan');
+		transaction.buyer  = factory.newRelationship('composer.base', 'Person', 'anthony');
+		transaction.vehicle = factory.newRelationship('org.vda', 'Vehicle', '123456789'); 	
+        transaction.specialNotes = "Dan selling a car to Anthony Smith";
+        
+        var serializer = this.businessNetworkDefinition.getSerializer();
+        var transactionObject = serializer.toJSON(transaction);
+        var personRegistry;
+
+        var cnx = this.bizNetworkConnection;
+
+        return cnx.getParticipantRegistry('composer.base.Person')
+        .then(function (registry){
+            personRegistry = registry;
+            return personRegistry.get('dan');
+        }).then(function (dan) {
+            transactionObject.seller = serializer.toJSON(dan);
+        }).then(function () {
+            return personRegistry.get('anthony');
+        }).then(function (anthony) {
+            transactionObject.buyer = serializer.toJSON(anthony);
+        }).then(function () {
+            return cnx.getAssetRegistry('org.vda.Vehicle');
+        }).then(function (registry) {
+            return registry.get('123456789');
+        }).then(function (vehicle) {
+            transactionObject.vehicle = serializer.toJSON(vehicle);
+        }).then(function () {
+            LOG.info(METHOD, 'Submitting transaction');
+            LOG.info(METHOD, JSON.stringify(transactionObject, null, 4));        
+            return cnx.submitTransaction(transaction);
+        });
+    }
+
+    makeSuspiciousTransfer3() 
+    {
+        const METHOD = 'makeSuspiciousTransfer3';
+	    let factory        = this.businessNetworkDefinition.getFactory();
+	    let transaction    = factory.newTransaction('org.vda','PrivateVehicleTransfer');		
+		transaction.seller  = factory.newRelationship('composer.base', 'Person', 'dan');
+		transaction.buyer  = factory.newRelationship('composer.base', 'Person', 'anthony');
+		transaction.vehicle = factory.newRelationship('org.vda', 'Vehicle', '234567890'); 	
+        transaction.specialNotes = "Dan selling a car to Anthony Smith";
+        
+        var serializer = this.businessNetworkDefinition.getSerializer();
+        var transactionObject = serializer.toJSON(transaction);
+        var personRegistry;
+
+        var cnx = this.bizNetworkConnection;
+
+        return cnx.getParticipantRegistry('composer.base.Person')
+        .then(function (registry){
+            personRegistry = registry;
+            return personRegistry.get('dan');
+        }).then(function (dan) {
+            transactionObject.seller = serializer.toJSON(dan);
+        }).then(function () {
+            return personRegistry.get('anthony');
+        }).then(function (anthony) {
+            transactionObject.buyer = serializer.toJSON(anthony);
+        }).then(function () {
+            return cnx.getAssetRegistry('org.vda.Vehicle');
+        }).then(function (registry) {
+            return registry.get('234567890');
         }).then(function (vehicle) {
             transactionObject.vehicle = serializer.toJSON(vehicle);
         }).then(function () {
@@ -211,17 +289,17 @@ class VehicleLifecycle {
         });
     }
 
-    /**
+  /**
    * @description - makeSuspiciousTransfer
    * @param {Object} args passed from the command line
    * @return {Promise} resolved when the action is complete
    */
-    static makeSuspiciousTransferCmd(args) 
+    static makeSuspiciousTransferCmd1(args) 
     {
         let lr = new VehicleLifecycle();
         return lr.init()
         .then(() => {
-            return lr.makeSuspiciousTransfer();
+                return lr.makeSuspiciousTransfer1();
         })
         .then((results) => {
             LOG.info('Transaction Submitted');
@@ -231,6 +309,47 @@ class VehicleLifecycle {
             throw error;
         });
     }
+  /**
+   * @description - makeSuspiciousTransfer2
+   * @param {Object} args passed from the command line
+   * @return {Promise} resolved when the action is complete
+   */
+    static makeSuspiciousTransferCmd2(args) 
+    {
+        let lr = new VehicleLifecycle();
+        return lr.init()
+        .then(() => {
+                return lr.makeSuspiciousTransfer2();
+        })
+        .then((results) => {
+            LOG.info('Transaction Submitted');
+        })
+        .catch(function (error) {
+            /* potentially some code for generating an error specific message here */
+            throw error;
+        });
+    }
+  /**
+   * @description - makeSuspiciousTransfer3
+   * @param {Object} args passed from the command line
+   * @return {Promise} resolved when the action is complete
+   */
+    static makeSuspiciousTransferCmd3(args) 
+    {
+        let lr = new VehicleLifecycle();
+        return lr.init()
+        .then(() => {
+                return lr.makeSuspiciousTransfer3();
+        })
+        .then((results) => {
+            LOG.info('Transaction Submitted');
+        })
+        .catch(function (error) {
+            /* potentially some code for generating an error specific message here */
+            throw error;
+        });
+    }
+    
     /**
    * @description - clean
    * @param {Object} args passed from the command line
