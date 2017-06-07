@@ -19,6 +19,7 @@
                 "address": {
                     "$class": "composer.base.Address",
                     "city": "Winchester",
+                    "region": "England",
                     "country": "UK"
                 }
             }
@@ -38,12 +39,13 @@
                 "address": {
                     "$class": "composer.base.Address",
                     "city": "Paris",
+                    "region": "IDF",
                     "country": "France"
                 }
             }
         },
         "specialNotes": "Dan selling a car to Anthony Michel",
-        "transactionId": "968413c3-c523-4959-9181-6db91b1e1cf7",
+        "transactionId": "5e7fc6f2-4076-452a-953b-3dcd8d1f5192",
         "vehicle": {
             "$class": "org.vda.Vehicle",
             "vin": "156478954",
@@ -57,40 +59,33 @@
             "vehicleStatus": "ACTIVE",
             "owner": {
                 "$class": "composer.base.Person",
-                "ssn": "anthony",
-                "firstName": "Anthony",
-                "lastName": "Michel",
+                "ssn": "dan",
+                "firstName": "Dan",
+                "lastName": "Selman",
                 "gender": "MALE",
                 "nationalities": [
-                    "French"
+                    "French",
+                    "UK"
                 ],
                 "contactDetails": {
                     "$class": "composer.base.ContactDetails",
-                    "email": "anthony@acme.org",
+                    "email": "dan@acme.org",
                     "address": {
                         "$class": "composer.base.Address",
-                        "city": "Paris",
-                        "country": "France"
+                        "city": "Winchester",
+                        "country": "UK"
                     }
                 }
             },
             "logEntries": [
                 {
-                    "$class": "org.vda.VehicleTransferLogEntry",
-                    "vehicle": "resource:org.vda.Vehicle#156478954",
-                    "buyer": "resource:composer.base.Person#anthony",
-                    "seller": "resource:composer.base.Person#dan",
-                    "timestamp": "2017-06-02T16:01:21.092Z"
-                },
-                {
-                    "$class": "org.vda.VehicleTransferLogEntry",
-                    "vehicle": "resource:org.vda.Vehicle#156478954",
-                    "buyer": "resource:composer.base.Person#anthony",
-                    "seller": "resource:composer.base.Person#dan",
-                    "timestamp": "2017-06-02T16:04:12.817Z"
+                    "$class" :"org.vda.VehicleTransferLogEntry",
+                    "vehicle" : "resource:org.vda.Vehicle:156478954",
+                    "buyer" : "resource:composer.base:anthony",
+                    "timestamp": "2017-06-02T09:47:14.903Z"                    
                 }
             ]
         },
-        "timestamp": "2017-06-02T16:06:22.915Z"
+        "timestamp": "2017-06-02T09:47:14.903Z"
     }
 }

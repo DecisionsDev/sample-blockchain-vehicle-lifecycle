@@ -3,3 +3,9 @@
 
 # NodeJS dependencies
 node_modules
+
+tmp
+logs
+*.bna
+
+

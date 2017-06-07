@@ -1,2 +1,7 @@
 .metadata/**
 **/composer-data/**
+**/reports/**
+**/.settings/**
+**/META-INF/**
+tmp
+

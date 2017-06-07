@@ -33,14 +33,16 @@ function setupDemo(setupDemo) {
                 {
                     'vin': '156478954',
                     'colour': 'white',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }
             ],
             'Nebula': [
                 {
                     'vin': '652345894',
                     'colour': 'blue',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }
             ]
         }, 
@@ -50,35 +52,41 @@ function setupDemo(setupDemo) {
                     'vin': '6437956437', 
                     'colour': 'black',
                     'vehicleStatus': 'ACTIVE', 
-                    'suspiciousMessage': 'Mileage anomaly'
+                    'suspiciousMessage': 'Mileage anomaly',
+                    'taxationClass': 'PETROL_CAR'
                 },
                 {
                     'vin': '857642213', 
                     'colour': 'red',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 },
                 {
                     'vin': '542376495', 
                     'colour': 'silver',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }
             ],
             'Pluto': [
                 {
                     'vin': '976431649', 
                     'colour': 'white',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'ELECTRIC_MOTOCYCLE'
                 },
                 {
                     'vin': '564215468', 
                     'colour': 'green',
-                    'vehicleStatus': 'ACTIVE', 
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR', 
                     'suspiciousMessage': 'Insurance write-off but still active'
                 },
                 {
                     'vin': '784512464', 
                     'colour': 'grey',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }
             ]
         },
@@ -87,18 +95,21 @@ function setupDemo(setupDemo) {
                 {
                     'vin': '457645764',
                     'colour': 'red',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 },
                 {
                     'vin': '312457645',
                     'colour': 'white',
-                    'vehicleStatus': 'ACTIVE', 
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR', 
                     'suspiciousMessage': 'Suspicious ownership sequence'
                 },
                 {
                     'vin': '65235647',
                     'colour': 'silver',
-                    'vehicleStatus': 'ACTIVE', 
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR', 
                     'suspiciousMessage': 'Untaxed vehicle'
                 }
             ], 
@@ -106,16 +117,114 @@ function setupDemo(setupDemo) {
                 {
                     'vin': '85654575',
                     'colour': 'blue',
-                    'vehicleStatus': 'ACTIVE'
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
                 }, 
                 {
                     'vin': '326548754',
                     'colour': 'white',
-                    'vehicleStatus': 'ACTIVE', 
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR', 
                     'suspiciousMessage': 'Uninsured vehicle'
                 }
             ]
+        },
+        'Porshe': {
+            'Cayenne': [
+                {
+                    'vin': '123456789',
+                    'colour': 'black',
+                    'vehicleStatus': 'ACTIVE', 
+                    'taxationClass': 'SPECIAL_VEHICLES'
+                }
+            ], 
+            '911': [
+                {
+                    'vin': '012345678',
+                    'colour': 'blue',
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'PETROL_CAR'
+                }                 
+            ]
+        },
+        'BMW': {
+            'X5': [
+                {
+                    'vin': '234567890',
+                    'colour': 'grey',
+                    'vehicleStatus': 'ACTIVE', 
+                    'taxationClass': 'EMERGENCY_VEHICLE'
+                }
+            ], 
+            'Z1': [
+                {
+                    'vin': '345678901',
+                    'colour': 'blue',
+                    'vehicleStatus': 'ACTIVE',
+                    'taxationClass': 'EXCEMPT_VEHICLE'
+                }                 
+            ]
+        }        
+    };
+
+    var persons = {
+    'dan' : {
+        'firstName' : 'Dan',
+        'lastName' : 'Selman',
+        'gender' : 'MALE',
+        'nationalities' : ['French' , 'UK'],
+        'contactDetails' : {
+            'email' : 'dan@acme.org',
+            'address' : {
+                'city' :  'Winchester',                
+                'region' :  'England',                
+                'country' : 'UK'
+            }
+        },
+        'birthDetails' : {
+            'dateOfBirth' : '1972-06-01T20:41:46.568Z',
+            'placeOfBirth' : 'London'
         }
+    }, 
+    'simon' : {}, 
+    'jake' : {}, 
+    'anastasia' : {}, 
+    'matthew' : {}, 
+    'mark' : {}, 
+    'fenglian' : {}, 
+    'sam' : {}, 
+    'james' : {}, 
+    'nick' : {}, 
+    'caroline' : {}, 
+    'rachel' : {}, 
+    'john' : {}, 
+    'rob' : {}, 
+    'tom' : {}, 
+    'paul' : {}, 
+    'ed' : {}, 
+    'dave' : {}, 
+    'anthony' : {
+        'firstName' : 'Anthony',
+        'lastName' : 'Smith',
+        'gender' : 'MALE',
+        'nationalities' : ['French'],
+        'contactDetails' : {
+            'email' : 'anthony@acme.org',
+            'address' : {
+                'city' :  'Paris',                
+                'region' :  'IDF',                
+                'country' : 'France'
+            }
+        },
+        'birthDetails' : {
+            'dateOfBirth' : '1975-07-01T20:41:46.568Z',
+            'placeOfBirth' : 'Calais'
+        }
+    }, 
+    'toby' : {}, 
+    'ant' : {}, 
+    'matt' : {}, 
+    'anna' : {}
     };
     
     var manufacturers = [];
@@ -129,6 +238,19 @@ function setupDemo(setupDemo) {
    for(var i=0; i<names.length; i++) {
        var name = names[i];
        var privateOwner = factory.newResource(NS_B, 'Person', name);
+       var personData = persons[name];
+       privateOwner.firstName = personData.firstName;
+       privateOwner.lastName = personData.lastName;
+       privateOwner.gender = personData.gender;
+       privateOwner.nationalities = personData.nationalities;
+       if (personData.contactDetails) {
+        privateOwner.contactDetails = factory.newConcept(NS_B, 'ContactDetails');
+        privateOwner.contactDetails.email = personData.contactDetails.email;
+        privateOwner.contactDetails.address = factory.newConcept(NS_B, 'Address');
+        privateOwner.contactDetails.address.city = personData.contactDetails.address.city;
+        privateOwner.contactDetails.address.region = personData.contactDetails.address.region;
+        privateOwner.contactDetails.address.country = personData.contactDetails.address.country;           
+       }
        privateOwners.push(privateOwner);
    }
 
@@ -174,6 +296,7 @@ function setupDemo(setupDemo) {
                         vehicle.vehicleDetails.modelType = mModel; 
                         vehicle.vehicleDetails.colour = vehicleTemplate.colour; 
                         vehicle.vehicleDetails.vin = vehicleTemplate.vin;
+                        vehicle.vehicleDetails.taxationClass = vehicleTemplate.taxationClass;
 
                         if (vehicleTemplate.suspiciousMessage) {
                             vehicle.suspiciousMessage = vehicleTemplate.suspiciousMessage;
@@ -186,8 +309,7 @@ function setupDemo(setupDemo) {
                         var logEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
                         logEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicleTemplate.vin);
                         logEntry.buyer = factory.newRelationship(NS_B, 'Person', names[carCount]);
-                        logEntry.timestamp = setupDemo.timestamp
-
+                        logEntry.timestamp = setupDemo.timestamp;
                         vehicle.logEntries.push(logEntry);
 
                         vs.push(vehicle);

@@ -19,6 +19,7 @@ namespace org.acme.vehicle.lifecycle
 
 import composer.base.Person
 import composer.business.Business
+import org.vda.PrivateVehicleTransfer
 
 participant PrivateOwner identified by email extends Person {
   o String email
@@ -39,4 +40,9 @@ participant ScrapMerchant extends Company {
 
 transaction SetupDemo identified by transactionId {
   o String transactionId
+}
+
+asset TransactionWrapper identified by wrapperId {
+  o String wrapperId
+  o PrivateVehicleTransfer transaction
 }
