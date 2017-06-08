@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "$class")
 public class VehicleTransaction 
 {
-    public String timestamp;
  	public String transactionId;
 	public Vehicle vehicle;
 
