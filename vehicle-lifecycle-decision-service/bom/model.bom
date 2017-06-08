@@ -251,7 +251,6 @@ public class ExhaustEmissions
 public class PrivateVehicleTransfer
         extends org.vda.VehicleTransaction
 {
-    public string $class;
     public composer.base.Person buyer;
     public composer.base.Person seller;
     public string specialNotes;
@@ -400,7 +399,6 @@ public final class VehicleStatus
 
 public class VehicleTransaction
 {
-    public string $class;
     public string timestamp;
     public string transactionId;
     public org.vda.Vehicle vehicle;

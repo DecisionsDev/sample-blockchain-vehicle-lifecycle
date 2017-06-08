@@ -4,4 +4,6 @@
 **/.settings/**
 **/META-INF/**
 tmp
+.idea/
+*.iml
 
