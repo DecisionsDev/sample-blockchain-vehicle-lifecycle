@@ -44,7 +44,7 @@
                 }
             }
         },
-        "specialNotes": "Dan selling a car to Anthony Michel",
+        "specialNotes": "Dan selling a car to Anthony Smith",
         "transactionId": "5e7fc6f2-4076-452a-953b-3dcd8d1f5192",
         "vehicle": {
             "$class": "org.vda.Vehicle",
@@ -57,12 +57,31 @@
                 "vin": "156478954"
             },
             "vehicleStatus": "ACTIVE",
-            "owner": "resource:composer.base#dan",
+            "owner": {
+                "$class": "composer.base.Person",
+                "ssn": "dan",
+                "firstName": "Dan",
+                "lastName": "Selman",
+                "gender": "MALE",
+                "nationalities": [
+                    "French",
+                    "UK"
+                ],
+                "contactDetails": {
+                    "$class": "composer.base.ContactDetails",
+                    "email": "dan@acme.org",
+                    "address": {
+                        "$class": "composer.base.Address",
+                        "city": "Winchester",
+                        "country": "UK"
+                    }
+                }
+            },
             "logEntries": [
                 {
                     "$class" :"org.vda.VehicleTransferLogEntry",
                     "vehicle" : "resource:org.vda.Vehicle:156478954",
-                    "buyer" : "resource:composer.base#anthony",
+                    "buyer" : "resource:composer.base:anthony",
                     "timestamp": "2017-06-02T09:47:14.903Z"                    
                 }
             ]

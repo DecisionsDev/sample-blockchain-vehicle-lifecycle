@@ -343,7 +343,6 @@ public class UpdateSuspicious
 
 public class Vehicle
 {
-    public string $class;
     public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransferLogEntry;
     public string numberPlate;
     public composer.base.Person owner;

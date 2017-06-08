@@ -14,7 +14,8 @@
 		"makeSuspiciousTransfer3": "node cli.js makeSuspiciousTransfer3",
 		"clean": "node cli.js clean",
 		"setup": "node cli.js setup",
-		"demo": "npm run clean && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles"
+		"demo": "npm run clean && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles",
+		"deployRuleapp": "node cli.js deployRuleapp"
 	},
 	"author": "IBM",
 	"license": "IBM",

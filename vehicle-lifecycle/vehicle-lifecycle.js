@@ -102,6 +102,20 @@ class VehicleLifecycle {
         return this.bizNetworkConnection.submitTransaction(transaction);
     }
 
+    deployRuleapp() 
+    {
+        const METHOD = 'deployRuleapp';
+	    let factory        = this.businessNetworkDefinition.getFactory();
+	    let transaction    = factory.newTransaction('com.ibm.rules','RuleAppUpdated');
+        transaction.ruleAppName = 'vehicle/1.0/isSuspiciousEntryPoint';		
+        transaction.resDeployerURL = 'http://resDeployer:9061/deploy';		
+        transaction.major_version = '1';
+        transaction.minor_version = '0';
+        transaction.qualifier_version = '3';
+        transaction.ruleApp = "BINARY";
+        LOG.info(METHOD, 'Submitting RuleAppUpdated transaction');
+        return this.bizNetworkConnection.submitTransaction(transaction);
+    }
 
     makeSuspiciousTransfer1() 
     {
@@ -385,6 +399,27 @@ class VehicleLifecycle {
         })
         .then((results) => {
             LOG.info('Vehicle Lifecycle Business Network has been populated with data');
+        })
+        .catch(function (error) {
+            /* potentially some code for generating an error specific message here */
+            throw error;
+        });
+    }
+
+    /**
+   * @description - deployRuleapp
+   * @param {Object} args passed from the command line
+   * @return {Promise} resolved when the action is complete
+   */
+    static deployRuleappCmd(args) 
+    {
+        let lr = new VehicleLifecycle();
+        return lr.init()
+        .then(() => {
+            return lr.deployRuleapp();
+        })
+        .then((results) => {
+            LOG.info('Deployed Ruleapp');
         })
         .catch(function (error) {
             /* potentially some code for generating an error specific message here */

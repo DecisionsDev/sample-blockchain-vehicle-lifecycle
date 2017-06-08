@@ -3,13 +3,17 @@ package org.vda;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+//import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+//import composer.base.MyIdGenerator;
 import composer.base.Person;
 
+// we should be able to use the following annotation to manage the graph
+// fields representing a reference probably need to be annotated too
+// @JsonIdentityInfo(generator=MyIdGenerator.class, property="vin")
 public class Vehicle 
 {
 	public static Map<Long,ThreadLocal<Map<String, Vehicle>>> VEHICLE_THREADMAP;
