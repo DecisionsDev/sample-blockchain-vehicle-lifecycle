@@ -2,4 +2,5 @@
 bin
 output
 reports
+target/
 
