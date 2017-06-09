@@ -1,4 +1,6 @@
-# SmartContractODM
+# SmartContractODM [![Build Status](https://travis.ibm.com/Bolero/SmartContractODM.svg?token=ZxM16hrzpkaVzCiqK6S2&branch=master)](https://travis.ibm.com/Bolero/SmartContractODM)
+------------------
+
 
 This repository contains some example and some code showing and enabling the combination of Blockchain and ODM
 to externalize business logic from Smart Contract and implement it in ODM as business rules. 
