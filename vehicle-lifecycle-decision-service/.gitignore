@@ -3,4 +3,4 @@ bin
 output
 reports
 target/
-
+.DS_Store
