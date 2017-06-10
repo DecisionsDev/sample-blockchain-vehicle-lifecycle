@@ -4,5 +4,7 @@
 **/.settings/**
 **/META-INF/**
 tmp
+.idea/
+*.iml
 
 /.DS_Store

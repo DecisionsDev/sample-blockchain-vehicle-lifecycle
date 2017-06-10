@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ibm.smart-contract-odm</groupId>
+    <artifactId>smart-contract-odm</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>smart-contract-odm</name>
+
+    <modules>
+        <module>vehicle-lifecycle-xom</module>
+        <module>vehicle-lifecycle-decision-service</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.ibm.rules.buildcommand</groupId>
+                    <artifactId>rules-compiler-maven-plugin</artifactId>
+                    <version>8.9.0-SNAPSHOT</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

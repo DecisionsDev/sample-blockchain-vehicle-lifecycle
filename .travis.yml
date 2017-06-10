@@ -1,0 +1,4 @@
+langage: java
+
+script:
+  - mvn clean install
