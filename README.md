@@ -62,3 +62,14 @@ service call from the JS smart contract
         Not a good idea to embed the RES in the peer docker container: each container should be one process
     ]
 
+RuleAppUpdated data: 
+
+{
+  "$class": "com.ibm.rules.RuleAppUpdated",
+  "resDeployerURL": "http://odm-deployer:1880/deploy",
+  "ruleAppName": "vehicle/1.0/isSuspiciousEntryPoint",
+  "major_version": "1",
+  "minor_version": "0",
+  "qualifier_version": "0",
+  "ruleApp": "BIN"
+}

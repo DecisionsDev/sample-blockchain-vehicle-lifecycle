@@ -23,12 +23,17 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
     var factory = getFactory();
     var NS = 'com.ibm.rules';
 
-    var ruleapp = factory.newResource(NS, 'RuleApp', ruleAppUpdatedTransaction.transactionId);
+    var ruleapp = factory.newResource(NS, 'RuleApp', 'RULEAPP_' + ruleAppUpdatedTransaction.transactionId);
     ruleapp.ruleAppName = ruleAppUpdatedTransaction.ruleAppName;
-    ruleapp.major_version = ruleAppUpdatedTransaction.major_version;
-    ruleapp.minor_version = ruleAppUpdatedTransaction.minor_version;
-    ruleapp.qualifier_version = ruleAppUpdatedTransaction.qualifier_version;
-    ruleapp.ruleApp = ruleAppUpdatedTransaction.ruleApp;
+    ruleapp.ruleapp_version = ruleAppUpdatedTransaction.ruleapp_version;
+    ruleapp.ruleset_version = ruleAppUpdatedTransaction.ruleset_version;
+    ruleapp.archive = ruleAppUpdatedTransaction.archive;
+
+    getAssetRegistry(NS + '.' + 'RuleApp')
+      .then(function(reg) {
+        	console.log("OK 5");
+        	return reg.add(ruleapp);
+       });
 
     var ruleappTx = factory.newResource(NS, 'RuleAppUpdatedWrapper', ruleAppUpdatedTransaction.transactionId);
     ruleappTx.transaction = ruleAppUpdatedTransaction;
@@ -43,12 +48,13 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
       {
           console.log("OK 1");
           currentVersionRegistry = registry;
-          return currentVersion = registry.get(ruleapp.ruleAppName);
-      })
-      .catch(function () {
-        console.log("Error 1");
-        console.log(currentVersion);
-        currentVersion = null;
+          return registry.get(ruleapp.ruleAppName)
+          .then(function (cv){
+            currentVersion = cv;
+          }).catch(function (err) {
+            console.log("Can't get currentVersion");
+            currentVersion = null;
+          });
       })
       .then(function () {
           console.log("OK 2");
@@ -58,38 +64,31 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
               currentVersion = factory.newResource(NS, 'RuleAppCurrentVersion', ruleapp.ruleAppName);
               add = true;
           }
-          currentVersion.major_version = ruleapp.major_version;
-          currentVersion.minor_version = ruleapp.minor_version;
-          currentVersion.qualifier_version = ruleapp.qualifier_version;
+          currentVersion.ruleapp_version = ruleapp.ruleapp_version;
+          currentVersion.ruleset_version = ruleapp.ruleset_version;
           if (add) {
-            return currentVersionRegistry.add(currentVersion);  
+            return currentVersionRegistry.add(currentVersion).catch(function (err) {
+              console.log("Faill to add current version");
+            });  
           } else {
-            return currentVersionRegistry.update(currentVersion);
+            return currentVersionRegistry.update(currentVersion).catch(function (err) {
+              console.log("Faill to update current version");
+            });  
           }
       })
-      .catch(function (error) {
-        console.log("Error 2");
-        console.log(error);
-      })
       .then(function () {
-        console.log("OK 3");
-         /*return post(ruleAppUpdatedTransaction.resDeployerURL, ruleappTx)      
+        
+        console.log("OK 3: calling out to " + ruleAppUpdatedTransaction.resDeployerURL);
+        return post(ruleAppUpdatedTransaction.resDeployerURL, ruleappTx)      
           .then(function (result) {
-            console.log("Receiving answer from ODM Decision Service Deployer: " + JSON.stringify(result));
+            console.log("Receiving good answer from ODM Decision Service Deployer: " + result.body.response);
+            console.log("Full response: " + JSON.stringify(result));
           }).catch(function (error) {
             console.log("Error calling out the decision service deployer");
             console.log(error);
-          }); */ 
-      })
-      .then(function () {
-        console.log("OK 4");
-        return getAssetRegistry(ruleapp.getFullyQualifiedType());            
-      })
-      .then(function(registry) {
-        console.log("OK 5");
-        return registry.add(ruleapp);
-      })
-      .catch(function () {
-        console.log("Error 1");
+          });
+          
       });
+      console.log("DONE");
+
 }

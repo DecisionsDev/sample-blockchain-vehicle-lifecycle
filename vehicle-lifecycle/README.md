@@ -42,6 +42,12 @@ If not, copy the one located in the install directory to this location
 - mkdir ~/.composer-connection-profiles/hlfv1
 - cp install/connection.json ~/.composer-connection-profiles/hlfv1
 
+Note, if you need to see logs of the Smart Contract (chaincode) you need to modify the docker-compose
+file generated in tmp/composer-data and add: 
+      - CORE_LOGGING_LEVEL=DEBUG
+for all peers
+
+You can run playground: http://localhost:8080. You might have to do it from a private browser window or call localstorage.clear() in the web browser console to start with a clean cache
 
 # setting up the ODM decision service
 

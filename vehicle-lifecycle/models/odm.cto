@@ -19,31 +19,31 @@ namespace com.ibm.rules
 
 asset RuleAppCurrentVersion identified by ruleAppName 
 {
+  // ruleapp name should be of the form <ruleapp>/<ruleset>
   o String ruleAppName
-  o String major_version
-  o String minor_version
-  o String qualifier_version
+  o String ruleapp_version
+  o String ruleset_version
 }
 
 asset RuleApp identified by ruleAppId 
 {
   o String ruleAppId
+  // ruleapp name should be of the form <ruleapp>/<ruleset>
   o String ruleAppName
-  o String major_version
-  o String minor_version
-  o String qualifier_version
-  o String ruleApp
+  o String ruleapp_version
+  o String ruleset_version
+  o String archive
 }
 
 transaction RuleAppUpdated identified by transactionId 
 {
   o String transactionId
   o String resDeployerURL
+  // ruleapp name should be of the form <ruleapp>/<ruleset>
   o String ruleAppName
-  o String major_version
-  o String minor_version
-  o String qualifier_version
-  o String ruleApp
+  o String ruleapp_version
+  o String ruleset_version
+  o String archive
 }
 
 transaction RuleAppUpdatedWrapper identified by transactionId 

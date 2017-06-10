@@ -5,6 +5,7 @@ const BusinessNetworkConnection = require('composer-client').BusinessNetworkConn
 const Table = require('cli-table');
 const winston = require('winston');
 let config = require('config').get('vehicle-lifecycle');
+const fs = require('fs');
 
 // these are the credentials to use to connect to the Hyperledger Fabric
 let participantId = config.get('participantId');
@@ -102,17 +103,36 @@ class VehicleLifecycle {
         return this.bizNetworkConnection.submitTransaction(transaction);
     }
 
-    deployRuleapp() 
+    testDecode(filepath, ruleapp64)
+    {
+        const METHOD = 'testDecodeRuleapp';
+        LOG.info(METHOD, "try to write ruleapp bin: " + ruleapp64.length + " bytes");
+        var buf = Buffer.from(ruleapp64, 'base64');
+        LOG.info(METHOD, "buffer length: " + buf.length + " bytes");
+
+        filepath = filepath.replace(".jar", ".copy.jar");
+        
+         var fd =  fs.openSync(filepath, 'w');
+        fs.write(fd, buf, 0, buf.length, 0, function(err,written) {
+            if (err) {
+                LOG.error(METHOD, "error writing file: " + err);
+            }
+        });
+    }
+
+    deployRuleapp(filepath) 
     {
         const METHOD = 'deployRuleapp';
 	    let factory        = this.businessNetworkDefinition.getFactory();
 	    let transaction    = factory.newTransaction('com.ibm.rules','RuleAppUpdated');
-        transaction.ruleAppName = 'vehicle/1.0/isSuspiciousEntryPoint';		
-        transaction.resDeployerURL = 'http://resDeployer:9061/deploy';		
-        transaction.major_version = '1';
-        transaction.minor_version = '0';
-        transaction.qualifier_version = '3';
-        transaction.ruleApp = "BINARY";
+        transaction.ruleAppName = 'vehicle/isSuspiciousEntryPoint';		
+        transaction.resDeployerURL = 'http://odm-deployer:1880/deploy';		
+        transaction.ruleapp_version = '1.0';
+        transaction.ruleset_version = '1.0';
+        transaction.archive = VehicleLifecycle.base64_encode(filepath);
+
+        // this.testDecode(filepath, transaction.ruleApp);
+
         LOG.info(METHOD, 'Submitting RuleAppUpdated transaction');
         return this.bizNetworkConnection.submitTransaction(transaction);
     }
@@ -246,6 +266,8 @@ class VehicleLifecycle {
         let personRegistry;
         let manufacturerRegistry;
         let regulatorRegistry;
+        let ruleAppCurrentVersionRegistry;
+        let ruleAppRegistry;
 
         LOG.info(METHOD, 'Cleaning all resources');
         return cnx.getAssetRegistry('org.vda.Vehicle')
@@ -275,7 +297,22 @@ class VehicleLifecycle {
             return regulatorRegistry.getAll();
         }).then((resources) => {
             return regulatorRegistry.removeAll(resources);
-        });
+        }).then(function () {
+            return cnx.getAssetRegistry('com.ibm.rules.RuleAppCurrentVersion');
+        }).then ((registry) => {
+            ruleAppCurrentVersionRegistry = registry;
+            return ruleAppCurrentVersionRegistry.getAll();
+        }).then((resources) => {
+            return ruleAppCurrentVersionRegistry.removeAll(resources);
+        }).then(function () {
+            return cnx.getAssetRegistry('com.ibm.rules.RuleApp');
+        }).then ((registry) => {
+            ruleAppRegistry = registry;
+            return ruleAppRegistry.getAll();
+        }).then((resources) => {
+            return ruleAppRegistry.removeAll(resources);
+        })
+        ;
     }
 
   /**
@@ -413,18 +450,39 @@ class VehicleLifecycle {
    */
     static deployRuleappCmd(args) 
     {
-        let lr = new VehicleLifecycle();
+        var filepath = null;
+        var cmdLine = args['_'];
+        if (cmdLine.length > 1) {
+            filepath = cmdLine[1];
+        } else {
+            filepath = '../vehicle-lifecycle-decision-service/output/vehicle.jar';
+            LOG.warn("File not provide, assuming '" + filepath + "'");
+        }
+     let lr = new VehicleLifecycle();
         return lr.init()
         .then(() => {
-            return lr.deployRuleapp();
+            return lr.deployRuleapp(filepath);
         })
         .then((results) => {
             LOG.info('Deployed Ruleapp');
         })
         .catch(function (error) {
-            /* potentially some code for generating an error specific message here */
+            //potentially some code for generating an error specific message here 
             throw error;
-        });
+        });  
+    }
+
+    // encode file data to base64
+    static  base64_encode(file) {
+        // read binary data
+        var bin;
+        try {
+            bin = fs.readFileSync(file);
+            // convert binary data to base64 encoded string
+            return new Buffer(bin).toString('base64');
+        } catch(err) {
+            LOG.error("File: '" + file + "' cannot be read");
+        }
     }
 
 }

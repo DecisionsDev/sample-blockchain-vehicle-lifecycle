@@ -30,3 +30,7 @@ user and passwd are resAdmin
 
 Connecting inside the container: docker exec -it <containerIdOrName> bash
 to see the logs: docker-compose logs
+
+To deploy a ruleapp with curl: 
+
+curl -v -H "Content-Type: application/json" -H "Authorization: Basic cmVzQWRtaW46cmVzQWRtaW4=" -X POST -d @ruleapp_deploy.json http://localhost:9060/res/api/v1/ruleapps
