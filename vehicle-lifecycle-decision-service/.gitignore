@@ -4,3 +4,4 @@ output
 reports
 target/
 .DS_Store
+resources/xom-libraries

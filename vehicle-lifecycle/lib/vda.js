@@ -19,7 +19,7 @@
  * @transaction
  */
 function privateVehicleTransfer(privateVehicleTransfer) {
-    console.log('processing a privateVehicleTransfer');
+    print('processing a privateVehicleTransfer');
     /*var options = {};
     //options.convertResourcesToRelationships = true;
     options.permitResourcesForRelationships = true;
@@ -41,20 +41,37 @@ function privateVehicleTransfer(privateVehicleTransfer) {
     var buyer = privateVehicleTransfer.buyer;
     var vehicle = privateVehicleTransfer.vehicle;
 
-    // retreive the version of the ruleapp to use
+    var vehicleRegistry; 
+    var ruleappVersionRegistry; 
     var ruleAppName = "vehicle/isSuspiciousEntryPoint";
     var currentVersion = null;
-    getAssetRegistry(NS_I + '.' + 'RuleAppCurrentVersion')
-      .then(function (registry) 
-      {
-          return registry.get(ruleAppName)
-          .then(function (cv){
-            currentVersion = cv;
-          }).catch(function (err) {
-            console.log("Can't get currentVersion assuming 1.0");
-            currentVersion = null;
-          });
-      })
+
+    return getAssetRegistry(NS_D + '.' + 'Vehicle')
+    .then(function(registry) {
+        vehicleRegistry = registry;
+    })
+    .catch(function (err_ar) {
+        print("Cannot find vehicle registry: " + err_ar);
+    })
+    .then(function () {  
+        return getAssetRegistry(NS_I + '.' + 'RuleAppCurrentVersion')
+    })
+    .then(function (registry) {
+        ruleappVersionRegistry = registry;
+    })
+    .catch(function (err) {
+        print("Cannot find RuleAppCurrentVersion registry: " + err);        
+    })
+    .then(function () {
+        return ruleappVersionRegistry.get(ruleAppName);
+    })
+    .then(function (cv){
+        currentVersion = cv;        
+    })
+    .catch(function (err) {
+        print("Can't get currentVersion assuming 1.0");
+        currentVersion = null;
+    })
     .then(function () {
         var ruleAppNameElements = ruleAppName.split('/');
         var ruleappName = ruleAppNameElements[0];
@@ -78,45 +95,48 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         var wrapper = factory.newResource(NS, 'TransactionWrapper', 'dummy');
         wrapper.transaction = privateVehicleTransfer;
 
-        console.log("Calling ODM Decision Service: " + url);
-        post( url, wrapper)
-          .then(function (result) {
-            console.log("Receiving answer from ODM Decision Service: " + JSON.stringify(result));
-            if (result.body.result['status'] != null) {
-                if (result.body.result.status === "REJECTED") {
-                    // TODO: need to throw an exception to reject the transaction
-                    vehicle.suspiciousMessage = "REJECTED: " + result.body.result.message;
-                } else if (result.body.result.status === "SUSPICION") {
-                    vehicle.suspiciousMessage = result.body.result.message;
-                }
-            } 
-          }).catch(function (error) {
-            console.log("Error calling out the decision service");
-            console.log(error);
-            vehicle.suspiciousMessage = "Call to the Decision Service failed";
-          }).then(function () { 
-
-            //change vehicle owner
-            vehicle.owner = buyer;
-
-            //PrivateVehicleTransaction for log
-            var vehicleTransferLogEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
-            vehicleTransferLogEntry.transactionId = privateVehicleTransfer.transactionId;
-            vehicleTransferLogEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicle.getIdentifier());
-            vehicleTransferLogEntry.seller = factory.newRelationship(NS_B, 'Person', seller.getIdentifier());
-            vehicleTransferLogEntry.buyer = factory.newRelationship(NS_B, 'Person', buyer.getIdentifier());
-            vehicleTransferLogEntry.timestamp = privateVehicleTransfer.timestamp;
-            if (!vehicle.logEntries) {
-                vehicle.logEntries = [];
+        print("Calling ODM Decision Service: " + url);
+        return post( url, wrapper);
+    })
+    .then(function (result) {
+        print("Receiving answer from ODM Decision Service: " + JSON.stringify(result));
+        if (result.body.result['status'] != null) {
+            if (result.body.result.status === "REJECTED") {
+                // TODO: need to throw an exception to reject the transaction
+                vehicle.suspiciousMessage = "REJECTED: " + result.body.result.message;
+            } else if (result.body.result.status === "SUSPICION") {
+                vehicle.suspiciousMessage = result.body.result.message;
             }
+        } 
+    })
+    .catch(function (error) {
+        print("Error calling out the decision service");
+        print(error);
+        vehicle.suspiciousMessage = "Call to the Decision Service failed";
+    })
+    .then(function () { 
+        //change vehicle owner
+        vehicle.owner = buyer;
 
-            vehicle.logEntries.push(vehicleTransferLogEntry);
+        //PrivateVehicleTransaction for log
+        var vehicleTransferLogEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
+        vehicleTransferLogEntry.transactionId = privateVehicleTransfer.transactionId;
+        vehicleTransferLogEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicle.getIdentifier());
+        vehicleTransferLogEntry.seller = factory.newRelationship(NS_B, 'Person', seller.getIdentifier());
+        vehicleTransferLogEntry.buyer = factory.newRelationship(NS_B, 'Person', buyer.getIdentifier());
+        vehicleTransferLogEntry.timestamp = privateVehicleTransfer.timestamp;
+        if (!vehicle.logEntries) {
+            vehicle.logEntries = [];
+        }
+        vehicle.logEntries.push(vehicleTransferLogEntry);
 
-            return getAssetRegistry(vehicle.getFullyQualifiedType())
-              .then(function(ar) {
-                return ar.update(vehicle);
-            });
-        });
+        return vehicleRegistry.update(vehicle);
+    })
+    .then(function () {
+        print("Vehicle has been updated");
+    })
+    .catch(function (err) {
+        print("Cannot update vehicle : " + err);                    
     });
 }
 

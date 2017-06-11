@@ -42,6 +42,11 @@ transaction SetupDemo identified by transactionId {
   o String transactionId
 }
 
+transaction TestDemo identified by transactionId {
+  o String transactionId
+}
+
+
 asset TransactionWrapper identified by wrapperId {
   o String wrapperId
   o PrivateVehicleTransfer transaction

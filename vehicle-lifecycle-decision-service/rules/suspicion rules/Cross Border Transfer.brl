@@ -8,5 +8,5 @@
     the country of the buyer of 'the transaction' is not the country of the seller of 'the transaction'
 then
     set the status of 'suspicion result' to "SUSPICION";
-    set the message of 'suspicion result' to "Cross Border Suspicious Transfer: please double check buyer regulation"; ]]></definition>
+    set the message of 'suspicion result' to "Cross Border Suspicious Transfer: please double check buyer regulation";]]></definition>
 </ilog.rules.studio.model.brl:ActionRule>

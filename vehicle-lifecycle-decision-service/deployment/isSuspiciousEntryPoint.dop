@@ -10,5 +10,5 @@
   </referencedVariables>
   <ruleflow href="../rules/main.rfl#de5f3a77-949f-4174-b700-31a3f891f12f"/>
   <extractor xsi:type="ilog.rules.studio.model.query.extractor:QueryExtractor" name="isSuspiciousEntryPoint_extractor" validator="Default Validator"/>
-  <targetRuleProject href="../../vehicle-lifecycle-decision-service#27124c73-66d2-4e13-b554-9b34c6333e5a"/>
+  <targetRuleProject href="../../vehicle-lifecycle-decision-service#dbad0afb-c42d-429c-988e-cd56c99b1313"/>
 </com.ibm.rules.studio.model.decisionservice:Operation>

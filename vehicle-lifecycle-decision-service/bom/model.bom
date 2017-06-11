@@ -50,7 +50,6 @@ public final class Gender
         extends java.lang.Enum
 {
     domain {static MALE, static FEMALE, static OTHER}
-    public string $class;
     public static final readonly composer.base.Gender FEMALE;
     public static final readonly composer.base.Gender MALE;
     public static final readonly composer.base.Gender OTHER;
@@ -188,7 +187,6 @@ public final class OrderStatus
         extends java.lang.Enum
 {
     domain {static PLACED, static SCHEDULED_FOR_MANUFACTURE, static VIN_ASSIGNED, static OWNER_ASSIGNED, static DELIVERED}
-    public string $class;
     public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus DELIVERED;
     public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus OWNER_ASSIGNED;
     public static final readonly org.acme.vehicle.lifecycle.manufacturer.OrderStatus PLACED;
@@ -260,7 +258,6 @@ public class PrivateVehicleTransfer
 public class ScrapVehicle
         extends org.vda.VehicleTransaction
 {
-    public string $class;
     public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransaction;
     public ScrapVehicle();
 }
@@ -300,7 +297,6 @@ public final class TaxClass
         static EMERGENCY_VEHICLE,
         static EXCEMPT_VEHICLE
     }
-    public string $class;
     public static final readonly org.vda.TaxClass ALTERNATIVE_FUEL_CAR;
     public static final readonly org.vda.TaxClass BUS;
     public static final readonly org.vda.TaxClass DIESEL_CAR;
@@ -336,13 +332,13 @@ public class TrailerDetails
 public class UpdateSuspicious
         extends org.vda.VehicleTransaction
 {
-    public string $class;
     public string message;
     public UpdateSuspicious();
 }
 
 public class Vehicle
 {
+    public string $class;
     public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransferLogEntry;
     public string numberPlate;
     public composer.base.Person owner;
@@ -388,7 +384,6 @@ public final class VehicleStatus
         extends java.lang.Enum
 {
     domain {static ACTIVE, static OFF_THE_ROAD, static SCRAPPED}
-    public string $class;
     public static final readonly org.vda.VehicleStatus ACTIVE;
     public static final readonly org.vda.VehicleStatus OFF_THE_ROAD;
     public static final readonly org.vda.VehicleStatus SCRAPPED;

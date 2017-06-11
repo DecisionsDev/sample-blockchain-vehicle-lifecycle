@@ -120,15 +120,16 @@ class VehicleLifecycle {
         });
     }
 
-    deployRuleapp(filepath) 
+    deployRuleapp(filepath, ruleappVersion, rulesetVersion) 
     {
         const METHOD = 'deployRuleapp';
 	    let factory        = this.businessNetworkDefinition.getFactory();
 	    let transaction    = factory.newTransaction('com.ibm.rules','RuleAppUpdated');
         transaction.ruleAppName = 'vehicle/isSuspiciousEntryPoint';		
         transaction.resDeployerURL = 'http://odm-deployer:1880/deploy';		
-        transaction.ruleapp_version = '1.0';
-        transaction.ruleset_version = '1.0';
+        transaction.ruleapp_version = ruleappVersion;
+        transaction.ruleset_version = rulesetVersion;
+        transaction.managedXomURI = 'reslib://vehicle_1.0/1.0';
         transaction.archive = VehicleLifecycle.base64_encode(filepath);
 
         // this.testDecode(filepath, transaction.ruleApp);
@@ -451,17 +452,39 @@ class VehicleLifecycle {
     static deployRuleappCmd(args) 
     {
         var filepath = null;
+        var ruleappVersion = '1.0';
+        var rulesetVersion = '1.0';
         var cmdLine = args['_'];
+        // console.log(args);
         if (cmdLine.length > 1) {
             filepath = cmdLine[1];
         } else {
             filepath = '../vehicle-lifecycle-decision-service/output/vehicle.jar';
             LOG.warn("File not provide, assuming '" + filepath + "'");
         }
+        if (cmdLine.length > 2) {
+            ruleappVersion = cmdLine[2];
+        } else {
+            LOG.warn("ruleappVersion not provided, assuming '" + ruleappVersion + "'");
+        }
+        if (cmdLine.length > 3) {
+            rulesetVersion = cmdLine[3];
+        } else {
+            LOG.warn("rulesetVersion not provided, assuming '" + rulesetVersion + "'");
+        }
+        ruleappVersion = ruleappVersion.toString();
+        if (ruleappVersion.indexOf('.') == -1) {
+            ruleappVersion = ruleappVersion + '.0';
+        }
+        rulesetVersion = rulesetVersion.toString();
+        if (rulesetVersion.indexOf('.') == -1) {
+            rulesetVersion = rulesetVersion + '.0';
+        }
+
      let lr = new VehicleLifecycle();
         return lr.init()
         .then(() => {
-            return lr.deployRuleapp(filepath);
+            return lr.deployRuleapp(filepath, ruleappVersion, rulesetVersion);
         })
         .then((results) => {
             LOG.info('Deployed Ruleapp');

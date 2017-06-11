@@ -13,6 +13,18 @@
  */
 
 /**
+ * Test the demo
+ * @param {org.acme.vehicle.lifecycle.TestDemo} setupDemo - the TestDemo transaction
+ * @transaction
+ */
+function testDemo(testDemo) 
+{
+    console.log('TestDemo1');
+    print('TestDemo2');
+}
+
+
+/**
  * Setup the demo
  * @param {org.acme.vehicle.lifecycle.SetupDemo} setupDemo - the SetupDemo transaction
  * @transaction

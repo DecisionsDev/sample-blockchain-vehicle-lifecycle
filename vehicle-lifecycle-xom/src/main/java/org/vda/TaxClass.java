@@ -1,5 +1,8 @@
 package org.vda;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"$class"})
 public enum TaxClass 
 {
 	  PRIVATE_LIGHT_GOODS

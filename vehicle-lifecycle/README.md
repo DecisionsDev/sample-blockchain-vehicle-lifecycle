@@ -35,6 +35,11 @@ cd tmp
 curl -sSL http://hyperledger.github.io/composer/install-hlfv1.sh | bash
 cd ..
 
+Once you have run this command, the installation scripts are staying in the tpm directory. 
+If you need to modify Composer docker-compose file, you can copy composer.sh, remove everything
+that recreate the installation files, and run the install from this script, reusing the existing
+compose files that you can update. 
+
 Check if you have a connection profile for the the Fabric you just install. You should have a file ~/.composer-connection-profildes/hlfv1/connection.json
 
 If not, copy the one located in the install directory to this location
@@ -49,9 +54,20 @@ for all peers
 
 You can run playground: http://localhost:8080. You might have to do it from a private browser window or call localstorage.clear() in the web browser console to start with a clean cache
 
-# setting up the ODM decision service
+# setting up the ODM Rule Execution Server
 
 Refer to the README.md in odm-runtime project
+
+- Launch a terminal window and go the odm-runtime project directory
+- enter: 'docker-compose up' to build the image and start the service
+
+# setting up the Ruleapp Deployer
+
+Refer to the README.md in the odm-deployer project
+
+- Launch a terminal window and go the odm-deployer project directory
+- enter: 'docker-compose up' to build the image and start the service
+
 
 # creating and deploying the business network archive for vehicle-lifecycle 
 
@@ -92,6 +108,25 @@ npm run listVehicles
 You can clean-up the Business Network with:
 npm run clean
 
+# deploying the Decision Service
+
+At this point, you should have a RES running as a Docker Container. We need to deploy the Decision Service on it. 
+A deployment feature has been integrated in the vehicle-lifecycle demo to deploy ruleapps through the Blockchain. 
+
+- Launch Rule Designer 8.9.0 on a workspace that contains vehicle-lifecycle-xom and vehicle-lifecycle-decision-service
+- Open the deployer file in 'deployment'
+- make sure the Ruleset base version (in Decision Operation tab) is set to the right version (1.0 to start, to be incremented when you want
+  to deployer newer version)
+  
+- The first time, you need to deploy the XOM to the RES. Right click on the deployer file in the project explorer and select 'Rule Execution Server / Deploy XOM...'
+
+- right click on the deployer file in the project explorer and select 'Rule Execution Server / Deploy...'
+- in the wizard, UNCHECK THE TARGET SERVER so that the Ruelapp archive is generated in the output directory and not deployed
+  directly to the RES
+    - this operation generate a vehicle.jar in the 'output' directory
+- run 'npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.0'
+    - note that 'npm run deployRuleapp' deploy this ruleapp with these versions
+
 # submitting a suspicious transaction
 
 You submit a suspicious transaction with:
@@ -118,6 +153,41 @@ npm run makeSuspiciousTransfer3
 
 
 # Summary
-The full demo is played by running the following command: 'npm run demo'
+
+Assuming that you deployed the XOM to the RES and you generated the Ruleapp archive in the output directory, the following
+command run the full demo:
+    - 'npm run demo'
+
+# demo scenario summary
+
+- start up HyperLedger Fabric and Composer
+- start up ODM RES
+- start up ODM Ruleapp Deployer
+- deploy and initialize the vehicle-lifecycle demo
+    npm run deploy; npm run setup
+- deploy the Decision Service to the RES
+    - From Rule Designer, deploy the XOM to the RES
+    - From Rule Designer, generate the Ruleapp archive in the 'output' directory
+    - npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.0
+- submit suspicious transactions
+    - npm run makeSuspiciousTransfer1 ; npm run listVehicles
+    - npm run makeSuspiciousTransfer2 ; npm run listVehicles
+    - npm run makeSuspiciousTransfer3 ; npm run listVehicles
+
+# Extension of the scenario: show rules life-cycle
+
+- In Rule Designer, change the Rules
+    - for instance, change the message in' suspicious rules/Cross Border Transfer'
+    - in the deployer file, change the base version of the Ruleset to 1.1
+    - From Rule Designer, generate the new Ruleapp Archive in the 'output' directory
+- deploy the new version through the Blockhchain:
+    - npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.1
+- re-run the first suspicious transaction: 
+    - npm run makeSuspiciousTransfer1 ; npm run listVehicles  
+    - ==> The message for vehicle 156478954 should have changed
+
+
+
+
 
 
