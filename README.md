@@ -53,10 +53,11 @@ service call from the JS smart contract
         - support HA: if a peer/RES goes down, the second one take over
         - need to map ports so that Smart Contract uses only one URL
 - odm-deployer
+    - entry point to deploy XOM libraries
     - integrate the service in odm-runtime image so that we don't have too much things to run
     - code it in Java and integrate it in the App Server? 
 - vehicle-lifecycle
-    - remove RuleAppUpdatedWrapper, we should not need it
+    - model XOM deployment
 
 - deployment of new rules to Rule Execution Server through the Blockchain
 

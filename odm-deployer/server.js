@@ -19,8 +19,8 @@ version information received from Composer
 */
 
 app.post('/deploy', function (req, res) {
-    console.log("receiving a deploy request " + JSON.stringify(req.body));
-    var ruleAppUpdatedTx = req.body.transaction;
+    console.log("Receiving a deploy request " + JSON.stringify(req.body));
+    var ruleAppUpdatedTx = req.body;
 
     var ruleAppNameElements = ruleAppUpdatedTx.ruleAppName.split('/');
 
@@ -53,11 +53,6 @@ app.post('/deploy', function (req, res) {
     };
 
     console.log("Deploying '" + ruleappName + "/" + ruleappVersion + "/" + rulesetName + "/" + rulesetVersion + "' to RES ");
-
-    console.log("Ready to send POST request to RES: ");
-    console.log("--> options:");
-    console.log(options);
-    console.log("--> body: ");
 
     var resreq = http.request(options, function(resResponse) {
       resResponse.setEncoding('utf-8');
@@ -115,8 +110,6 @@ app.post('/deploy', function (req, res) {
     resreq.end();
 
     console.log("Done");
-
-
 });
 
 var updateArchiveXom = function(ruleappName, rulesetName, ruleappVersion, rulesetVersion, managedXomURI) 
@@ -183,7 +176,6 @@ var updateArchiveXom = function(ruleappName, rulesetName, ruleappVersion, rulese
     resreq.end();
 
     console.log("Done Update");
-
   });
 };
 

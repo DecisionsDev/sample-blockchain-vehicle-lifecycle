@@ -35,9 +35,6 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
         	return reg.add(ruleapp);
        });
 
-    var ruleappTx = factory.newResource(NS, 'RuleAppUpdatedWrapper', ruleAppUpdatedTransaction.transactionId);
-    ruleappTx.transaction = ruleAppUpdatedTransaction;
-
     var currentVersion;
     var currentVersionRegistry;
     
@@ -46,7 +43,6 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
     getAssetRegistry(NS + '.' + 'RuleAppCurrentVersion')
       .then(function (registry) 
       {
-          console.log("OK 1");
           currentVersionRegistry = registry;
           return registry.get(ruleapp.ruleAppName)
           .then(function (cv){
@@ -57,10 +53,8 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
           });
       })
       .then(function () {
-          console.log("OK 2");
           var add = false;
           if (!currentVersion) {
-          	console.log("OK 2.1");
               currentVersion = factory.newResource(NS, 'RuleAppCurrentVersion', ruleapp.ruleAppName);
               add = true;
           }
@@ -76,10 +70,9 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
             });  
           }
       })
-      .then(function () {
-        
-        console.log("OK 3: calling out to " + ruleAppUpdatedTransaction.resDeployerURL);
-        return post(ruleAppUpdatedTransaction.resDeployerURL, ruleappTx)      
+      .then(function () {        
+        console.log("Calling out to " + ruleAppUpdatedTransaction.resDeployerURL);
+        return post(ruleAppUpdatedTransaction.resDeployerURL, ruleAppUpdatedTransaction)      
           .then(function (result) {
             console.log("Receiving good answer from ODM Decision Service Deployer: " + result.body.response);
             console.log("Full response: " + JSON.stringify(result));
@@ -89,6 +82,4 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
           });
           
       });
-      console.log("DONE");
-
 }

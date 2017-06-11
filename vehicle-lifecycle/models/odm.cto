@@ -46,9 +46,3 @@ transaction RuleAppUpdated identified by transactionId
   o String archive
   o String managedXomURI
 }
-
-transaction RuleAppUpdatedWrapper identified by transactionId 
-{
-  o String transactionId
-  o RuleAppUpdated transaction
-}
