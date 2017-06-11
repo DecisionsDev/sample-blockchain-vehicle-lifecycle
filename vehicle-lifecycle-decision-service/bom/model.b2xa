@@ -1,0 +1,43 @@
+<b2x:translation xmlns:b2x="http://schemas.ilog.com/JRules/1.3/Translation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.ilog.com/JRules/1.3/Translation ilog/rules/schemas/1_3/b2x.xsd">
+    <id>6f6183f1-ebc9-49d8-892d-df8cec482259</id>
+    <lang>ARL</lang>
+    <class>
+        <businessName>composer.base.Person</businessName>
+        <method>
+            <name>getCity</name>
+            <body language="arl"><![CDATA[
+            return this.contactDetails.address.city;
+            ]]></body>
+        </method>
+        <method>
+            <name>getCountry</name>
+            <body language="arl"><![CDATA[
+            return this.contactDetails.address.country;
+            ]]></body>
+        </method>
+        <method>
+            <name>getEmail</name>
+            <body language="arl"><![CDATA[
+            return this.contactDetails.email;
+            ]]></body>
+        </method>
+        <method>
+            <name>getMobilePhone</name>
+            <body language="arl"><![CDATA[
+            return this.contactDetails.mobilePhone;
+            ]]></body>
+        </method>
+        <method>
+            <name>getPhone</name>
+            <body language="arl"><![CDATA[
+            return this.contactDetails.homePhone;
+            ]]></body>
+        </method>
+        <method>
+            <name>getRegion</name>
+            <body language="arl"><![CDATA[
+            return this.contactDetails.address.region;
+            ]]></body>
+        </method>
+    </class>
+</b2x:translation>
