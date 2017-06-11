@@ -20,8 +20,12 @@ vehicle-lifecycle-decision-service
 is the ODM Decision Service that implement the decision logique invoked from the Smart Contract
 
 odm-runtime
--------------------
+-----------
 An odm docker image that contain RES / HTDS and a DB in a docker image.
+
+odm-deployer
+------------
+A service that act as a facade to the RES to receive Ruleapp deployment from Blockchain Smart Contracts. 
 
 sample-rest-service
 -------------------
@@ -41,37 +45,45 @@ service call from the JS smart contract
 - Decision Service
     - automate build of the XOM and the Ruleapp in scripts
     - script to deploy Ruleapp and XOM to the RES running in Docker
+        [alternative is to use the deployment through Blockchain]
     - code a cto -> XOM/BOM/Voc generator
+- odm-runtime
+    - remove the ruleset.jar and the xom from the image
     - set-up an instance of RES per instance of peers
         - support HA: if a peer/RES goes down, the second one take over
         - need to map ports so that Smart Contract uses only one URL
-- odm-runtime
-    - remove the ruleset.jar and the xom from the image
-- deployment of new rules to Fabric
-    [
-        We played with the idea of deploying new rules using a Blockchain transaction that can be processed by a dedicated Composer Transaction Processor to deploy the attached ruleset to the corresponding RES. 
+- odm-deployer
+    - integrate the service in odm-runtime image so that we don't have too much things to run
+    - code it in Java and integrate it in the App Server? 
+- vehicle-lifecycle
+    - remove RuleAppUpdatedWrapper, we should not need it
 
-        It might not work well as a transaction in Blockchain can be rolled-back and the side effect we would have done on the rules won't be rolled-backed. 
+- deployment of new rules to Rule Execution Server through the Blockchain
 
-        Another idea is to deploy the ruleset in a transaction and having a dedicated Transaction Processor that writes down this ruleset in the World State, in a given asset.
-        At the next transaction, before executing the rules, inside the RES, we would check this asset (timestamp or ruleset version stored there), would detect that our ruleset is obsolete and reload it from the asset. 
-
-        Is there a way to do that with the existing RES?  
-
-        Can we use an interceptor or a dedicated DAO implementation to do that? 
-    ]
-    [
-        Not a good idea to embed the RES in the peer docker container: each container should be one process
-    ]
+Here is what is implemented: 
+    - a client send the new version of a RuleApp as a com.ibm.rules.RuleAppUpdated transaction, passing:
+      o String resDeployerURL <== URL of the Ruleapp Deplyer facade: 'http://odm-deployer:1880/deploy'
+      o String ruleAppName <== ruleapp name should be of the form <ruleapp>/<ruleset>
+      o String ruleapp_version
+      o String ruleset_version
+      o String archive <== the archive binary encoded in base64
+      o String managedXomURI <== the URI of the XOM library used by the decision service (typically 'reslib://vehicle_1.0/1.0')
+    - Smart Contract receive this transaction and
+        - store the current version information in an asset com.ibm.rules.RuleAppCurrentVersion
+        - store the RuleApp itsel in an asset com.ibm.rules.RuleApp
+        - send the archive to the Ruleapp Deployer service that will deploy it to the RES
+    - Smart Contracts that need to invoke a decision service need to read the current version information from the RuleAppCurrentVersion asset
+    - If the deployment transaction is rolled back, the RuleAppCurrentVersion information is rolled-back too and the Smart Contract
+      still use the previous version. The new version has been pushed to the RES but will not been used. 
 
 RuleAppUpdated data: 
 
 {
   "$class": "com.ibm.rules.RuleAppUpdated",
   "resDeployerURL": "http://odm-deployer:1880/deploy",
-  "ruleAppName": "vehicle/1.0/isSuspiciousEntryPoint",
-  "major_version": "1",
-  "minor_version": "0",
-  "qualifier_version": "0",
-  "ruleApp": "BIN"
+  "ruleAppName": "vehicle/isSuspiciousEntryPoint",
+  "ruleapp_version": "1.0",
+  "ruleset_version": "1.0",
+  "managedXomURI": "reslib://vehicle_1.0/1.0",
+  "archive": "BASE64 ARCHIVE JAR"
 }
