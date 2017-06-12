@@ -4,11 +4,6 @@
 **/.settings/**
 **/META-INF/**
 tmp
-<<<<<<< Updated upstream
 .idea/
 *.iml
-
 /.DS_Store
-=======
-**/.project
->>>>>>> Stashed changes
