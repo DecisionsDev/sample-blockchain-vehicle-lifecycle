@@ -9,6 +9,7 @@
     <Properties>
       <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
       <Property Name="Check.Overlap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="UI.AutoResizeTable" Type="xs:boolean"><![CDATA[false]]></Property>
     </Properties>
     <Structure>
       <ConditionDefinitions>
@@ -97,7 +98,7 @@
                         </Action>
                         <Action DefId="A1">
                           <Expression>
-                            <Param><![CDATA["Can't sell Emergency Vehicle in California"]]></Param>
+                            <Param><![CDATA["Can't sell Emergency Vehicle in France"]]></Param>
                           </Expression>
                         </Action>
                       </ActionSet>
@@ -415,18 +416,21 @@
   </Body>
   <Resources DefaultLocale="en_US">
     <ResourceSet Locale="en_US">
+      <Data Name="/2/1/1/A#Height"><![CDATA[23]]></Data>
       <Data Name="Definitions(A0)#HeaderText"><![CDATA[Suspicion Status]]></Data>
-      <Data Name="Definitions(A0)#Width"><![CDATA[152]]></Data>
+      <Data Name="Definitions(A0)#Width"><![CDATA[177]]></Data>
       <Data Name="Definitions(A1)#HeaderText"><![CDATA[Message]]></Data>
-      <Data Name="Definitions(A1)#Width"><![CDATA[152]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[309]]></Data>
+      <Data Name="Definitions(A1)[]#Format"><![CDATA[{0}]]></Data>
+      <Data Name="Definitions(A1)[]#TextAlign"><![CDATA[Near]]></Data>
       <Data Name="Definitions(C0)#HeaderText"><![CDATA[Buyer Region]]></Data>
-      <Data Name="Definitions(C0)#Width"><![CDATA[166]]></Data>
+      <Data Name="Definitions(C0)#Width"><![CDATA[139]]></Data>
       <Data Name="Definitions(C1)#HeaderText"><![CDATA[Car Make]]></Data>
-      <Data Name="Definitions(C1)#Width"><![CDATA[160]]></Data>
+      <Data Name="Definitions(C1)#Width"><![CDATA[124]]></Data>
       <Data Name="Definitions(C2)#HeaderText"><![CDATA[Tax Class]]></Data>
-      <Data Name="Definitions(C2)#Width"><![CDATA[191]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[215]]></Data>
       <Data Name="Definitions(C3)#HeaderText"><![CDATA[Buyer Country]]></Data>
-      <Data Name="Definitions(C3)#Width"><![CDATA[137]]></Data>
+      <Data Name="Definitions(C3)#Width"><![CDATA[132]]></Data>
     </ResourceSet>
   </Resources>
 </DT>
