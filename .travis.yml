@@ -5,10 +5,8 @@ language: java
 jdk:
   - oraclejdk8
 
-before_install:
-  - mvn install:install-file -Dfile=lib/buildcommand/rules-compiler-maven-plugin.jar -DpomFile=lib/buildcommand/rules-compiler-maven-plugin.pom
-
 install:
+  - cd lib/buildcommand && mvn install:install-file -Dfile=rules-compiler-maven-plugin.jar -DpomFile=rules-compiler-maven-plugin.pom && cd ../..
   - mvn install --settings travis-settings.xml -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 cache:
