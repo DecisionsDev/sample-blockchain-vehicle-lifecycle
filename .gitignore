@@ -7,3 +7,4 @@ tmp
 .idea/
 *.iml
 /.DS_Store
+vehicle-lifecycle-decision-service/bom/model_fr_FR.voc
