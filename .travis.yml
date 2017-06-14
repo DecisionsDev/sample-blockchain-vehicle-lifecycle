@@ -6,7 +6,7 @@ jdk:
   - oraclejdk8
 
 install:
-  - mvn install:install-file -Dfile=lib\buildcommand\rules-compiler-maven-plugin.jar -DpomFile=lib\buildcommand\rules-compiler-maven-plugin.pom
+  - mvn install:install-file -Dfile=lib/buildcommand/rules-compiler-maven-plugin.jar -DpomFile=lib/buildcommand/rules-compiler-maven-plugin.pom
   - mvn install --settings travis-settings.xml -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 cache:
