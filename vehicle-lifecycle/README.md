@@ -46,6 +46,8 @@ If not, copy the one located in the install directory to this location
 
 - mkdir ~/.composer-connection-profiles/hlfv1
 - cp install/connection.json ~/.composer-connection-profiles/hlfv1
+If you have to do this step, you should edit the copied connection.json and change the location of the keystore
+
 
 Note, if you need to see logs of the Smart Contract (chaincode) you need to modify the docker-compose
 file generated in tmp/composer-data and add: 
