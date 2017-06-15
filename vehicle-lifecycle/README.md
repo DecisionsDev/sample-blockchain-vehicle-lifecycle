@@ -40,7 +40,7 @@ If you need to modify Composer docker-compose file, you can copy composer.sh, re
 that recreate the installation files, and run the install from this script, reusing the existing
 compose files that you can update. 
 
-Check if you have a connection profile for the the Fabric you just install. You should have a file ~/.composer-connection-profildes/hlfv1/connection.json
+Check if you have a connection profile for the the Fabric you just install. You should have a file ~/.composer-connection-profiles/hlfv1/connection.json
 
 If not, copy the one located in the install directory to this location
 
