@@ -83,3 +83,56 @@ function processRuleAppUpdatedTransaction(ruleAppUpdatedTransaction)
           
       });
 }
+
+/**
+ * Store Xom in world state
+ * @param {com.ibm.rules.XomUpdated} xomUpdatedTransaction
+ * @transaction
+ */
+function processXomUpdatedTransaction(xomUpdatedTransaction) 
+{
+    console.log("Receiving xomUpdated transaction " + xomUpdatedTransaction.xomName);
+    var factory = getFactory();
+    var NS = 'com.ibm.rules';
+
+    var xom = factory.newResource(NS, 'Xom', 'XOM_' + xomUpdatedTransaction.transactionId);
+    xom.xomName = xomUpdatedTransaction.xomName;
+    xom.xom_version = "no version";
+    xom.xom = xomUpdatedTransaction.xom;
+    xom.libraryName = xomUpdatedTransaction.libraryName;
+    xom.library_version = xomUpdatedTransaction.library_version;
+
+    var xomRegistry;
+    var failed = false;
+
+    getAssetRegistry(NS + '.' + 'Xom')
+      .then(function(reg) {
+        xomRegistry = reg;
+       }) 
+      .then(function () {        
+        console.log("Calling out to " + xomUpdatedTransaction.resDeployerURL);
+        return post(xomUpdatedTransaction.resDeployerURL, xomUpdatedTransaction)      
+          .then(function (result) {
+            console.log("Receiving good answer from ODM Decision Service Deployer: " + result.body.response);
+            console.log("Full response: " + JSON.stringify(result));
+            if (result.body.xom_version != null) {
+              xom.xom_version = result.body.xom_version;            
+            } else {
+              xom.xom_version = "No XOM version returned by ODM deployer";
+            }
+          }).catch(function (error) {
+            failed = true;
+            console.log("Error calling out the decision service deployer");
+            console.log(error);
+          })
+          .then(function () {
+            if (!failed) {
+        	    return xomRegistry.add(xom);
+            }
+          })
+          .catch(function (err) {
+            console.log("Error saving XOM " + err);
+            console.log(err);
+          });          
+      });
+}

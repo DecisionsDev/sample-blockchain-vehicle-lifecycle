@@ -35,6 +35,17 @@ asset RuleApp identified by ruleAppId
   o String archive
 }
 
+asset Xom identified by xomId 
+{
+  o String xomId
+  o String xomName
+  o String xom_version
+  o String libraryName
+  o String library_version  
+  o String xom
+}
+
+
 transaction RuleAppUpdated identified by transactionId 
 {
   o String transactionId
@@ -45,4 +56,14 @@ transaction RuleAppUpdated identified by transactionId
   o String ruleset_version
   o String archive
   o String managedXomURI
+}
+
+transaction XomUpdated identified by transactionId 
+{
+  o String transactionId
+  o String resDeployerURL
+  o String xomName
+  o String libraryName
+  o String library_version
+  o String xom
 }

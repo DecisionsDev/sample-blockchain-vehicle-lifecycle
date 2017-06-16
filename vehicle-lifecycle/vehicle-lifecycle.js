@@ -138,6 +138,40 @@ class VehicleLifecycle {
         return this.bizNetworkConnection.submitTransaction(transaction);
     }
 
+    deployXom(filepath, libVersion) 
+    {
+        const METHOD = 'deployXom';
+	    let factory        = this.businessNetworkDefinition.getFactory();
+	    let transaction    = factory.newTransaction('com.ibm.rules','XomUpdated');
+
+        var xomName;
+        var idx = filepath.lastIndexOf('/');
+        if (idx != -1) {
+            xomName = filepath.substring(idx+1);
+        } else {
+            xomName = filepath;
+        }
+        // make the name compliant
+        //xomName = xomName.replace(/-/g, '_');
+        // remove extension
+        /*idx = xomName.lastIndexOf('.');
+        if (idx != -1) {
+            xomName = xomName.substring(0, idx);
+        }*/
+
+        transaction.xomName = xomName; 
+        transaction.resDeployerURL = 'http://odm-deployer:1880/deployXom';		
+        transaction.libraryName = 'vehicle_1.0';
+        transaction.library_version = libVersion;
+        transaction.xom = VehicleLifecycle.base64_encode(filepath);
+
+        // this.testDecode(filepath, transaction.ruleApp);
+
+        LOG.info(METHOD, 'Submitting RuleAppUpdated transaction');
+        return this.bizNetworkConnection.submitTransaction(transaction);
+    }
+
+
     makeSuspiciousTransfer1() 
     {
         const METHOD = 'makeSuspiciousTransfer1';
@@ -269,6 +303,7 @@ class VehicleLifecycle {
         let regulatorRegistry;
         let ruleAppCurrentVersionRegistry;
         let ruleAppRegistry;
+        let xomRegistry;
 
         LOG.info(METHOD, 'Cleaning all resources');
         return cnx.getAssetRegistry('org.vda.Vehicle')
@@ -312,6 +347,13 @@ class VehicleLifecycle {
             return ruleAppRegistry.getAll();
         }).then((resources) => {
             return ruleAppRegistry.removeAll(resources);
+        }).then(function () {
+            return cnx.getAssetRegistry('com.ibm.rules.Xom');
+        }).then ((registry) => {
+            xomRegistry = registry;
+            return xomRegistry.getAll();
+        }).then((resources) => {
+            return xomRegistry.removeAll(resources);
         })
         ;
     }
@@ -488,6 +530,47 @@ class VehicleLifecycle {
         })
         .then((results) => {
             LOG.info('Deployed Ruleapp');
+        })
+        .catch(function (error) {
+            //potentially some code for generating an error specific message here 
+            throw error;
+        });  
+    }
+
+    /**
+   * @description - deployXom
+   * @param {Object} args passed from the command line
+   * @return {Promise} resolved when the action is complete
+   */
+    static deployXomCmd(args) 
+    {
+        var filepath = null;
+        var libVersion = '1.0';
+        var cmdLine = args['_'];
+        // console.log(args);
+        if (cmdLine.length > 1) {
+            filepath = cmdLine[1];
+        } else {
+            filepath = '../vehicle-lifecycle-decision-service/resources/xom-libraries/vehicle-lifecycle-xom.zip';
+            LOG.warn("File not provided, assuming '" + filepath + "'");
+        }
+        if (cmdLine.length > 2) {
+            xomVersion = cmdLine[2];
+        } else {
+            LOG.warn("libVersion not provided, assuming '" + libVersion + "'");
+        }
+        libVersion = libVersion.toString();
+        if (libVersion.indexOf('.') == -1) {
+            libVersion = libVersion + '.0';
+        }
+
+     let lr = new VehicleLifecycle();
+        return lr.init()
+        .then(() => {
+            return lr.deployXom(filepath, libVersion);
+        })
+        .then((results) => {
+            LOG.info('Deployed XOM');
         })
         .catch(function (error) {
             //potentially some code for generating an error specific message here 

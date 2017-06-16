@@ -15,7 +15,8 @@
 		"clean": "node cli.js clean",
 		"setup": "node cli.js setup",
 		"demo": "npm run clean && npm run setup && npm run listVehicles && npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.0 && npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles",
-		"deployRuleapp": "node cli.js deployRuleapp"
+		"deployRuleapp": "node cli.js deployRuleapp",
+		"deployXom": "node cli.js deployXom"
 	},
 	"author": "IBM",
 	"license": "IBM",
