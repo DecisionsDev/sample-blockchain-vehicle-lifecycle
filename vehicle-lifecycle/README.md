@@ -110,24 +110,33 @@ npm run listVehicles
 You can clean-up the Business Network with:
 npm run clean
 
-# deploying the Decision Service
+# deploying XOM
 
 At this point, you should have a RES running as a Docker Container. We need to deploy the Decision Service on it. 
 A deployment feature has been integrated in the vehicle-lifecycle demo to deploy ruleapps through the Blockchain. 
 
-- Launch Rule Designer 8.9.0 on a workspace that contains vehicle-lifecycle-xom and vehicle-lifecycle-decision-service
-- Open the deployer file in 'deployment'
-- make sure the Ruleset base version (in Decision Operation tab) is set to the right version (1.0 to start, to be incremented when you want
-  to deployer newer version)
-  
-- The first time, you need to deploy the XOM to the RES. Right click on the deployer file in the project explorer and select 'Rule Execution Server / Deploy XOM...'
+You can deploy the XOM from Rule Designer using the deployment feature of this product. Otherwise you can deploy the XOM through
+the Blockchain. 
 
-- right click on the deployer file in the project explorer and select 'Rule Execution Server / Deploy...'
-- in the wizard, UNCHECK THE TARGET SERVER so that the Ruelapp archive is generated in the output directory and not deployed
+To deploy the XOM throught the Blockchain, you should perform the following actions:
+- in Rule Designer, you need to generate the XOM (and the Ruleapp)
+    - Launch Rule Designer 8.9.0 on a workspace that contains vehicle-lifecycle-xom and vehicle-lifecycle-decision-service
+    - right click on the deployer file in the project explorer and select 'Rule Execution Server / Deploy...'
+    - in the wizard, UNCHECK THE TARGET SERVER so that the Ruelapp archive is generated in the output directory and not deployed
   directly to the RES
-    - this operation generate a vehicle.jar in the 'output' directory
+        - this operation generate a 'vehicle.jar' in the 'output' directory
+        - this operation generate a 'vehicle-lifecycle-xom.zip' in the 'resources/xom-libraries' directory
+- run 'npm run deployXom ../vehicle-lifecycle-decision-service/resources/xom-libraries/vehicle-lifecycle-xom.zip 1.0'
+
+# deploying the Decision Service
+
 - run 'npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.0'
     - note that 'npm run deployRuleapp' deploy this ruleapp with these versions
+
+When you change the rules, you need to increment the version number of the ruleset. You can do that in Rule Designer:
+- Open the deployer file in 'deployment'
+- make sure the Ruleset base version (in Decision Operation tab) is set to the right version (1.0 to start, to be incremented when you want
+  to deploye newer version)
 
 # submitting a suspicious transaction
 
@@ -151,7 +160,6 @@ npm run makeSuspiciousTransfer3
 ├────────────┼───────────┼────────┼─────────┼────────────────────────────────────────────────────────────────────────┤
 │ 234567890  │ anthony   │ BMW    │ X5      │ REJECTED: Can't sell Emergency Vehicle in California                   │
 ├────────────┼───────────┼────────┼─────────┼────────────────────────────────────────────────────────────────────────┤
-
 
 
 # Summary
@@ -183,7 +191,7 @@ command run the full demo:
     - in the deployer file, change the base version of the Ruleset to 1.1
     - From Rule Designer, generate the new Ruleapp Archive in the 'output' directory
 - deploy the new version through the Blockhchain:
-    - npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.1
+    - 'npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.1'
 - re-run the first suspicious transaction: 
     - npm run makeSuspiciousTransfer1 ; npm run listVehicles  
     - ==> The message for vehicle 156478954 should have changed
