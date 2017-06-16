@@ -555,7 +555,7 @@ class VehicleLifecycle {
             LOG.warn("File not provided, assuming '" + filepath + "'");
         }
         if (cmdLine.length > 2) {
-            xomVersion = cmdLine[2];
+            libVersion = cmdLine[2];
         } else {
             LOG.warn("libVersion not provided, assuming '" + libVersion + "'");
         }
