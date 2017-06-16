@@ -1,0 +1,55 @@
+<settings>
+    <profiles>
+        <profile>
+            <id>travis</id>
+            <repositories>
+                <repository>
+                    <id>jrules-snapshot</id>
+                    <name>JRules snapshot repo</name>
+                    <url>http://jules2.ilogfr-bso.fr.ibm.com:8081/nexus/content/repositories/jrules-snapshot</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                </repository>
+                <repository>
+                    <id>jrules-release</id>
+                    <name>JRules release repo</name>
+                    <url>http://jules2.ilogfr-bso.fr.ibm.com:8081/nexus/content/repositories/jrules-release</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>proxy</id>
+                    <name>Maestro Project Server</name>
+                    <url>http://jules2.ilogfr-bso.fr.ibm.com:8081/nexus/content/repositories/proxy</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>travis</activeProfile>
+    </activeProfiles>
+
+    <servers>
+        <server>
+            <id>jrules-snapshot</id>
+            <username>${env.ODM_USERNAME}</username>
+            <password>${env.ODM_PASSWORD}</password>
+        </server>
+        <server>
+            <id>jrules-release</id>
+            <username>${env.ODM_USERNAME}</username>
+            <password>${env.ODM_PASSWORD}</password>
+        </server>
+        <server>
+            <id>proxy</id>
+            <username>${env.ODM_USERNAME}</username>
+            <password>${env.ODM_PASSWORD}</password>
+        </server>
+    </servers>
+</settings>

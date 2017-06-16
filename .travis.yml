@@ -1,4 +1,14 @@
-langage: java
+group: bluezone
 
-script:
-  - mvn clean install
+language: java
+
+jdk:
+  - oraclejdk8
+
+install:
+  - cd lib/buildcommand && mvn install:install-file -Dfile=rules-compiler-maven-plugin.jar -DpomFile=rules-compiler-maven-plugin.pom && cd ../..
+  - mvn install --settings travis-settings.xml -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+cache:
+  directories:
+    - $HOME/.m2
