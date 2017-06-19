@@ -19,7 +19,7 @@ ENV SCRIPT /script
 RUN chmod -R a+x $SCRIPT
 
 # Sample DB 
-ADD ./data/resdb.tar.gz /upload/
+#ADD ./data/resdb.tar.gz /upload/
 
 
 # Decision Server Console

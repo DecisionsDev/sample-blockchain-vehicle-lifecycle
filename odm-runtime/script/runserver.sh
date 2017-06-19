@@ -2,10 +2,10 @@
 
 if [ ! -f /config/initializeddb.flag ] ; then
 #	if [ "$SAMPLE" = "true" ] ; then
-		if [ -d "/config/dbdata/" ]; then
+		#if [ -d "/config/dbdata/" ]; then
   		# Control will enter here if $DIRECTORY exists.
-  			cp -R /upload/* /config/dbdata/
-		fi;
+  		#	cp -R /upload/* /config/dbdata/
+		#fi;
 #	fi;
 	touch /config/initializeddb.flag
 fi;
