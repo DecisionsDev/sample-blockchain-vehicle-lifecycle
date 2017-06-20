@@ -57,10 +57,12 @@ service call from the JS smart contract
     - integrate the service in odm-runtime image so that we don't have too much things to run
     - code it in Java and integrate it in the App Server? 
 - vehicle-lifecycle
-    - model XOM deployment
+    - comment the code, remove print
+    - transform TransactionWrapper into a Concept. Try to point to a generic Object or Transaction (see if 0.8.0 implement that, could be)
+        -> does not work: Composer does not support serializing Concept as the root of post()
+    - review XOM deployment, does not work if the transaction is rolledback as side effect on RES is not rolledback
 
 - deployment of new rules to Rule Execution Server through the Blockchain
-
 Here is what is implemented: 
     - a client send the new version of a RuleApp as a com.ibm.rules.RuleAppUpdated transaction, passing:
       o String resDeployerURL <== URL of the Ruleapp Deplyer facade: 'http://odm-deployer:1880/deploy'

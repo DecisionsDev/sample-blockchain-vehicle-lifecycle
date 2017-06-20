@@ -39,7 +39,7 @@ Alternative way to deploy Fabric 1.0 alpha + 0.7.3 Composer:
 - run the following script to start Fabric & Composer: 
   curl -sSL http://hyperledger.github.io/composer/install-hlfv1.sh | bash
 - run the following command to add the sample-rest-service: 
-  docker run --network composer_default --name sample-rest-service --publish 1880:1880 --detach stephanemery/sample-rest-service
+  docker run --network composer_default --name sample-rest-service --publish 1890:1890 --detach stephanemery/sample-rest-service
 - import and deploy http-post-network@0.0.1.bna from Composer UI
 - play with it
         in 'Test' section of Composer Playground, create an asset with assetID: "a1" and value: "10"
@@ -54,7 +54,7 @@ Code snippet to call a REST service:
  */
 function handlePost(postTransaction) {
 
-  var url = 'http://sample-rest-service:1880/compute';
+  var url = 'http://sample-rest-service:1890/compute';
 
   return post( url, postTransaction)
       .then(function (result) {

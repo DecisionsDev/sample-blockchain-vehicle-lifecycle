@@ -7,6 +7,6 @@ COPY package.json /usr/src/sample-rest-service/
 RUN npm install
 # Bundle app source
 COPY . /usr/src/sample-rest-service
-EXPOSE 1880
+EXPOSE 1890
 # Start the service
 CMD [ "npm", "start" ]

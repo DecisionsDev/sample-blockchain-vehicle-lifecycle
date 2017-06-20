@@ -19,7 +19,8 @@
                 "address": {
                     "$class": "composer.base.Address",
                     "city": "Winchester",
-                    "country": "UK"
+                    "country": "UK",
+                    "region": "England"
                 }
             }
         },
@@ -27,7 +28,7 @@
             "$class": "composer.base.Person",
             "ssn": "anthony",
             "firstName": "Anthony",
-            "lastName": "Michel",
+            "lastName": "Smith",
             "gender": "MALE",
             "nationalities": [
                 "French"
@@ -38,12 +39,13 @@
                 "address": {
                     "$class": "composer.base.Address",
                     "city": "Paris",
-                    "country": "France"
+                    "country": "France",
+                    "region": "IDF"
                 }
             }
         },
-        "specialNotes": "Dan selling a car to Anthony Michel",
-        "transactionId": "968413c3-c523-4959-9181-6db91b1e1cf7",
+        "specialNotes": "Dan selling a car to Anthony Smith",
+        "transactionId": "23fd6f13-ee24-4c30-b5a0-1d09835c77b9",
         "vehicle": {
             "$class": "org.vda.Vehicle",
             "vin": "156478954",
@@ -52,25 +54,28 @@
                 "make": "Arium",
                 "modelType": "Nova",
                 "colour": "white",
-                "vin": "156478954"
+                "vin": "156478954",
+                "taxationClass": "PETROL_CAR"
             },
             "vehicleStatus": "ACTIVE",
             "owner": {
                 "$class": "composer.base.Person",
-                "ssn": "anthony",
-                "firstName": "Anthony",
-                "lastName": "Michel",
+                "ssn": "dan",
+                "firstName": "Dan",
+                "lastName": "Selman",
                 "gender": "MALE",
                 "nationalities": [
-                    "French"
+                    "French",
+                    "UK"
                 ],
                 "contactDetails": {
                     "$class": "composer.base.ContactDetails",
-                    "email": "anthony@acme.org",
+                    "email": "dan@acme.org",
                     "address": {
                         "$class": "composer.base.Address",
-                        "city": "Paris",
-                        "country": "France"
+                        "city": "Winchester",
+                        "country": "UK",
+                        "region": "England"
                     }
                 }
             },
@@ -78,19 +83,11 @@
                 {
                     "$class": "org.vda.VehicleTransferLogEntry",
                     "vehicle": "resource:org.vda.Vehicle#156478954",
-                    "buyer": "resource:composer.base.Person#anthony",
-                    "seller": "resource:composer.base.Person#dan",
-                    "timestamp": "2017-06-02T16:01:21.092Z"
-                },
-                {
-                    "$class": "org.vda.VehicleTransferLogEntry",
-                    "vehicle": "resource:org.vda.Vehicle#156478954",
-                    "buyer": "resource:composer.base.Person#anthony",
-                    "seller": "resource:composer.base.Person#dan",
-                    "timestamp": "2017-06-02T16:04:12.817Z"
+                    "buyer": "resource:composer.base.Person#dan",
+                    "timestamp": "2017-06-20T00:08:35.631Z"
                 }
             ]
         },
-        "timestamp": "2017-06-02T16:06:22.915Z"
+        "timestamp": "2017-06-20T00:08:40.282Z"
     }
 }

@@ -46,7 +46,7 @@ transaction TestDemo identified by transactionId {
   o String transactionId
 }
 
-
+// TODO: to be replaced by a generic concept pointing to a Transaction
 asset TransactionWrapper identified by wrapperId {
   o String wrapperId
   o PrivateVehicleTransfer transaction

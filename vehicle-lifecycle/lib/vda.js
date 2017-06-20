@@ -98,14 +98,14 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         print("Calling ODM Decision Service: " + url);
         return post( url, wrapper);
     })
-    .then(function (result) {
-        print("Receiving answer from ODM Decision Service: " + JSON.stringify(result));
-        if (result.body.result['status'] != null) {
-            if (result.body.result.status === "REJECTED") {
+    .then(function (response) {
+        print("Receiving answer from ODM Decision Service: " + JSON.stringify(response));
+        if (response.body.result['status'] != null) {
+            if (response.body.result.status === "REJECTED") {
                 // TODO: need to throw an exception to reject the transaction
-                vehicle.suspiciousMessage = "REJECTED: " + result.body.result.message;
-            } else if (result.body.result.status === "SUSPICION") {
-                vehicle.suspiciousMessage = result.body.result.message;
+                vehicle.suspiciousMessage = "REJECTED: " + response.body.result.message;
+            } else if (response.body.result.status === "SUSPICION") {
+                vehicle.suspiciousMessage = response.body.result.message;
             }
         } 
     })
