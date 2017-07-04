@@ -33,6 +33,35 @@ a very basic implementation of a REST service in NodeJS called by the http-post-
 The README there explain how to deploy a Fabric and Composer topology in Docker and instruction to test the REST
 service call from the JS smart contract
 
+# Demo Scenario
+
+1/ Run Fabric 1.0
+    - go to vehicle-lifecycle/tmp
+    - run ./composer_2.sh
+2/ Run ODM Deployer
+    - go to odm-deployer
+    - docker-compose up
+3/ Run ODM RES
+    - go to odm-runtime
+    - docker-compose up
+    - use the RES Console to remove the predefined content: http://localhost:9060/res/
+        - remove the XOM, Library and Ruleapp
+4/ Deploy vehicle-lifecycle Business Network
+    - go to vehicle-lifecycle
+    - npm run deploy
+5/ Deploy the XOM via Blockchain
+    - npm run deployXom
+6/ Deploy the Ruleapp via Blockchain
+    - npm run deployRuleapp
+7/ Setup the data of the Business Network
+    - npm run setup & npm run listVehicles
+8/ Run the suspicious transactions
+    - npm run transfers
+
+Assuming the XOM and the Ruleapp have been deployed, you can run the full demo from a fresh model
+    - npm run demo
+
+
 # TODO
 - XOM
     - add Jackson properties in XOM to avoid using $class fields  
