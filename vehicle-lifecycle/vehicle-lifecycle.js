@@ -290,6 +290,55 @@ class VehicleLifecycle {
     }
 
     /**
+     * This method reset the model of the Business Network
+     */
+    reset()
+    {
+        const METHOD = 'reset';
+        
+        let cnx = this.bizNetworkConnection;
+        let vehicleRegistry;
+        let personRegistry;
+        let manufacturerRegistry;
+        let regulatorRegistry;
+        let ruleAppCurrentVersionRegistry;
+        let ruleAppRegistry;
+        let xomRegistry;
+
+        LOG.info(METHOD, 'Reseting vehicle-lifecycle model');
+        return cnx.getAssetRegistry('org.vda.Vehicle')
+        .then((registry) => {
+          vehicleRegistry = registry;
+          return vehicleRegistry.getAll();
+        }).then((resources) => {
+            return vehicleRegistry.removeAll(resources);
+        }).then(function() {
+            return cnx.getParticipantRegistry('composer.base.Person');
+        }).then((registry) => {
+            personRegistry = registry;
+            return personRegistry.getAll();
+        }).then((resources) => {
+            return personRegistry.removeAll(resources);
+        }).then(function () {
+            return cnx.getParticipantRegistry('org.acme.vehicle.lifecycle.manufacturer.Manufacturer');
+        }).then ((registry) => {
+            manufacturerRegistry = registry;
+            return manufacturerRegistry.getAll();
+        }).then((resources) => {
+            return manufacturerRegistry.removeAll(resources);
+        }).then(function () {
+            return cnx.getParticipantRegistry('org.acme.vehicle.lifecycle.Regulator');
+        }).then ((registry) => {
+            regulatorRegistry = registry;
+            return regulatorRegistry.getAll();
+        }).then((resources) => {
+            return regulatorRegistry.removeAll(resources);
+        })
+        ;
+    }
+
+
+    /**
      * This method cleans all resources from the Business Network
      */
     clean()
@@ -443,7 +492,28 @@ class VehicleLifecycle {
             throw error;
         });
     }
-    
+
+  /**
+   * @description - reset
+   * @param {Object} args passed from the command line
+   * @return {Promise} resolved when the action is complete
+   */
+    static resetCmd(args) 
+    {
+        let lr = new VehicleLifecycle();
+        return lr.init()
+        .then(() => {
+            return lr.reset();
+        })
+        .then((results) => {
+            LOG.info('All vehicle data has been removed from Vehicle Lifecycle Business Network');
+        })
+        .catch(function (error) {
+            /* potentially some code for generating an error specific message here */
+            throw error;
+        });
+    }
+   
     /**
    * @description - clean
    * @param {Object} args passed from the command line
