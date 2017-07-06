@@ -20,6 +20,7 @@ are executing commands from this directory.
 You need to install composer command line:
 (the following command does not work with Node 7.x, you need to use node 6.10.3. 
  if you have nvm installed, you can swith using: nvm use 6.10.3)
+npm install
 npm install -g composer-client
 npm install -g generator-hyperledger-composer
 npm install -g composer-rest-server
@@ -195,6 +196,15 @@ command run the full demo:
 - re-run the first suspicious transaction: 
     - npm run makeSuspiciousTransfer1 ; npm run listVehicles  
     - ==> The message for vehicle 156478954 should have changed
+
+
+# Moving to Composer 0.9
+- separate the business network from the app
+- remove transaction and 'identified by' for all transactions
+- update the ACL
+        resource: "org.acme.vehicle.lifecycle.*"
+- change admin into PeerAdmin in composer deploy command        
+    - composer network deploy --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i PeerAdmin -s adminpw 
 
 
 

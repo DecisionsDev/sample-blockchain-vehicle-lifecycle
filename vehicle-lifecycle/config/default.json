@@ -1,8 +1,0 @@
-{
-    "vehicle-lifecycle" : {
-        "participantId" : "admin",
-        "participantPwd" : "adminpw",
-        "connectionProfile" : "hlfv1",
-        "businessNetworkIdentifier" : "vehicle-lifecycle"
-    }
-}

@@ -102,8 +102,7 @@ concept VehicleTransferLogEntry {
 /**
  * Based on the DVLA V62 document
  */
-transaction ApplicationForVehicleRegistrationCertificate identified by transactionId {
-  o String transactionId
+transaction ApplicationForVehicleRegistrationCertificate {
   o VehicleDetails vehicleDetails
   --> Person keeper
   o String dvlaFleetNumber optional
@@ -112,8 +111,7 @@ transaction ApplicationForVehicleRegistrationCertificate identified by transacti
   o String previousPostCode optional
 }
 
-abstract transaction VehicleTransaction identified by transactionId {
-  o String transactionId
+abstract transaction VehicleTransaction  {
   --> Vehicle vehicle
 }
 

@@ -46,9 +46,8 @@ asset Xom identified by xomId
 }
 
 
-transaction RuleAppUpdated identified by transactionId 
+transaction RuleAppUpdated 
 {
-  o String transactionId
   o String resDeployerURL
   // ruleapp name should be of the form <ruleapp>/<ruleset>
   o String ruleAppName
@@ -58,9 +57,8 @@ transaction RuleAppUpdated identified by transactionId
   o String managedXomURI
 }
 
-transaction XomUpdated identified by transactionId 
+transaction XomUpdated  
 {
-  o String transactionId
   o String resDeployerURL
   o String xomName
   o String libraryName
