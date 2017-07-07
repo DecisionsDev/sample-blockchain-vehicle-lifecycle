@@ -19,7 +19,9 @@
  * @transaction
  */
 function privateVehicleTransfer(privateVehicleTransfer) {
-    print('processing a privateVehicleTransfer');
+    console.log('================================================================');
+    console.log('processing a privateVehicleTransfer');
+    console.log('================================================================');
     /*var options = {};
     //options.convertResourcesToRelationships = true;
     options.permitResourcesForRelationships = true;
@@ -91,6 +93,7 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         // The Decision Service receives all the data about the current transaction: buyer, seller and the vehicle
 
         var url = 'http://odmruntime_odm-runtime_1:9060/DecisionService/rest/' + rulesetPath;
+        // var url = 'http://sample-rest-service:1890/compute';
 
         var wrapper = factory.newResource(NS, 'TransactionWrapper', 'dummy');
         wrapper.transaction = privateVehicleTransfer;

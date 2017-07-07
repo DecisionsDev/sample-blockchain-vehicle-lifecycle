@@ -4,4 +4,5 @@ output
 reports
 target/
 .DS_Store
+.syncEntries
 resources/xom-libraries

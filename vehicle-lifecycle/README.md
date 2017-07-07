@@ -27,7 +27,7 @@ npm install -g composer-rest-server
 npm install -g yo
 
 
-# setting up HyperLedger Fabric V1.0 & Composer 0.7.3
+# setting up HyperLedger Fabric V1.0 & Composer 0.9.0
 
 This script download and start HyperLedger Fabric in Docker. You need to have docker installed on your machine. 
 
@@ -83,7 +83,7 @@ To create the Business Network archive, launch the following command:
 composer archive create --sourceType dir --sourceName .
 
 The first time you deploy your business network, you need to do this command:
-composer network deploy -a vehicle-lifecycle@1.0.0.bna -p hlfv1 -i admin -s adminpw 
+composer network deploy -a vehicle-lifecycle@1.0.0.bna -p hlfv1 -i PeerAdmin -s adminpw 
 
 If you want to update the business network with a new version, you need to use:
 composer network update -a vehicle-lifecycle@1.0.0.bna -p hlfv1 -i admin -s adminpw 

@@ -2,6 +2,14 @@
 ------------------
 
 
+Installing
+===========
+
+Please refer to https://hyperledger.github.io/composer/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
+
+Content
+=======
+
 This repository contains some example and some code showing and enabling the combination of Blockchain and ODM
 to externalize business logic from Smart Contract and implement it in ODM as business rules. 
 
@@ -10,6 +18,12 @@ vehicle-lifecycle
 is a HyperLedger Composer sample, derived from the one developed by the Composer Team. 
 The JavaScript transaction processors in this sample are invoking decisions that are executed
 as Decision Services in a RES service. 
+
+vehicle-lifecycle-cli
+---------------------
+
+is a command line application invoking Composer CLI to perform various operations like deploying RuleApps and submitting 
+transactions. 
 
 vehicle-lifecycle-xom
 ----------------------
@@ -36,8 +50,10 @@ service call from the JS smart contract
 # Demo Scenario
 
 1/ Run Fabric 1.0
-    - go to vehicle-lifecycle/tmp
-    - run ./composer_2.sh
+    - go to vehicle-lifecycle/fabric-tools (created from instructions in https://hyperledger.github.io/composer/installing/development-tools.html)
+    - ./downloadFabric.sh (1st time only)
+    - ./startFabric.sh    
+    - ./createComposerProfile.sh (1st time only)
 2/ Run ODM Deployer
     - go to odm-deployer
     - docker-compose up
@@ -50,13 +66,14 @@ service call from the JS smart contract
     - go to vehicle-lifecycle
     - npm run deploy
 5/ Deploy the XOM via Blockchain
+    - go to vehicle-lifecycle-cli
     - npm run deployXom
 6/ Deploy the Ruleapp via Blockchain
     - npm run deployRuleapp
 7/ Setup the data of the Business Network
-    - npm run setup & npm run listVehicles
+    - npm run setup ; npm run listVehicles
 8/ Run the suspicious transactions
-    - npm run transfers
+    - npm run transfers ; npm run listVehicles
 
 Assuming the XOM and the Ruleapp have been deployed, you can run the full demo from a fresh model
     - npm run demo

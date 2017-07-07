@@ -3,6 +3,7 @@
 
 # NodeJS dependencies
 node_modules
+fabric-tools*
 
 tmp
 logs
