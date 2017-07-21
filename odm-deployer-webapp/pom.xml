@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ 
+    <groupId>com.ibm.smart-contract-odm</groupId>
+    <artifactId>odm-deployer-webapp</artifactId>
+    <version>1.0</version>
+
+  <packaging>war</packaging>
+  <name>smart-contract-odm/odm-deployer-webapp</name>
+  <description>Application for mediating payload between blockchain and RES </description>
+  <!--=========== -->
+  <!-- DEPENDENCIES -->
+  <!--=========== -->
+  <dependencies>
+     <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>jsr311-api</artifactId>
+      <version>1.1.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.websocket</groupId>
+      <artifactId>javax.websocket-api</artifactId>
+      <version>1.0_ibm</version>
+    </dependency>
+  </dependencies>
+  <!--================= -->
+  <!-- BUILD PROCESS & LAYOUT -->
+  <!--================= -->
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <!-- i18n resources -->
+      <resource>
+        <directory>src/main/i18n</directory>
+        
+      </resource>
+      <resource>
+<directory>src/test/i18n</directory>
+        
+      </resource>
+      
+    </resources>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <!-- Package the webapp classes in a jar instead of in WEB-INF/classes -->
+          <archiveClasses>false</archiveClasses>
+          <!-- Add the dependencies that were copied with dependency:copy -->
+        </configuration>
+      </plugin>
+      <!-- set the correct WTP version -->
+      <!-- Ajouter log4j.lcf aux resources + modifier web.xml en File et retirer 
+           les resource -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <wtpversion>1.5</wtpversion>
+          <wtpContextName>Deployer</wtpContextName>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <parallel>classes</parallel>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

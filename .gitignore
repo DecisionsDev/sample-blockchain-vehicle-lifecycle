@@ -1,6 +1,7 @@
 .metadata/**
 **/composer-data/**
 **/reports/**
+**/target/**
 **/.settings/**
 **/META-INF/**
 tmp

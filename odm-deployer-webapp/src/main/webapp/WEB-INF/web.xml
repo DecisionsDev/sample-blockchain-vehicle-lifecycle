@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed Materials - Property of IBM 5724X98 5724Y15 5655V82 5724X99 
+	5724Y16 5655V89 5725B69 5655W88 5725C52 5655W90 5655Y31 Copyright IBM Corp. 
+	1987, 2017 All Rights Reserved US Government Users Restricted Rights - Use, 
+	duplication or disclosure restricted by GSA ADP Schedule Contract with IBM 
+	Corp. -->
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<!-- ================================================================= -->
+	<!-- S E R V L E T -->
+	<!-- ================================================================= -->
+	<servlet>
+		<description>JAX-RS Tools Generated - Do not modify</description>
+		<servlet-name>JAX-RS Servlet</servlet-name>
+		<servlet-class>com.ibm.websphere.jaxrs.server.IBMRestServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- ================================================================= -->
+	<!-- S E R V L E T - M A P P I N G -->
+	<!-- ================================================================= -->
+	<servlet-mapping>
+		<servlet-name>JAX-RS Servlet</servlet-name>
+		<url-pattern>/jaxrs/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>
