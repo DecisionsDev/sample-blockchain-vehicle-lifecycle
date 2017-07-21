@@ -136,3 +136,11 @@ RuleAppUpdated data:
   "managedXomURI": "reslib://vehicle_1.0/1.0",
   "archive": "BASE64 ARCHIVE JAR"
 }
+
+
+
+# License
+[Apache 2.0](LICENSE)
+
+# Notice
+© Copyright IBM Corporation 2017.
