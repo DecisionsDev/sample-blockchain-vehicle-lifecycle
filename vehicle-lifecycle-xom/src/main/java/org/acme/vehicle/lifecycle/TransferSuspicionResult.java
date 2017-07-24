@@ -28,8 +28,8 @@ public class TransferSuspicionResult
 	public TransferSuspicionResult() 
 	{
 		// at this point, JSON has been desrialized and we don't need the list
-		Vehicle.clearVehicles();
-		Person.clearPersons();
+		// Vehicle.clearVehicles();
+		// Person.clearPersons();
 	}
 	public String $class;
 	public String status;

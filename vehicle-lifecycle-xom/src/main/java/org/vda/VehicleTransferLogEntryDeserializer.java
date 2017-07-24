@@ -68,7 +68,7 @@ public class VehicleTransferLogEntryDeserializer extends JsonDeserializer<Vehicl
 		public String timestamp;
 	}
 	
-	
+
 	@Override
 	public VehicleTransferLogEntry deserialize(
 			com.fasterxml.jackson.core.JsonParser parser,
@@ -94,7 +94,7 @@ public class VehicleTransferLogEntryDeserializer extends JsonDeserializer<Vehicl
 			vehicleId = getId(entry.vehicle);
 		}
 		
-		result.vehicle = Vehicle.getVehicle(vehicleId);
+		result.vehicle = null;//Vehicle.getVehicle(vehicleId);
 		if (result.vehicle != null) {
 			System.out.println("found");
 		} else {
@@ -108,7 +108,7 @@ public class VehicleTransferLogEntryDeserializer extends JsonDeserializer<Vehicl
 			personId = getId(entry.buyer);
 		}
 		
-		result.buyer = Person.getPerson(personId);
+		result.buyer = null; //Person.getPerson(personId);
 		if (result.buyer != null) {
 			System.out.println("found");
 		} else {
@@ -121,7 +121,7 @@ public class VehicleTransferLogEntryDeserializer extends JsonDeserializer<Vehicl
 			personId = getId(entry.seller);
 		}
 		
-		result.seller = Person.getPerson(personId);
+		result.seller = null; //Person.getPerson(personId);
 		if (result.seller != null) {
 			System.out.println("found");
 		} else {

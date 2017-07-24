@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
 //import composer.base.MyIdGenerator;
 import composer.base.Person;
@@ -32,8 +32,12 @@ import composer.base.Person;
 // we should be able to use the following annotation to manage the graph
 // fields representing a reference probably need to be annotated too
 // @JsonIdentityInfo(generator=MyIdGenerator.class, property="vin")
+@JsonIgnoreProperties({})
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "$class")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "vin")
 public class Vehicle 
 {
+	/*
 	public static Map<Long,ThreadLocal<Map<String, Vehicle>>> VEHICLE_THREADMAP;
 	
 	static {
@@ -68,25 +72,27 @@ public class Vehicle
 		VEHICLE_THREADMAP.remove(Thread.currentThread().getId());
 		System.out.println("clear vehicles (thread id:" + Thread.currentThread().getId() + ")");
 	}
-	
+	*/
+
 	public Vehicle() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public String $class;
+
 	public String vin;
 	
 	@JsonProperty("vin")
 	public void setVin(String v) {
 		vin = v;
-		System.out.println("--------> creating a new vehicle: (thread id:" + Thread.currentThread().getId() + "): " + v);
-		getVehicleMap().put(v, this);
+		// System.out.println("--------> creating a new vehicle: (thread id:" + Thread.currentThread().getId() + "): " + v);
+		// getVehicleMap().put(v, this);
 	}
-	
+
+	public String numberPlate;
+	public String suspiciousMessage;
 	public VehicleDetails vehicleDetails;
 	public VehicleStatus vehicleStatus;
-	public Person owner ;
-	public String numberPlate ;
-	public String suspiciousMessage ;
-	public ArrayList<VehicleTransferLogEntry> logEntries ;
+	public Person owner;
+	public ArrayList<VehicleTransferLogEntry> logEntries;
+	/*
+	*/
 }

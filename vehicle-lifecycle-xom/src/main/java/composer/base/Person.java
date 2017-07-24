@@ -23,13 +23,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.vda.Vehicle;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "$class")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "ssn")
 public  class Person 
 {
+	/*
 	public static Map<Long,ThreadLocal<Map<String, Person>>> PERSON_THREADMAP;
 	
 	static {
@@ -54,29 +59,34 @@ public  class Person
 	
 	public static Person getPerson(String ssn) 
 	{
-		System.out.println("--------> get person (thread id:" + Thread.currentThread().getId() + "): " + ssn);
-		return getPersonMap().get(ssn);
+		// System.out.println("--------> get person (thread id:" + Thread.currentThread().getId() + "): " + ssn);
+		// return getPersonMap().get(ssn);
+		return null;
 	}
 	
 	public static void clearPersons() 
 	{
-		getPersonMap().clear();
-		PERSON_THREADMAP.remove(Thread.currentThread().getId());
-		System.out.println("clear persons (thread id:" + Thread.currentThread().getId() + ")");
+		// getPersonMap().clear();
+		// PERSON_THREADMAP.remove(Thread.currentThread().getId());
+		// System.out.println("clear persons (thread id:" + Thread.currentThread().getId() + ")");
 	}
+	*/
 
 	public Person() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public String $class;
+
+	public Person(String ssn) {
+		this.ssn = ssn;
+	}
+
 	public String ssn ;
 	
 	@JsonProperty("ssn")
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
-		System.out.println("--------> creating a new person (thread id:" + Thread.currentThread().getId() + "): " + ssn);
-		getPersonMap().put(ssn, this);
+		// System.out.println("--------> creating a new person (thread id:" + Thread.currentThread().getId() + "): " + ssn);
+		// getPersonMap().put(ssn, this);
 	}
 	
 	public String title ;
