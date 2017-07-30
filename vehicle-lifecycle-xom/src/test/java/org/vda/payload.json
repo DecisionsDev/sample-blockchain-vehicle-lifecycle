@@ -1,0 +1,78 @@
+{
+    "$class": "org.acme.vehicle.lifecycle.decision.IsSuspiciousTransferDecisionService",
+    "$id": "resource:org.acme.vehicle.lifecycle.decision.IsSuspiciousTransferDecisionService#1111",
+    "dsId": "isSuspiciousTransfer",
+    "transaction": {
+        "$class": "org.vda.PrivateVehicleTransfer",
+        "$id": "resource:org.vda.PrivateVehicleTransfer#94f98205-8328-4370-8a8b-c5ee89671190",
+        "seller": {
+            "$class": "composer.base.Person",
+            "$id": "resource:composer.base.Person#dan",
+            "ssn": "dan",
+            "firstName": "Dan",
+            "lastName": "Selman",
+            "gender": "MALE",
+            "nationalities": [
+                "French",
+                "UK"
+            ],
+            "contactDetails": {
+                "$class": "composer.base.ContactDetails",
+                "email": "dan@acme.org",
+                "address": {
+                    "$class": "composer.base.Address",
+                    "city": "Winchester",
+                    "country": "UK",
+                    "region": "England"
+                }
+            }
+        },
+        "buyer": {
+            "$class": "composer.base.Person",
+            "$id": "resource:composer.base.Person#anthony",
+            "ssn": "anthony",
+            "firstName": "Anthony",
+            "lastName": "Smith",
+            "gender": "MALE",
+            "nationalities": [
+                "French"
+            ],
+            "contactDetails": {
+                "$class": "composer.base.ContactDetails",
+                "email": "anthony@acme.org",
+                "address": {
+                    "$class": "composer.base.Address",
+                    "city": "Paris",
+                    "country": "France",
+                    "region": "IDF"
+                }
+            }
+        },
+        "specialNotes": "Dan selling a car to Anthony Smith",
+        "vehicle": {
+            "$class": "org.vda.Vehicle",
+            "$id": "resource:org.vda.Vehicle#156478954",
+            "vin": "156478954",
+            "vehicleDetails": {
+                "$class": "org.vda.VehicleDetails",
+                "make": "Arium",
+                "modelType": "Nova",
+                "colour": "white",
+                "vin": "156478954",
+                "taxationClass": "PETROL_CAR"
+            },
+            "vehicleStatus": "ACTIVE",
+            "owner": "resource:composer.base.Person#dan",
+            "logEntries": [
+                {
+                    "$class": "org.vda.VehicleTransferLogEntry",
+                    "vehicle": "resource:org.vda.Vehicle#156478954",
+                    "buyer": "resource:composer.base.Person#dan",
+                    "timestamp": "2017-07-27T22:59:48.388Z"
+                }
+            ]
+        },
+        "transactionId": "94f98205-8328-4370-8a8b-c5ee89671190",
+        "timestamp": "2017-07-27T22:59:58.008Z"
+    }
+}

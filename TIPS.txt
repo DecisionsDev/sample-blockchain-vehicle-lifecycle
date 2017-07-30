@@ -1,0 +1,53 @@
+This file contains tips that you might need using this demo. 
+
+# using nvm to switch node version
+nvm use 6.10.3
+
+# check the version of HyperLedger Composer you are running: 
+composer -v
+
+# running Composer Playground
+You can run playground: http://localhost:8080. You might have to do it from a private browser window 
+or call localstorage.clear() in the web browser console to start with a clean cache
+
+# max size error when deploying ruleapp or xom
+
+Depending on the size of your XOM or the size of your Ruleapp, you may have the following error generated
+by Fabric: 
+
+"Error: error trying invoke chaincode. Error: Error: Received message larger than max (5868842 vs. 4194304)"
+
+To workaround this error you need to perform the following actions:
+- stop Fabric
+- change the ~/.composer-connection-profiles/hlfv1/connection.json 
+profile file store in your home directory to add the following 'maxRecvSize' and 'maxSendSize' properties:
+
+{
+    "type": "hlfv1",
+    "orderers": [
+       { "url" : "grpc://localhost:7050" }
+    ],
+    "ca": { "url": "http://localhost:7054", 
+            "name": "ca.org1.example.com"
+    },
+    "peers": [
+        {
+            "requestURL": "grpc://localhost:7051",
+            "eventURL": "grpc://localhost:7053"
+        }
+    ],
+    "keyValStore": "/Users/johnsmith/.composer-credentials",
+    "channel": "composerchannel",
+    "mspID": "Org1MSP",
+    "timeout": "300"
+    "maxSendSize": "20971520",
+    "maxRecvSize": "20971520",
+}
+
+This will allow messages of 20M instead of the default 4M. 
+
+- restart Fabric after this change.
+
+# Docker tips
+
+Connecting inside the container: docker exec -it <containerIdOrName> bash

@@ -1,0 +1,22 @@
+
+# TASKS
+- add license & legal statement in Readme. 
+- document OS prerequisites and point to ODM installation guide in README
+- add license support for hamcrest, jackson and junit used in the XOM
+- move the decision service to Decision Engine
+- add java unit test to the decision logic so that we can test the logic without the blockchain
+- we should have a script command (maven-based?) that allows to generate the ruleapp based on ODM 8.9 build commad.
+  The script takes the decision service source and generate a ruleapp jar and the XOM that could be deployed using cli api through
+  the blockchain.
+- script to deploy Ruleapp and XOM to the RES running in Docker
+        [alternative is to use the deployment through Blockchain]
+- enable odm-deployer-webapp instead of odm-deployer
+- review XOM deployment, does not work if the transaction is rolled-back as side effect on RES is not rolledback
+
+# V2 
+- reuse the exact same CTO as the Composer demo (see inheritance of Person)
+- change IsSuspiciousTransferDecisionService to a concept when Composer supports serialization of a Concept as a root
+- show how to create an HA topology
+    - set-up an instance of RES per instance of peers
+        - support HA: if a peer/RES goes down, the second one take over
+        - need to map ports so that Smart Contract uses only one URL
