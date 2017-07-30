@@ -15,87 +15,26 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package composer.base;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.hyperledger.composer.system.Participant;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.vda.Vehicle;
+public class Person extends Participant {
+   
+   // the accessor for the identifying field
+   public String getID() {
+      return ssn;
+   }
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "$class")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "ssn")
-public  class Person 
-{
-	/*
-	public static Map<Long,ThreadLocal<Map<String, Person>>> PERSON_THREADMAP;
-	
-	static {
-		PERSON_THREADMAP = new HashMap<Long,ThreadLocal<Map<String, Person>>>();
-	}
-	
-	public static Map<String, Person> getPersonMap() 
-	{
-		long id = Thread.currentThread().getId();
-		Map<String, Person> result = null;
-		ThreadLocal<Map<String, Person>> tl = PERSON_THREADMAP.get(id);
-		if (tl != null) {
-			result = tl.get();
-		}		
-		if (result == null) {
-			result = new HashMap<String, Person>();			
-			PERSON_THREADMAP.put(id, new ThreadLocal<Map<String, Person>>());
-			PERSON_THREADMAP.get(id).set(result);
-		}
-		return result;
-	}
-	
-	public static Person getPerson(String ssn) 
-	{
-		// System.out.println("--------> get person (thread id:" + Thread.currentThread().getId() + "): " + ssn);
-		// return getPersonMap().get(ssn);
-		return null;
-	}
-	
-	public static void clearPersons() 
-	{
-		// getPersonMap().clear();
-		// PERSON_THREADMAP.remove(Thread.currentThread().getId());
-		// System.out.println("clear persons (thread id:" + Thread.currentThread().getId() + ")");
-	}
-	*/
-
-	public Person() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Person(String ssn) {
-		this.ssn = ssn;
-	}
-
-	public String ssn ;
-	
-	@JsonProperty("ssn")
-	public void setSsn(String ssn) {
-		this.ssn = ssn;
-		// System.out.println("--------> creating a new person (thread id:" + Thread.currentThread().getId() + "): " + ssn);
-		// getPersonMap().put(ssn, this);
-	}
-	
-	public String title ;
-	public String firstName ;  
-	public String lastName ;  
-	public ArrayList<String> middleNames  ; 
-	public Gender gender  ;
-	public ArrayList<String> nationalities  ;
-	public ContactDetails contactDetails  ;
-	public BirthDetails birthDetails  ;
-	public DeathDetails deathDetails  ;
+   public String ssn;
+   public String title;
+   public String firstName;
+   public String lastName;
+   public String[] middleNames;
+   public Gender gender;
+   public String[] nationalities;
+   public ContactDetails contactDetails;
+   public BirthDetails birthDetails;
+   public DeathDetails deathDetails;
 }

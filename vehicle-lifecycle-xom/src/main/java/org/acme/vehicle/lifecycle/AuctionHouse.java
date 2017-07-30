@@ -15,10 +15,8 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.acme.vehicle.lifecycle;
 
-public class AuctionHouse extends Company 
-{
-	public String $class;
+public class AuctionHouse extends Company {
 }

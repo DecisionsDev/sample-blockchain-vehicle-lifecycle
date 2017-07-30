@@ -1,5 +1,21 @@
+/*
+ *
+ *   Copyright IBM Corp. 2017
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ *
+ */
 'use strict';
-
 
 const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;
 const Table = require('cli-table');
@@ -103,36 +119,17 @@ class VehicleLifecycle {
         return this.bizNetworkConnection.submitTransaction(transaction);
     }
 
-    testDecode(filepath, ruleapp64)
-    {
-        const METHOD = 'testDecodeRuleapp';
-        LOG.info(METHOD, "try to write ruleapp bin: " + ruleapp64.length + " bytes");
-        var buf = Buffer.from(ruleapp64, 'base64');
-        LOG.info(METHOD, "buffer length: " + buf.length + " bytes");
-
-        filepath = filepath.replace(".jar", ".copy.jar");
-        
-         var fd =  fs.openSync(filepath, 'w');
-        fs.write(fd, buf, 0, buf.length, 0, function(err,written) {
-            if (err) {
-                LOG.error(METHOD, "error writing file: " + err);
-            }
-        });
-    }
-
     deployRuleapp(filepath, ruleappVersion, rulesetVersion) 
     {
         const METHOD = 'deployRuleapp';
 	    let factory        = this.businessNetworkDefinition.getFactory();
 	    let transaction    = factory.newTransaction('com.ibm.rules','RuleAppUpdated');
-        transaction.ruleAppName = 'vehicle/isSuspiciousEntryPoint';		
+        transaction.ruleAppName = 'vehicle_lifecycle_ds/isSuspiciousEntryPoint';		
         transaction.resDeployerURL = 'http://odm-deployer:1880/deploy';		
         transaction.ruleapp_version = ruleappVersion;
         transaction.ruleset_version = rulesetVersion;
-        transaction.managedXomURI = 'reslib://vehicle_1.0/1.0';
+        transaction.managedXomURI = 'reslib://vehicle_lifecycle_ds_1.0/1.0';
         transaction.archive = VehicleLifecycle.base64_encode(filepath);
-
-        // this.testDecode(filepath, transaction.ruleApp);
 
         LOG.info(METHOD, 'Submitting RuleAppUpdated transaction');
         return this.bizNetworkConnection.submitTransaction(transaction);
@@ -161,11 +158,9 @@ class VehicleLifecycle {
 
         transaction.xomName = xomName; 
         transaction.resDeployerURL = 'http://odm-deployer:1880/deployXom';		
-        transaction.libraryName = 'vehicle_1.0';
+        transaction.libraryName = 'vehicle_lifecycle_ds_1.0';
         transaction.library_version = libVersion;
         transaction.xom = VehicleLifecycle.base64_encode(filepath);
-
-        // this.testDecode(filepath, transaction.ruleApp);
 
         LOG.info(METHOD, 'Submitting RuleAppUpdated transaction');
         return this.bizNetworkConnection.submitTransaction(transaction);
@@ -290,7 +285,7 @@ class VehicleLifecycle {
     }
 
     /**
-     * This method reset the model of the Business Network
+     * This method reset the model of the Business Network. It preserves the XOM and Ruleapp resources.
      */
     reset()
     {
@@ -339,7 +334,7 @@ class VehicleLifecycle {
 
 
     /**
-     * This method cleans all resources from the Business Network
+     * This method cleans all resources from the Business Network, including the XOM and Ruleapp resources.
      */
     clean()
     {
@@ -621,7 +616,7 @@ class VehicleLifecycle {
         if (cmdLine.length > 1) {
             filepath = cmdLine[1];
         } else {
-            filepath = '../vehicle-lifecycle-decision-service/resources/xom-libraries/vehicle-lifecycle-xom.zip';
+            filepath = '../vehicle-lifecycle-decision-service/output/vehicle-lifecycle-xom.zip';
             LOG.warn("File not provided, assuming '" + filepath + "'");
         }
         if (cmdLine.length > 2) {

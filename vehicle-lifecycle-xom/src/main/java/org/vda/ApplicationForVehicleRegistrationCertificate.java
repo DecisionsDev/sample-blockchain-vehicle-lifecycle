@@ -15,19 +15,18 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
-import composer.base.Person;
+import org.hyperledger.composer.system.Transaction;
 
-public class ApplicationForVehicleRegistrationCertificate 
+import composer.base.Person;
+public class ApplicationForVehicleRegistrationCertificate extends Transaction 
 {
-	public String $class;
-	 public String transactionId;
-	 public VehicleDetails vehicleDetails;
-	 public Person keeper;
-	 public String dvlaFleetNumber ;
-	 public String driversLicenseNumber ;
-	 public long mileage ;
-	 public String previousPostCode ;
+   public VehicleDetails vehicleDetails;
+   public Person keeper;
+   public String dvlaFleetNumber;
+   public String driversLicenseNumber;
+   public long mileage;
+   public String previousPostCode;
 }

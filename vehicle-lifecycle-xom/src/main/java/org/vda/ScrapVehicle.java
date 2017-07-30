@@ -15,15 +15,10 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
-import java.util.ArrayList;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties({"$class"})
 public class ScrapVehicle extends VehicleTransaction 
-{
-	public ArrayList<VehicleTransaction> logEntries ;
+{   
+   public VehicleTransaction[] logEntries;
 }

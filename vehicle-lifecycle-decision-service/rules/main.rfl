@@ -9,9 +9,9 @@
   <Body>
     <TaskList>
       <StartTask Identifier="task_1">
-        <Actions Language="irl"><![CDATA[result = new  org.acme.vehicle.lifecycle.TransferSuspicionResult();]]>&#13;<![CDATA[
-result.status = "ACCEPTED";]]>&#13;<![CDATA[
-result.message = "";]]>&#13;<![CDATA[
+        <Actions Language="irl"><![CDATA[result = new  org.acme.vehicle.lifecycle.decision.TransferSuspicionResult();
+result.status = "ACCEPTED";
+result.message = "";
 ]]></Actions>
       </StartTask>
       <RuleTask ExecutionMode="Fastpath" ExitCriteria="None" Identifier="suspicion rules" Ordering="Default">
@@ -33,25 +33,27 @@ result.message = "";]]>&#13;<![CDATA[
   </Body>
   <Resources>
     <ResourceSet Locale="en_US">
-      <Data Name="node_0#height">53.402344</Data>
       <Data Name="node_2#height">22.0</Data>
-      <Data Name="node_2#name">node_2</Data>
-      <Data Name="node_2#width">22.0</Data>
-      <Data Name="node_1#name">node_0</Data>
-      <Data Name="node_0#y">97.70117</Data>
-      <Data Name="node_0#x">51.0</Data>
-      <Data Name="node_1#x">51.0</Data>
-      <Data Name="node_1#width">21.0</Data>
-      <Data Name="node_1#y">10.5</Data>
       <Data Name="node_1#height">21.0</Data>
+      <Data Name="node_0#height">53.402344</Data>
+      <Data Name="node_1#name">node_0</Data>
+      <Data Name="node_2#name">node_2</Data>
+      <Data Name="node_1#width">21.0</Data>
+      <Data Name="node_0#name">node_0</Data>
+      <Data Name="node_2#width">22.0</Data>
+      <Data Name="node_0#width">102.0</Data>
+      <Data Name="node_0#x">51.0</Data>
+      <Data Name="node_0#y">97.70117</Data>
+      <Data Name="node_1#x">51.0</Data>
+      <Data Name="node_1#y">10.5</Data>
       <Data Name="node_2#x">51.0</Data>
       <Data Name="node_2#y">185.40234</Data>
-      <Data Name="node_0#width">102.0</Data>
     </ResourceSet>
   </Resources>
   <Properties>
-    <imports><![CDATA[import org.acme.vehicle.lifecycle.TransferSuspicionResult;
+    <imports><![CDATA[import org.acme.vehicle.lifecycle.decision.TransferSuspicionResult;
 ]]></imports>
   </Properties>
-</Ruleflow></rfModel>
+</Ruleflow>
+</rfModel>
 </ilog.rules.studio.model.ruleflow:RuleFlow>

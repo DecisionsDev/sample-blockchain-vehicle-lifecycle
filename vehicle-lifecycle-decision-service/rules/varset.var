@@ -3,5 +3,5 @@
   <name>varset</name>
   <uuid>d42b5c79-6622-49eb-925a-2d784d9b4c24</uuid>
   <variables name="transaction" type="org.vda.PrivateVehicleTransfer" initialValue="" verbalization="the transaction"/>
-  <variables name="result" type="org.acme.vehicle.lifecycle.TransferSuspicionResult" initialValue="" verbalization="suspicion result"/>
+  <variables name="result" type="org.acme.vehicle.lifecycle.decision.TransferSuspicionResult" initialValue="" verbalization="suspicion result"/>
 </ilog.rules.studio.model.base:VariableSet>

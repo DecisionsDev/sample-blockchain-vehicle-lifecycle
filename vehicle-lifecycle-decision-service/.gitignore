@@ -2,7 +2,7 @@
 bin
 output
 reports
-target/
+target
 .DS_Store
 .syncEntries
-resources/xom-libraries
+resources

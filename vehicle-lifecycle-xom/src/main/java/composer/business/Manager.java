@@ -15,13 +15,10 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package composer.business;
 
-import java.util.ArrayList;
-
-public class Manager extends Employee 
+public abstract class Manager extends Employee 
 {
-	public String $class;
-	 public ArrayList<Employee> directReports ;
+   public Employee[] directReports;
 }

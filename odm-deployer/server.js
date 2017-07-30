@@ -1,3 +1,20 @@
+/*
+ *
+ *   Copyright IBM Corp. 2017
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ *
+ */
 'use strict';
 
 var express = require('express');
@@ -17,7 +34,6 @@ This entry point deploy the ruleapp archive given as argument along with informa
 ruleapp version. User has to make sure that the ruleapp version in the archive matches the
 version information received from Composer
 */
-
 app.post('/deploy', function (req, res) {
     console.log("Receiving a deploy request " + JSON.stringify(req.body));
     var ruleAppUpdatedTx = req.body;
@@ -101,11 +117,10 @@ app.post('/deploy', function (req, res) {
 
     resreq.on('error', function(err) {
       console.error("communication error");
-      // This prints the error message and stack trace to `stderr`.
       console.error(err.stack);
     });
 
-    // send deploy request to the RES
+    // send the deploy request to the RES
     resreq.write(buf);
     resreq.end();
 
@@ -166,16 +181,15 @@ var updateArchiveXom = function(ruleappName, rulesetName, ruleappVersion, rulese
     });
     resreq.on('error', function(err) {      
       console.error("communication error");
-      // This prints the error message and stack trace to `stderr`.
       console.error(err.stack);
       reject(err);
     });
 
-    // send update request to the RES
+    // send the update request to the RES
     resreq.write(body);
     resreq.end();
 
-    console.log("Done Update");
+    console.log("Update done");
   });
 };
 
@@ -183,7 +197,6 @@ var updateArchiveXom = function(ruleappName, rulesetName, ruleappVersion, rulese
 This entry point deploy the xom archive given as argument along with information about 
 xom version. 
 */
-
 app.post('/deployXom', function (req, res) {
     console.log("Receiving a deploy xom request " + JSON.stringify(req.body));
     var xomUpdatedTx = req.body;
@@ -273,11 +286,10 @@ app.post('/deployXom', function (req, res) {
 
     resreq.on('error', function(err) {
       console.error("communication error");
-      // This prints the error message and stack trace to `stderr`.
       console.error(err.stack);
     });
 
-    // send deploy request to the RES
+    // send the deploy request to the RES
     resreq.write(buf);
     resreq.end();
 
@@ -331,7 +343,7 @@ var updateLibrary = function(uri, libraryName, libraryVersion)
       });
     };
 
-    // first try to a PUT
+    // first try with the PUT cmd
     var resreq = http.request(options, function(resResponse) 
     {
       if (resResponse.statusCode == 202) {
@@ -341,7 +353,6 @@ var updateLibrary = function(uri, libraryName, libraryVersion)
         var resreq2 = http.request(options, processResponse);
         resreq2.on('error', function(err) {      
           console.error("POST communication error");
-          // This prints the error message and stack trace to `stderr`.
           console.error(err.stack);
           reject(err);
         });
@@ -354,7 +365,6 @@ var updateLibrary = function(uri, libraryName, libraryVersion)
     });
     resreq.on('error', function(err) {      
       console.error("PUT communication error");
-      // This prints the error message and stack trace to `stderr`.
       console.error(err.stack);
       reject(err);
     });
@@ -362,7 +372,7 @@ var updateLibrary = function(uri, libraryName, libraryVersion)
     resreq.write(body);
     resreq.end();
 
-    console.log("Done Update");
+    console.log("Update done");
   });
 };
 

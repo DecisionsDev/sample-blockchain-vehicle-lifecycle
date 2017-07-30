@@ -15,16 +15,15 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.acme.vehicle.lifecycle.manufacturer;
 
-public class UpdateOrderStatus 
+import org.hyperledger.composer.system.Transaction;
+public class UpdateOrderStatus extends Transaction 
 {
-	public String $class;
-	public String transactionId;
-	public OrderStatus orderStatus;
-	public String vin ;
-	public String v5c ;
-	public String numberPlate ;
-	public Order order;
+   public OrderStatus orderStatus;
+   public String vin;
+   public String v5c;
+   public String numberPlate;
+   public Order order;
 }

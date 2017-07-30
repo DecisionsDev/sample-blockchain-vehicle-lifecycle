@@ -18,10 +18,6 @@ ENV CONNECTION_POOL_SIZE 20
 ENV SCRIPT /script
 RUN chmod -R a+x $SCRIPT
 
-# Sample DB 
-#ADD ./data/resdb.tar.gz /upload/
-
-
 # Decision Server Console
 RUN mkdir -p /config/apps/res.war
 COPY ./target/liberty-bundle/WLP855/res.war /config/apps/res-file.war

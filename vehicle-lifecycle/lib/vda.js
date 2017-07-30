@@ -22,17 +22,12 @@ function privateVehicleTransfer(privateVehicleTransfer) {
     console.log('================================================================');
     console.log('processing a privateVehicleTransfer');
     console.log('================================================================');
-    /*var options = {};
-    //options.convertResourcesToRelationships = true;
-    options.permitResourcesForRelationships = true;
-    var data = getSerializer().toJSON(privateVehicleTransfer, options);
-    console.log(data);
-    */
 
     var currentParticipant = getCurrentParticipant();
     
     var NS_M = 'org.acme.vehicle.lifecycle.manufacturer';
     var NS = 'org.acme.vehicle.lifecycle';
+    var NS_DECISION = 'org.acme.vehicle.lifecycle.decision';
     var NS_D = 'org.vda';
     var NS_B = 'composer.base';
     var NS_I = 'com.ibm.rules';
@@ -45,7 +40,7 @@ function privateVehicleTransfer(privateVehicleTransfer) {
 
     var vehicleRegistry; 
     var ruleappVersionRegistry; 
-    var ruleAppName = "vehicle/isSuspiciousEntryPoint";
+    var ruleAppName = "vehicle_lifecycle_ds/isSuspiciousEntryPoint";
     var currentVersion = null;
 
     return getAssetRegistry(NS_D + '.' + 'Vehicle')
@@ -93,13 +88,12 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         // The Decision Service receives all the data about the current transaction: buyer, seller and the vehicle
 
         var url = 'http://odmruntime_odm-runtime_1:9060/DecisionService/rest/' + rulesetPath;
-        // var url = 'http://sample-rest-service:1890/compute';
 
-        var wrapper = factory.newResource(NS, 'TransactionWrapper', 'dummy');
-        wrapper.transaction = privateVehicleTransfer;
+        var dsCallObject = factory.newResource(NS_DECISION, 'IsSuspiciousTransferDecisionService', "isSuspiciousTransfer");
+        dsCallObject.transaction = privateVehicleTransfer;
 
         print("Calling ODM Decision Service: " + url);
-        return post( url, wrapper);
+        return post( url, dsCallObject, {permitResourcesForRelationships: true, deduplicateResources: true});
     })
     .then(function (response) {
         print("Receiving answer from ODM Decision Service: " + JSON.stringify(response));
@@ -113,7 +107,7 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         } 
     })
     .catch(function (error) {
-        print("Error calling out the decision service");
+        print("Error calling out the ODM decision service");
         print(error);
         vehicle.suspiciousMessage = "Call to the Decision Service failed";
     })
@@ -123,7 +117,6 @@ function privateVehicleTransfer(privateVehicleTransfer) {
 
         //PrivateVehicleTransaction for log
         var vehicleTransferLogEntry = factory.newConcept(NS_D, 'VehicleTransferLogEntry');
-        vehicleTransferLogEntry.transactionId = privateVehicleTransfer.transactionId;
         vehicleTransferLogEntry.vehicle = factory.newRelationship(NS_D, 'Vehicle', vehicle.getIdentifier());
         vehicleTransferLogEntry.seller = factory.newRelationship(NS_B, 'Person', seller.getIdentifier());
         vehicleTransferLogEntry.buyer = factory.newRelationship(NS_B, 'Person', buyer.getIdentifier());

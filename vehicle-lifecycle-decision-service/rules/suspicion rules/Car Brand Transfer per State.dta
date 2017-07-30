@@ -61,7 +61,7 @@
               <Partition DefId="C1">
                 <Condition>
                   <Expression>
-                    <Param><![CDATA["Porshe"]]></Param>
+                    <Param><![CDATA["Porsche"]]></Param>
                   </Expression>
                   <Partition DefId="C2">
                     <Condition>

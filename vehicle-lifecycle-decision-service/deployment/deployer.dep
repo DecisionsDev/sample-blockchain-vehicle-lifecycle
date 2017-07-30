@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<com.ibm.rules.studio.model.decisionservice:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" ruleAppName="vehicle" managingXom="true">
+<com.ibm.rules.studio.model.decisionservice:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" ruleAppName="vehicle_lifecycle_ds" managingXom="true">
   <name>deployer</name>
   <uuid>813725c7-ee8c-41f7-b14a-78016899ae39</uuid>
-  <targets label="Blockchain RES"/>
   <operations operationName="isSuspiciousEntryPoint">
     <operation href="isSuspiciousEntryPoint.dop#8b4e97b3-1d19-41d0-b763-43ab14ea906e"/>
     <properties key="ruleset.version">
       <value><![CDATA[1.0]]></value>
     </properties>
   </operations>
-  <versionPolicies label="Incrémenter les numéros de version mineure" ruleset="INCREMENT_MINOR" recurrent="true">
-    <description><![CDATA[Met à jour la version mineure pour chaque ensemble de règles. La nouvelle version devient disponible mais les versions précédentes sont conservées.]]></description>
+  <versionPolicies label="Increment minor version numbers" ruleset="INCREMENT_MINOR" recurrent="true">
+    <description><![CDATA[Updates the minor version for each ruleset. Makes the new version available but retains previous versions.]]></description>
   </versionPolicies>
-  <versionPolicies label="Utiliser les numéros de version de base" default="true" recurrent="true">
-    <description><![CDATA[Utilise les numéros fournis dans la configuration de déploiement. Remplace la dernière version de chaque ensemble de règles par cette édition. Utilisé pour les correctifs logiciels ou le développement.]]></description>
+  <versionPolicies label="Use the base version numbers" default="true" recurrent="true">
+    <description><![CDATA[Uses the numbers provided in the deployment configuration. Replaces the latest version of each ruleset with this release. Used for hot fixes or development.]]></description>
   </versionPolicies>
-  <versionPolicies label="L'utilisateur peut définir les numéros de version" ruleset="MANUAL" recurrent="true">
-    <description><![CDATA[Vous permet d'entrer vos propres numéros de version. Utilisé pour les correctifs logiciels ou les mises à jour d'une édition précédente.]]></description>
+  <versionPolicies label="The user can define the version numbers" ruleset="MANUAL" recurrent="true">
+    <description><![CDATA[Allows you to enter your own version numbers. Used for hot fixes or updates to an earlier release.]]></description>
   </versionPolicies>
 </com.ibm.rules.studio.model.decisionservice:Deployment>

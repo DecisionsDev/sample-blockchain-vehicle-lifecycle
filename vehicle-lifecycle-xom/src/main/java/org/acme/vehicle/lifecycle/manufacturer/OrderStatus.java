@@ -15,17 +15,15 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.acme.vehicle.lifecycle.manufacturer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @JsonIgnoreProperties({"$class"})
-public enum OrderStatus 
-{
-	PLACED,
-	SCHEDULED_FOR_MANUFACTURE,
-	VIN_ASSIGNED,
-	OWNER_ASSIGNED,
-	DELIVERED
+public enum OrderStatus {
+   PLACED,
+   SCHEDULED_FOR_MANUFACTURE,
+   VIN_ASSIGNED,
+   OWNER_ASSIGNED,
+   DELIVERED,
 }

@@ -15,15 +15,21 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
+import org.hyperledger.composer.system.CustomTypeIdResolver;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM, property = "$class")
+@JsonTypeIdResolver(CustomTypeIdResolver.class)
 public class ExhaustEmissions 
 {
-	public String $class;
-    public double co;
-	public double hc;
-	public double nox;
-	public double hc_plus_nox;
-	public double particulates;
+   public double co;
+   public double hc;
+   public double nox;
+   public double hc_plus_nox;
+   public double particulates;
 }

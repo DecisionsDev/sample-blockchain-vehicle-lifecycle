@@ -15,14 +15,13 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package composer.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @JsonIgnoreProperties({"$class"})
 public enum Gender {
-	MALE ,
-	FEMALE,
-	OTHER
+   MALE,
+   FEMALE,
+   OTHER,
 }

@@ -15,13 +15,18 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
-public class SoundDetails 
-{
-	public String $class;
-	public double stationary;
-	public double engineSpeed;
-	public double driveBy;
+import org.hyperledger.composer.system.CustomTypeIdResolver;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM, property = "$class")
+@JsonTypeIdResolver(CustomTypeIdResolver.class)
+public class SoundDetails {
+   public double stationary;
+   public double engineSpeed;
+   public double driveBy;
 }

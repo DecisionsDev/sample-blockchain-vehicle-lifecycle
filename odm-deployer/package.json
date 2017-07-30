@@ -1,12 +1,13 @@
 {
   "name": "odm-deployer",
   "version": "1.0.0",
-  "description": "Node.js REST service in Docker",
-  "author": "Stephane Mery <stephane.mery@fr.ibm.com>",
+  "description": "ODM Deployment REST service",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
+	"author": "IBM",
+	"license": "IBM",  
   "dependencies": {
     "express": "^4.13.3",
     "body-parser": "^1.17.2"

@@ -15,13 +15,16 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.acme.vehicle.lifecycle;
 
 import composer.base.Person;
+public class PrivateOwner extends Person {
+   
+   // the accessor for the identifying field
+   public String getID() {
+      return email;
+   }
 
-public class PrivateOwner extends Person 
-{
-	public String $class;
-	public String email;
+   public String email;
 }

@@ -1,10 +1,6 @@
-# Mac files.
-**/.DS_Store
 
-# NodeJS dependencies
+composer-logs
 node_modules
-fabric-tools*
-
 tmp
 logs
 *.bna

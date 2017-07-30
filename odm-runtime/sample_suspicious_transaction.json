@@ -1,10 +1,13 @@
 {
-    "$class": "org.acme.vehicle.lifecycle.TransactionWrapper",
-    "wrapperId": "dummy",
+    "$class": "org.acme.vehicle.lifecycle.decision.IsSuspiciousTransferDecisionService",
+    "$id": "resource:org.acme.vehicle.lifecycle.decision.IsSuspiciousTransferDecisionService#isSuspiciousTransfer",
+    "dsId": "isSuspiciousTransfer",
     "transaction": {
         "$class": "org.vda.PrivateVehicleTransfer",
+        "$id": "resource:org.vda.PrivateVehicleTransfer#4302c409-96f1-4660-9772-400875e5e2e2",
         "seller": {
             "$class": "composer.base.Person",
+            "$id": "resource:composer.base.Person#dan",
             "ssn": "dan",
             "firstName": "Dan",
             "lastName": "Selman",
@@ -19,16 +22,17 @@
                 "address": {
                     "$class": "composer.base.Address",
                     "city": "Winchester",
-                    "region": "England",
-                    "country": "UK"
+                    "country": "UK",
+                    "region": "England"
                 }
             }
         },
         "buyer": {
             "$class": "composer.base.Person",
+            "$id": "resource:composer.base.Person#anthony",
             "ssn": "anthony",
             "firstName": "Anthony",
-            "lastName": "Michel",
+            "lastName": "Smith",
             "gender": "MALE",
             "nationalities": [
                 "French"
@@ -39,15 +43,15 @@
                 "address": {
                     "$class": "composer.base.Address",
                     "city": "Paris",
-                    "region": "IDF",
-                    "country": "France"
+                    "country": "France",
+                    "region": "IDF"
                 }
             }
         },
-        "specialNotes": "Dan selling a car to Anthony Michel",
-        "transactionId": "5e7fc6f2-4076-452a-953b-3dcd8d1f5192",
+        "specialNotes": "Dan selling a car to Anthony Smith",
         "vehicle": {
             "$class": "org.vda.Vehicle",
+            "$id": "resource:org.vda.Vehicle#156478954",
             "vin": "156478954",
             "vehicleDetails": {
                 "$class": "org.vda.VehicleDetails",
@@ -58,36 +62,17 @@
                 "taxationClass": "PETROL_CAR"
             },
             "vehicleStatus": "ACTIVE",
-            "owner": {
-                "$class": "composer.base.Person",
-                "ssn": "dan",
-                "firstName": "Dan",
-                "lastName": "Selman",
-                "gender": "MALE",
-                "nationalities": [
-                    "French",
-                    "UK"
-                ],
-                "contactDetails": {
-                    "$class": "composer.base.ContactDetails",
-                    "email": "dan@acme.org",
-                    "address": {
-                        "$class": "composer.base.Address",
-                        "city": "Winchester",
-                        "region": "England",
-                        "country": "UK"
-                    }
-                }
-            },
+            "owner": "resource:composer.base.Person#dan",
             "logEntries": [
                 {
                     "$class": "org.vda.VehicleTransferLogEntry",
                     "vehicle": "resource:org.vda.Vehicle#156478954",
-                    "buyer": "resource:composer.base#anthony",
-                    "timestamp": "2017-06-02T09:47:14.903Z"
+                    "buyer": "resource:composer.base.Person#dan",
+                    "timestamp": "2017-07-30T13:57:13.652Z"
                 }
             ]
         },
-        "timestamp": "2017-06-02T09:47:14.903Z"
+        "transactionId": "4302c409-96f1-4660-9772-400875e5e2e2",
+        "timestamp": "2017-07-30T13:57:23.121Z"
     }
 }

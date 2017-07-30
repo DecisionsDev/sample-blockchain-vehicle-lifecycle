@@ -15,13 +15,16 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.acme.vehicle.lifecycle;
 
 import composer.business.Business;
+public class Company extends Business {
+   
+   // the accessor for the identifying field
+   public String getID() {
+      return companyId;
+   }
 
-public class Company extends Business 
-{
-	public String $class;
-	public String companyId;
+   public String companyId;
 }

@@ -15,14 +15,19 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package composer.base;
 
-public class ContactDetails 
-{
-	public String $class;
-	public String email  ;
-	public String mobilePhone  ;
-	public String homePhone ;
-	public Address address ;
+import org.hyperledger.composer.system.CustomTypeIdResolver;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM, property = "$class")
+@JsonTypeIdResolver(CustomTypeIdResolver.class)
+public class ContactDetails {
+   public String email;
+   public String mobilePhone;
+   public String homePhone;
+   public Address address;
 }

@@ -15,27 +15,21 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
-import java.util.Date;
+import org.hyperledger.composer.system.CustomTypeIdResolver;
 
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
 
 import composer.base.Person;
 
-//@JsonDeserialize(using = VehicleTransferLogEntryDeserializer.class)
-public class VehicleTransferLogEntry
-{
-	public VehicleTransferLogEntry() {
-	}
-	public String $class;
-	public Vehicle vehicle;
-	public Person buyer;
-	public Person seller ;
-	public Date timestamp;
+@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM, property = "$class")
+@JsonTypeIdResolver(CustomTypeIdResolver.class)
+public class VehicleTransferLogEntry {
+   public Vehicle vehicle;
+   public Person buyer;
+   public Person seller;
+   public java.util.Date timestamp;
 }

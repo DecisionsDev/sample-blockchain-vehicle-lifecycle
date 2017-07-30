@@ -15,19 +15,24 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package composer.base;
 
-public class Address 
-{
-	public String $class;
-	public String city ;
-	public String country ;
-	public String locality ;
-	public String region ;
-	public String street ;
-	public String street2 ;
-	public String street3 ;
-	public String postalCode ;
-	public String postOfficeBoxNumber ;
+import org.hyperledger.composer.system.CustomTypeIdResolver;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM, property = "$class")
+@JsonTypeIdResolver(CustomTypeIdResolver.class)
+public class Address {
+   public String city;
+   public String country;
+   public String locality;
+   public String region;
+   public String street;
+   public String street2;
+   public String street3;
+   public String postalCode;
+   public String postOfficeBoxNumber;
 }

@@ -130,12 +130,12 @@ org.acme.vehicle.lifecycle.Regulator#concept.label = regulator
 # org.acme.vehicle.lifecycle.ScrapMerchant
 org.acme.vehicle.lifecycle.ScrapMerchant#concept.label = scrap merchant
 
-# org.acme.vehicle.lifecycle.TransferSuspicionResult
-org.acme.vehicle.lifecycle.TransferSuspicionResult#concept.label = transfer suspicion result
-org.acme.vehicle.lifecycle.TransferSuspicionResult.message#phrase.action = set the message of {this} to {message}
-org.acme.vehicle.lifecycle.TransferSuspicionResult.message#phrase.navigation = {message} of {this}
-org.acme.vehicle.lifecycle.TransferSuspicionResult.status#phrase.action = set the status of {this} to {status}
-org.acme.vehicle.lifecycle.TransferSuspicionResult.status#phrase.navigation = {status} of {this}
+# org.acme.vehicle.lifecycle.decision.TransferSuspicionResult
+org.acme.vehicle.lifecycle.decision.TransferSuspicionResult#concept.label = transfer suspicion result
+org.acme.vehicle.lifecycle.decision.TransferSuspicionResult.message#phrase.action = set the message of {this} to {message}
+org.acme.vehicle.lifecycle.decision.TransferSuspicionResult.message#phrase.navigation = {message} of {this}
+org.acme.vehicle.lifecycle.decision.TransferSuspicionResult.status#phrase.action = set the status of {this} to {status}
+org.acme.vehicle.lifecycle.decision.TransferSuspicionResult.status#phrase.navigation = {status} of {this}
 
 # org.acme.vehicle.lifecycle.manufacturer.Manufacturer
 org.acme.vehicle.lifecycle.manufacturer.Manufacturer#concept.label = manufacturer

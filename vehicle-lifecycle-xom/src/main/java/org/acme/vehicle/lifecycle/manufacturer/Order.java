@@ -15,22 +15,24 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.acme.vehicle.lifecycle.manufacturer;
 
-import java.util.ArrayList;
-
+import org.hyperledger.composer.system.Asset;
 import org.vda.VehicleDetails;
 
 import composer.base.Person;
+public class Order extends Asset {
+   
+   // the accessor for the identifying field
+   public String getID() {
+      return orderId;
+   }
 
-public class Order 
-{
-	public String $class;
-	public String orderId;
-	public VehicleDetails vehicleDetails;
-	public OrderStatus orderStatus;
-	public Manufacturer manufacturer;
-	public Person orderer;
-	public ArrayList<UpdateOrderStatus> statusUpdates;
+   public String orderId;
+   public VehicleDetails vehicleDetails;
+   public OrderStatus orderStatus;
+   public Manufacturer manufacturer;
+   public Person orderer;
+   public UpdateOrderStatus[] statusUpdates;
 }

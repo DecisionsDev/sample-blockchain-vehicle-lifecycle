@@ -1,10 +1,11 @@
 {
 	"name": "vehicle-lifecycle-cli",
 	"version": "1.0.0",
-	"description": "Example of a Blockchain application using ODM Business Rules in Smart Contracts",
+	"description": "Client NodeJS application to manipulate vehicle-lifecycle",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"No test specified\"",
+		"deployRuleapp": "node cli.js deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle_lifecycle_ds.jar 1.0 1.0",
+		"deployXom": "node cli.js deployXom ../vehicle-lifecycle-decision-service/output/vehicle-lifecycle-xom.zip 1.0",
 		"listVehicles": "node cli.js listVehicles",
 		"makeSuspiciousTransfer1": "node cli.js makeSuspiciousTransfer1",
 		"makeSuspiciousTransfer2": "node cli.js makeSuspiciousTransfer2",
@@ -14,15 +15,14 @@
 		"setup": "node cli.js setup",
 		"transfers": "npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles",
 		"demo": "npm run reset && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles",
-		"deployRuleapp": "node cli.js deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.0",
-		"deployXom": "node cli.js deployXom ../vehicle-lifecycle-decision-service/resources/xom-libraries/vehicle-lifecycle-xom.zip 1.0"
+		"shortDemo": "npm run reset && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run listVehicles"
 	},
 	"author": "IBM",
 	"license": "IBM",
 	"dependencies": {
+    	"composer-admin": "^0.10.1",
+    	"composer-client": "^0.10.1",
     	"cli-table": "^0.3.1",
-    	"composer-admin": "^0.9.1",
-    	"composer-client": "^0.9.1",
     	"config": "^1.24.0",
     	"jsonfile": "^2.4.0",
     	"lodash": "^4.17.4",

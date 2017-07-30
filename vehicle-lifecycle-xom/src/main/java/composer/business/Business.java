@@ -15,17 +15,15 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package composer.business;
 
-import java.util.ArrayList;
+import org.hyperledger.composer.system.Participant;
 
 import composer.base.Address;
 
-public class Business 
-{
-	public String $class;
-	public Address headquarters ;
-	  public String name ;
-	  public ArrayList<Manager> managers ;
+public abstract class Business extends Participant {
+   public Address headquarters;
+   public String name;
+   public Manager[] managers;
 }

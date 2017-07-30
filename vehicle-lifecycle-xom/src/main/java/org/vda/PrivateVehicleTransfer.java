@@ -15,24 +15,13 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import composer.base.Person;
-
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "$class")
-@JsonIgnoreProperties({})
-public class PrivateVehicleTransfer // extends VehicleTransaction
-{
-	public Person seller;
-	public Person buyer;
-	public String specialNotes ;
-
-	//TODO: content from VehicleTransaction
-	public String timestamp;
-	public String transactionId;
-	public Vehicle vehicle;
+public class PrivateVehicleTransfer extends VehicleTransaction 
+{   
+   public Person seller;
+   public Person buyer;
+   public String specialNotes;
 }

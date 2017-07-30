@@ -1,7 +1,0 @@
-{
-  "$class": "org.vda.PrivateVehicleTransfer",
-  "seller": "resource:composer.base.Person#dan",
-  "buyer": "resource:composer.base.Person#anthony",
-  "specialNotes": "Dan selling a car to Anthony Michel",
-  "vehicle": "resource:org.vda.Vehicle#156478954"
-}

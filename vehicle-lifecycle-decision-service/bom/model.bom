@@ -7,7 +7,6 @@ package composer.base;
 
 public class Address
 {
-    public string $class;
     public string city;
     public string country domain {"France", "UK", "US"};
     public string locality;
@@ -22,7 +21,6 @@ public class Address
 
 public class BirthDetails
 {
-    public string $class;
     public java.util.Date dateOfBirth;
     public string placeOfBirth;
     public BirthDetails();
@@ -30,7 +28,6 @@ public class BirthDetails
 
 public class ContactDetails
 {
-    public string $class;
     public composer.base.Address address;
     public string email;
     public string homePhone;
@@ -40,7 +37,6 @@ public class ContactDetails
 
 public class DeathDetails
 {
-    public string $class;
     public java.util.Date dateOfDeath;
     public string placeOfDeath;
     public DeathDetails();
@@ -59,15 +55,14 @@ public final class Gender
 
 public class Person
 {
-    public string $class;
     public composer.base.BirthDetails birthDetails;
     public composer.base.ContactDetails contactDetails;
     public composer.base.DeathDetails deathDetails;
     public string firstName;
     public composer.base.Gender gender;
     public string lastName;
-    public java.util.ArrayList middleNames domain 0,* class string;
-    public java.util.ArrayList nationalities domain 0,* class string;
+    public java.lang.String[] middleNames;
+    public java.lang.String[] nationalities;
     public string ssn;
     public string title;
     public Person();
@@ -84,9 +79,8 @@ package composer.business;
 
 public class Business
 {
-    public string $class;
     public composer.base.Address headquarters;
-    public java.util.ArrayList managers domain 0,* class composer.business.Manager;
+    public composer.business.Manager[] managers;
     public string name;
     public Business();
 }
@@ -94,7 +88,6 @@ public class Business
 public class Employee
         extends composer.base.Person
 {
-    public string $class;
     public string department;
     public composer.business.Business employer;
     public string employmentStatus;
@@ -107,8 +100,7 @@ public class Employee
 public class Manager
         extends composer.business.Employee
 {
-    public string $class;
-    public java.util.ArrayList directReports domain 0,* class composer.business.Employee;
+    public composer.business.Employee[] directReports;
     public Manager();
 }
 
@@ -118,14 +110,12 @@ package org.acme.vehicle.lifecycle;
 public class AuctionHouse
         extends org.acme.vehicle.lifecycle.Company
 {
-    public string $class;
     public AuctionHouse();
 }
 
 public class Company
         extends composer.business.Business
 {
-    public string $class;
     public string companyId;
     public Company();
 }
@@ -133,7 +123,6 @@ public class Company
 public class PrivateOwner
         extends composer.base.Person
 {
-    public string $class;
     public string email;
     public PrivateOwner();
 }
@@ -141,20 +130,20 @@ public class PrivateOwner
 public class Regulator
         extends org.acme.vehicle.lifecycle.Company
 {
-    public string $class;
     public Regulator();
 }
 
 public class ScrapMerchant
         extends org.acme.vehicle.lifecycle.Company
 {
-    public string $class;
     public ScrapMerchant();
 }
 
+package org.acme.vehicle.lifecycle.decision;
+
+
 public class TransferSuspicionResult
 {
-    public string $class;
     public string message;
     public string status domain {"ACCEPTED", "SUSPICION", "REJECTED"};
     public TransferSuspicionResult();
@@ -166,19 +155,17 @@ package org.acme.vehicle.lifecycle.manufacturer;
 public class Manufacturer
         extends composer.business.Business
 {
-    public string $class;
     public string companyId;
     public Manufacturer();
 }
 
 public class Order
 {
-    public string $class;
     public org.acme.vehicle.lifecycle.manufacturer.Manufacturer manufacturer;
     public string orderId;
     public org.acme.vehicle.lifecycle.manufacturer.OrderStatus orderStatus;
     public composer.base.Person orderer;
-    public java.util.ArrayList statusUpdates domain 0,* class org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus;
+    public org.acme.vehicle.lifecycle.manufacturer.UpdateOrderStatus[] statusUpdates;
     public org.vda.VehicleDetails vehicleDetails;
     public Order();
 }
@@ -198,7 +185,6 @@ public final class OrderStatus
 
 public class PlaceOrder
 {
-    public string $class;
     public org.acme.vehicle.lifecycle.manufacturer.Manufacturer manufacturer;
     public string orderId;
     public composer.base.Person orderer;
@@ -209,7 +195,6 @@ public class PlaceOrder
 
 public class UpdateOrderStatus
 {
-    public string $class;
     public string numberPlate;
     public org.acme.vehicle.lifecycle.manufacturer.Order order;
     public org.acme.vehicle.lifecycle.manufacturer.OrderStatus orderStatus;
@@ -224,7 +209,6 @@ package org.vda;
 
 public class ApplicationForVehicleRegistrationCertificate
 {
-    public string $class;
     public string driversLicenseNumber;
     public string dvlaFleetNumber;
     public composer.base.Person keeper;
@@ -237,7 +221,6 @@ public class ApplicationForVehicleRegistrationCertificate
 
 public class ExhaustEmissions
 {
-    public string $class;
     public double co;
     public double hc;
     public double hc_plus_nox;
@@ -258,13 +241,12 @@ public class PrivateVehicleTransfer
 public class ScrapVehicle
         extends org.vda.VehicleTransaction
 {
-    public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransaction;
+    public org.vda.VehicleTransaction[] logEntries;
     public ScrapVehicle();
 }
 
 public class SoundDetails
 {
-    public string $class;
     public double driveBy;
     public double engineSpeed;
     public double stationary;
@@ -323,7 +305,6 @@ public final class TaxClass
 
 public class TrailerDetails
 {
-    public string $class;
     public double maxPermissibleTowableMassBraked;
     public double maxPermissibleTowableMassUnbraked;
     public TrailerDetails();
@@ -338,8 +319,7 @@ public class UpdateSuspicious
 
 public class Vehicle
 {
-    public string $class;
-    public java.util.ArrayList logEntries domain 0,* class org.vda.VehicleTransferLogEntry;
+    public org.vda.VehicleTransferLogEntry[] logEntries;
     public string numberPlate;
     public composer.base.Person owner;
     public string suspiciousMessage;
@@ -351,24 +331,23 @@ public class Vehicle
 
 public class VehicleDetails
 {
-    public string $class;
     public string bodyType;
-    public java.lang.Double co2;
+    public double co2;
     public string colour;
-    public java.lang.Integer cylinderCapacity;
+    public int cylinderCapacity;
     public string engineNumber;
     public org.vda.ExhaustEmissions exhaustEmissions;
-    public string make domain {"Toyota", "BMW", "Mercedes", "Porshe", "Chevrolet", "Ford", "Ferrari"};
-    public java.lang.Double massInService;
-    public java.lang.Double maxNetPower;
-    public java.lang.Double maxPermissibleMass;
+    public string make domain {"Toyota", "BMW", "Mercedes", "Porsche", "Chevrolet", "Ford", "Ferrari"};
+    public double massInService;
+    public double maxNetPower;
+    public double maxPermissibleMass;
     public string modelType;
     public string modelVariant;
     public string modelVersion;
-    public java.lang.Integer numberOfSeats;
-    public java.lang.Integer numberOfStandingPlaces;
-    public java.lang.Double powerWeightRatio;
-    public java.lang.Integer revenueWeight;
+    public int numberOfSeats;
+    public int numberOfStandingPlaces;
+    public double powerWeightRatio;
+    public int revenueWeight;
     public org.vda.SoundDetails soundDetails;
     public org.vda.TaxClass taxationClass;
     public org.vda.TrailerDetails trailerDetails;
@@ -393,7 +372,7 @@ public final class VehicleStatus
 
 public class VehicleTransaction
 {
-    public string timestamp;
+    public java.util.Date timestamp;
     public string transactionId;
     public org.vda.Vehicle vehicle;
     public VehicleTransaction();
@@ -401,7 +380,6 @@ public class VehicleTransaction
 
 public class VehicleTransferLogEntry
 {
-    public string $class;
     public composer.base.Person buyer;
     public composer.base.Person seller;
     public java.util.Date timestamp;

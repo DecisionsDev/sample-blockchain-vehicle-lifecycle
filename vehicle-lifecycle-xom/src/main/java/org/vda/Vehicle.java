@@ -1,4 +1,3 @@
-
 /*
  *
  *   Copyright IBM Corp. 2017
@@ -16,83 +15,24 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import org.hyperledger.composer.system.Asset;
 
-//import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.*;
-
-//import composer.base.MyIdGenerator;
 import composer.base.Person;
+public class Vehicle extends Asset {
+   
+   // the accessor for the identifying field
+   public String getID() {
+      return vin;
+   }
 
-// we should be able to use the following annotation to manage the graph
-// fields representing a reference probably need to be annotated too
-// @JsonIdentityInfo(generator=MyIdGenerator.class, property="vin")
-@JsonIgnoreProperties({})
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "$class")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "vin")
-public class Vehicle 
-{
-	/*
-	public static Map<Long,ThreadLocal<Map<String, Vehicle>>> VEHICLE_THREADMAP;
-	
-	static {
-		VEHICLE_THREADMAP = new HashMap<Long,ThreadLocal<Map<String, Vehicle>>>();
-	}
-	
-	public static Map<String, Vehicle> getVehicleMap() 
-	{
-		long id = Thread.currentThread().getId();
-		Map<String, Vehicle> result = null;
-		ThreadLocal<Map<String, Vehicle>> tl = VEHICLE_THREADMAP.get(id);
-		if (tl != null) {
-			result = tl.get();
-		}		
-		if (result == null) {
-			result = new HashMap<String, Vehicle>();			
-			VEHICLE_THREADMAP.put(id, new ThreadLocal<Map<String, Vehicle>>());
-			VEHICLE_THREADMAP.get(id).set(result);
-		}
-		return result;
-	}
-	
-	public static Vehicle getVehicle(String vin) 
-	{
-		System.out.println("--------> get vehicle (thread id:" + Thread.currentThread().getId() + "): " + vin);
-		return getVehicleMap().get(vin);
-	}
-	
-	public static void clearVehicles() 
-	{
-		getVehicleMap().clear();
-		VEHICLE_THREADMAP.remove(Thread.currentThread().getId());
-		System.out.println("clear vehicles (thread id:" + Thread.currentThread().getId() + ")");
-	}
-	*/
-
-	public Vehicle() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public String vin;
-	
-	@JsonProperty("vin")
-	public void setVin(String v) {
-		vin = v;
-		// System.out.println("--------> creating a new vehicle: (thread id:" + Thread.currentThread().getId() + "): " + v);
-		// getVehicleMap().put(v, this);
-	}
-
-	public String numberPlate;
-	public String suspiciousMessage;
-	public VehicleDetails vehicleDetails;
-	public VehicleStatus vehicleStatus;
-	public Person owner;
-	public ArrayList<VehicleTransferLogEntry> logEntries;
-	/*
-	*/
+   public String vin;
+   public VehicleDetails vehicleDetails;
+   public VehicleStatus vehicleStatus;
+   public Person owner;
+   public String numberPlate;
+   public String suspiciousMessage;
+   public VehicleTransferLogEntry[] logEntries;
 }

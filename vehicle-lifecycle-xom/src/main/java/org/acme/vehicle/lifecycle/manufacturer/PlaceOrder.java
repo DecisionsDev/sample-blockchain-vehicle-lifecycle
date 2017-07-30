@@ -15,19 +15,17 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.acme.vehicle.lifecycle.manufacturer;
 
+import org.hyperledger.composer.system.Transaction;
 import org.vda.VehicleDetails;
 
 import composer.base.Person;
-
-public class PlaceOrder 
+public class PlaceOrder extends Transaction 
 {
-	public String $class;
-	public String transactionId;
-	public String orderId;
-	public VehicleDetails vehicleDetails;
-	public Manufacturer manufacturer;
-	public Person orderer;
+   public String orderId;
+   public VehicleDetails vehicleDetails;
+   public Manufacturer manufacturer;
+   public Person orderer;
 }

@@ -15,40 +15,40 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import org.hyperledger.composer.system.CustomTypeIdResolver;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "$class")
-public class VehicleDetails 
-{
-	public String make;
-	public String modelType;
-	public String colour;
-	public String vin ;
-	public String modelVariant ;
-	public String modelVersion ;
-	public String bodyType ;
-	public TaxClass taxationClass ;
-	public Integer revenueWeight ;
-	public Integer cylinderCapacity ;
-	public Double co2 ; // g/km
-	public String typeOfFuel ;
-	public Integer numberOfSeats ;
-	public Integer numberOfStandingPlaces ;
-	public String wheelPlan ;
-	public String vehicleCategory ;
-	public String typeApprovalNumber ;
-	public Double maxNetPower ; // kW
-	public String engineNumber ;
-	public Double maxPermissibleMass ;
-	public Double massInService ;
-	public Double powerWeightRatio ;
-	public TrailerDetails trailerDetails ;
-	public SoundDetails soundDetails ;
-	public ExhaustEmissions exhaustEmissions ;
-
+@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM, property = "$class")
+@JsonTypeIdResolver(CustomTypeIdResolver.class)
+public class VehicleDetails {
+   public String make;
+   public String modelType;
+   public String colour;
+   public String vin;
+   public String modelVariant;
+   public String modelVersion;
+   public String bodyType;
+   public TaxClass taxationClass;
+   public int revenueWeight;
+   public int cylinderCapacity;
+   public double co2;
+   public String typeOfFuel;
+   public int numberOfSeats;
+   public int numberOfStandingPlaces;
+   public String wheelPlan;
+   public String vehicleCategory;
+   public String typeApprovalNumber;
+   public double maxNetPower;
+   public String engineNumber;
+   public double maxPermissibleMass;
+   public double massInService;
+   public double powerWeightRatio;
+   public TrailerDetails trailerDetails;
+   public SoundDetails soundDetails;
+   public ExhaustEmissions exhaustEmissions;
 }

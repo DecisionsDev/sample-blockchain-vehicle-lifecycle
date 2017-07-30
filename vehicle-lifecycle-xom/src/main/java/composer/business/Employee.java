@@ -15,20 +15,16 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package composer.business;
 
-import java.util.Date;
-
 import composer.base.Person;
-
-public class Employee extends Person 
-{
-	public String $class;
-	public Business employer;
-	public Manager manager ;
-	public Date startDate ;
-	public String employmentStatus ;
-	public String department ;
-	public String jobRole ;
+public abstract class Employee extends Person 
+{   
+   public Business employer;
+   public Manager manager;
+   public java.util.Date startDate;
+   public String employmentStatus;
+   public String department;
+   public String jobRole;
 }

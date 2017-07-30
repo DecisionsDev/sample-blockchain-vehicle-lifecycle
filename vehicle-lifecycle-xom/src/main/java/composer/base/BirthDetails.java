@@ -15,14 +15,17 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package composer.base;
 
-import java.util.Date;
+import org.hyperledger.composer.system.CustomTypeIdResolver;
 
-public class BirthDetails 
-{
-	public String $class;
-	public Date dateOfBirth ;
-	public String placeOfBirth ;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM, property = "$class")
+@JsonTypeIdResolver(CustomTypeIdResolver.class)
+public class BirthDetails {
+   public java.util.Date dateOfBirth;
+   public String placeOfBirth;
 }

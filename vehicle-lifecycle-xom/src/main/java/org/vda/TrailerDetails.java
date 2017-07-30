@@ -15,12 +15,17 @@
  *   limitations under the License.
  *
  */
-
+// this code is generated and should not be modified
 package org.vda;
 
-public class TrailerDetails 
-{
-	public String $class;
-	public double maxPermissibleTowableMassBraked;
-	public double maxPermissibleTowableMassUnbraked;
+import org.hyperledger.composer.system.CustomTypeIdResolver;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.CUSTOM, property = "$class")
+@JsonTypeIdResolver(CustomTypeIdResolver.class)
+public class TrailerDetails {
+   public double maxPermissibleTowableMassBraked;
+   public double maxPermissibleTowableMassUnbraked;
 }
