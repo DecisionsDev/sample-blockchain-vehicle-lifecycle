@@ -4,7 +4,7 @@ This sample illustrates how we can use IBM Operational Decision Manager (ODM) to
 
 This sample is derived from the Vehicle Lifecycle demo of HyperLedger Composer and enhance it with rule-based decisions taken by the Smart Contracts. More information about this demo can be found here: https://www.youtube.com/watch?v=IgNfoQQ5Reg and source can be found here: https://github.com/hyperledger/composer-sample-networks/tree/master/packages/vehicle-lifecycle-network
 
-# pre-requisites
+# Pre-requisites
 
 You need to have IBM ODM 8.9.0 installed on your machine. This sample can only work on Linux and MacOS. 
 
