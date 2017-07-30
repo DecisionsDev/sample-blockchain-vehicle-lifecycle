@@ -13,15 +13,15 @@
  */
 
 /**
- * Vehicle model for vehicle lifecycle
+ * Decision Service call objects
  */
 namespace org.acme.vehicle.lifecycle.decision
 
 import org.vda.PrivateVehicleTransfer
 
-// This concept represents the signature of the isSuspicious Decision Service. Input parameters
-// of the Decision Service have to be represented as field in this object. 
-// An instance of this concept should be created, populated and sent through a POST call to 
+// This asset represents the signature of the isSuspiciousEntryPoint Decision Service. 
+// Input parameters of the Decision Service have to be represented as field in this object. 
+// An instance of this asset should be created, populated and sent through a POST call to 
 // invoke the Decision Service.  
 asset IsSuspiciousTransferDecisionService identified by dsId {
   o String dsId
