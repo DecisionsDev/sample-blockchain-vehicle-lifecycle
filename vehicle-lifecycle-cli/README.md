@@ -26,6 +26,8 @@ You can clean-up the data model of this application using:
 Provided the XOM has been generated in ../vehicle-lifecycle-decision-service/output, the following command deploy it to the RES:
 'npm run deployXom'
 
+WARNING: the deployment feature added to this demo to deploy the XOM to the RES via a Blockchain transaction is not completely safe. If the deployXom transaction is rolled-back, the side effect on the RES has still been made and further executions will use the deployed XOM. The mechanism needs to be enhanced to handle the case where the deployXom transaction is rolled-back. 
+
 # deploying a Decision Service
 
 The rules of a Decision Service needs to be deployed to the Rule Execution Server running in each peer node of the Blockchain. 
@@ -42,18 +44,17 @@ Here is what is implemented:
       o String ruleset_version
       o String archive <== the archive binary encoded in base64
       o String managedXomURI <== the URI of the XOM library used by the decision service (typically 'reslib://vehicle_lifecycle_ds_1.0/1.0')
-    - a dedicated Smart Contract receive this transaction and
-        - store the current version information in an asset com.ibm.rules.RuleAppCurrentVersion
-        - store the RuleApp itself in an asset com.ibm.rules.RuleApp
-        - send the archive to the Ruleapp Deployer service that will deploy it to the RES
+    - a dedicated Smart Contract receives this transaction and:
+        - stores the current version information in an asset com.ibm.rules.RuleAppCurrentVersion
+        - stores the RuleApp itself in an asset com.ibm.rules.RuleApp
+        - sends the archive to the Ruleapp Deployer service that will deploy it to the RES
     - The Smart Contracts that need to invoke a decision service need to read the current version information from the RuleAppCurrentVersion asset
-    - If the deployment transaction is rolled back, the RuleAppCurrentVersion information is rolled-back too and the Smart Contract
+    - If the deployment transaction is rolled-back, the RuleAppCurrentVersion information is rolled-back too and the Smart Contract
       still uses the previous version. The new version has been pushed to the RES but will not been used. 
-
 
 # demo scenario: submitting suspicious transactions
 
-Three suspicious transactions have been implemented in this client application. Refer to the 'makeSuspiciousTransfer' functions in vehicle-lifecycle.js.
+Three suspicious transactions have been implemented in this client application. Refer to the 'makeSuspiciousTransfer' functions in 'vehicle-lifecycle.js'.
 
 You submit a suspicious transaction with:
 'npm run makeSuspiciousTransfer1'
@@ -85,15 +86,22 @@ You can sequentially submit these 3 suspicious transactions by executing: 'npm r
     - in the deployer file, change the base version of the Ruleset to 1.1
     - From Rule Designer, generate the new Ruleapp Archive in the 'output' directory
 - deploy the new version through the Blockhchain:
-    - 'npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle.jar 1.0 1.1'
+    - 'npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle_lifecycle_ds.jar 1.0 1.1'
 - re-run the first suspicious transaction: 
     - 'npm run makeSuspiciousTransfer1 ; npm run listVehicles'  
     - ==> The message for vehicle 156478954 should have changed
 
 # Summary
 
-Assuming that you have deployed the XOM to the RES and you generated the Ruleapp archive in the output directory, the following command run the full demo:
+Assuming that you have deployed the Composer 'vehicle-lifecycle' application and the XOM and the Ruleapp to the RES, the following command run the full demo:
     - 'npm run demo'
 
-It cleans up the data, deploy the ruleapp, initialize the data and submit the suspicious transactions. The results are displayed in the standard output.  
+It cleans up the data, initializes the data and submits the suspicious transactions. The results are displayed in the standard output.  
+
+Assumming that you have deployed the Composer 'vehicle-lifecycle' application and you have generated the XOM and the Ruleapp in
+'../vehicle-lifecycle-decision-service/output' from Rule Designer, the following command run the full demo:
+    - 'npm run deployAndRunDemo'
+
+It cleans up the data, deploys the XOM and the Ruleapp, initializes the data and submits the suspicious transactions. The results are displayed in the standard output.  
+    
 

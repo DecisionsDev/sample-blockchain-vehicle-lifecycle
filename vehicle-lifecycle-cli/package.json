@@ -15,7 +15,8 @@
 		"setup": "node cli.js setup",
 		"transfers": "npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles",
 		"demo": "npm run reset && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles",
-		"shortDemo": "npm run reset && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run listVehicles"
+		"shortDemo": "npm run reset && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run listVehicles",
+		"deployAndRunDemo": "npm run clean && npm run deployXom && npm run deployRuleapp && npm run setup && npm run listVehicles && npm run makeSuspiciousTransfer1 && npm run makeSuspiciousTransfer2 && npm run makeSuspiciousTransfer3 && npm run listVehicles"
 	},
 	"author": "IBM",
 	"license": "IBM",
