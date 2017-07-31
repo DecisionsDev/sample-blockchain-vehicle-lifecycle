@@ -51,3 +51,4 @@ This will allow messages of 20M instead of the default 4M.
 # Docker tips
 
 Connecting inside the container: docker exec -it <containerIdOrName> bash
+

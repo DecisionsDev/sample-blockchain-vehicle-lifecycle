@@ -13,3 +13,5 @@ fabric-tools
 **/npm-debug.log
 logs/
 workspace
+*-internal.txt
+
