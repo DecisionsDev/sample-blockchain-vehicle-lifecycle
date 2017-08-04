@@ -5,6 +5,8 @@ This project contains a NodeJS application that implements several commands to m
 
 Before running any command provided by this application the first time, you need to invoke: 'npm run install' to download the NodeJS dependencies. 
 
+Make sure the 'package.json' point to the right version of Composer. 
+
 # initializing the Vehicle Lifecycle application
 
 To populate the vehicle lifecycle business network deployed in the Blockchain with initial data, you need to submit a 'setup' transaction. The initial data are created in the transaction processor of this transaction.

@@ -64,11 +64,11 @@ node -v
 npm -v
 
 
-# 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.10.1
+# 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.11.0
 
 Please refer to https://hyperledger.github.io/composer/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
 
-Following the steps described in this page should allow you to install Composer (0.10.1 or later) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
+Following the steps described in this page should allow you to install Composer (0.11.0 or later) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
 
 Use 'composer -v' to check the version of Composer that has been installed.
 
@@ -97,7 +97,7 @@ coming from the odm-deployer project.
 - go to 'odm-deployer' 
 - enter: 'docker-compose up -d' to build the image and start the deployment service.
 
-Refer to the README in the odm-deployer project for more information.
+Refer to the README in the 'odm-deployer' project for more information.
 
 At this point, the whole Blockchain infrastructure is running and ready to receive Blockchain applications. 
 The next step will be to deploy the vehicle lifecycle application.
