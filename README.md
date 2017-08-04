@@ -118,13 +118,13 @@ A deployment feature has been integrated in the vehicle lifecycle demo to deploy
 To deploy the XOM throught the Blockchain, you should perform the following actions:
 - in Rule Designer, you need to generate the XOM (and the Ruleapp):
     - Launch ODM 8.9.0 Rule Designer 
-    - the first time you need to create a new workspace and import vehicle-lifecycle-xom and vehicle-lifecycle-decision-service projects into it
-    - right click on the 'deployment/deployer' file in the vehicle-lifecycle-decision-service project explorer and select 'Rule Execution Server / Deploy...'
+    - the first time you need to create a new workspace and import 'vehicle-lifecycle-xom' and 'vehicle-lifecycle-decision-service' projects into it
+    - right click on the 'deployment/deployer' file in the 'vehicle-lifecycle-decision-service' project explorer and select 'Rule Execution Server / Deploy...'
         - this operation generate a 'vehicle_lifecycle_ds.jar' in the 'output' directory
         - this operation generate a 'vehicle-lifecycle-xom.zip' in the 'output' directory
 - go to 'vehicle-lifecyle-cli' directory 
 - (the first time you need to perform: 'npm install')
-- enter: 'npm run deployXom ../vehicle-lifecycle-decision-service/output/vehicle-lifecycle-xom.zip 1.0'
+- enter: 'npm run deployXom'
 
 This operation needs to be done each time you modify the XOM of the decision service. 
 
@@ -139,8 +139,7 @@ Like the XOM, the Decision Service is deployed through the Blockchain, leveragin
 In the previous step, you should have generated the ruleapp supporting the vehicle lifecycle decision service using Rule Designer. The ruleapp is the 'vehicle_lifecycle_ds.jar' generated in the 'output' directory. 
 
 - go to 'vehicle-lifecyle-cli' directory 
-- enter: 'npm run deployRuleapp ../vehicle-lifecycle-decision-service/output/vehicle_lifecycle_ds.jar 1.0 1.0'
-    - note that 'npm run deployRuleapp' without arguments deploy this ruleapp with these versions
+- enter: 'npm run deployRuleapp'
 
 This operation needs to be done each time you modify the business rules of the application. 
 
