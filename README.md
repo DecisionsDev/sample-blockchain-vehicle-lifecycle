@@ -4,17 +4,7 @@ This sample illustrates how we can use IBM Operational Decision Manager (ODM) to
 
 This sample is derived from the Vehicle Lifecycle demo of HyperLedger Composer and enhance it with rule-based decisions taken by the Smart Contracts. More information about this demo can be found here: https://www.youtube.com/watch?v=IgNfoQQ5Reg and source can be found here: https://github.com/hyperledger/composer-sample-networks/tree/master/packages/vehicle-lifecycle-network
 
-# Pre-requisites
-
-You need to have IBM ODM 8.9.0 installed on your machine. This sample can only work on Linux and MacOS. 
-
-Refer to the "Before you begin" section in https://hyperledger.github.io/composer/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
-
-Use the following commands to make sure you have the proper environment:
-docker -v
-docker-compose -v
-node -v 
-npm -v
+This readme contains the instructions to go from the installation of the software to the execution of the demo. Please start with '1/ Pre-requisites' section and go down to '7/ Running the Vehicle Lifecycle demo'. 
 
 # Content
 
@@ -59,7 +49,22 @@ vehicle-lifecycle-decision-service
 
 is the ODM Decision Service that implements the decision logic invoked from the Smart Contracts of the vehicle-lifecycle Blockchain application.
 
-# Setting up HyperLedger Fabric V1.0 & Composer 0.10.1
+# 1/ Pre-requisites
+
+This sample can only work on Linux and MacOS. If you are using a Windows box, you need to install a Ubuntu Virtual Machine. 
+
+You need to have IBM ODM 8.9.0 installed on your machine. Please refer to your company-specific instructions to have access to this product and install it on your computer. 
+
+Refer to the "Before you begin" section in https://hyperledger.github.io/composer/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
+
+Use the following commands to make sure you have the proper environment:
+docker -v
+docker-compose -v
+node -v 
+npm -v
+
+
+# 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.10.1
 
 Please refer to https://hyperledger.github.io/composer/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
 
@@ -74,7 +79,7 @@ At this point you should have HyperLedger Fabric 1.0 running and Composer ready 
 
 Next step is to augment this installation with ODM capabilities.
 
-# Setting up IBM ODM with HyperLedger Fabric and Composer
+# 3/ Setting up IBM ODM with HyperLedger Fabric and Composer
 
 - Launch a terminal window and go the 'odm-runtime' project directory
 - <FIRST TIME ONLY>
@@ -99,14 +104,14 @@ The next step will be to deploy the vehicle lifecycle application.
 
 The RES deployed in the Blockchain network is still empty at this point. It must but populated with the XOM of the vehicle lifecycle application and the Decision Service used by the Smart Contracts of this application.
 
-# Deploying the vehicle-lifecycle Composer application
+# 4/ Deploying the vehicle-lifecycle Composer application
 
 - go to 'vehicle-lifecycle' directory
 - enter: 'npm run deploy' to build and deploy the application. 
 
 Refer to the README in 'vehicle-lifecycle' directory for more information about this Composer application.
 
-# Deploying the XOM
+# 5/ Deploying the XOM
 
 A deployment feature has been integrated in the vehicle lifecycle demo to deploy the XOM and the Decision Services through the Blockchain. 
 
@@ -125,7 +130,7 @@ This operation needs to be done each time you modify the XOM of the decision ser
 
 Refer to the README in 'vehicle-lifecycle-cli' directory for more information about this command.
 
-# Deploying the Decision Service
+# 6/ Deploying the Decision Service
 
 The Decision Service is the packaging of the vehicle lifecyle business rules exposed as a REST service invoked from the Smart Contracts. It must be deployed in the RES associated to all nodes of the Blockchain network. 
 
@@ -145,9 +150,13 @@ When you change the rules, you need to increment the version number of the rules
 
 Refer to the README in 'vehicle-lifecycle-cli' directory for more information about this command.
 
-# Running the Vehicle Lifecycle demo
+# 7/ Running the Vehicle Lifecycle demo
 
 Refer to the README in 'vehicle-lifecycle-cli' directory to initialize the application and run a demo scenario that illustrates the application of the business rules when suspicious transactions are generated. 
+
+Assuming the XOM and the Ruleapp have been deployed, you can run the full demo from a fresh model
+using the following command from the 'vehicle-lifecycle-cli' directory: 'npm run demo'
+
 
 # Demo Scenario summary
 
