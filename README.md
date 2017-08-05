@@ -55,14 +55,24 @@ This sample can only work on Linux and MacOS. If you are using a Windows box, yo
 
 You need to have IBM ODM 8.9.0 installed on your machine. Please refer to your company-specific instructions to have access to this product and install it on your computer. 
 
+The following prerequisite are required:
+
+Operating Systems: Ubuntu Linux 14.04 / 16.04 LTS (both 64-bit), or Mac OS 10.12
+  - sw_vers
+Docker Engine: Version 17.03 or higher
+  - docker -v
+Docker-Compose: Version 1.8 or higher
+  - docker-compose -v
+Node: 6.x (note version 7 is not supported)
+  - node -v 
+npm: v3.x or v5.v
+  - npm -v
+git: 2.9.x
+  - git --version
+A code editor of your choice, we recommend VSCode (https://code.visualstudio.com).
+
+
 Refer to the "Before you begin" section in https://hyperledger.github.io/composer/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
-
-Use the following commands to make sure you have the proper environment:
-docker -v
-docker-compose -v
-node -v 
-npm -v
-
 
 # 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.11.0
 
@@ -79,7 +89,7 @@ At this point you should have HyperLedger Fabric 1.0 running and Composer ready 
 
 Next step is to augment this installation with ODM capabilities.
 
-# 3/ Setting up IBM ODM with HyperLedger Fabric and Composer
+# 3/ Setting-up IBM ODM with HyperLedger Fabric and Composer
 
 - Launch a terminal window and go the 'odm-runtime' project directory
 - <FIRST TIME ONLY>
@@ -89,20 +99,21 @@ Next step is to augment this installation with ODM capabilities.
   </FIRST TIME ONLY>  
 - enter: 'docker-compose up -d' to build the RES Docker image and start it as a Docker Container.
 
-Refer to the README in odm-runtime project for more information
+Refer to the README in 'odm-runtime' project for more information
 
-If odm-deployer-webapp has not been deployed with the RES, you need to run the deployment facade 
-coming from the odm-deployer project. 
+The next step is to a run a deployment facade as a companion process to the RES. Called ODM Deployer, 
+this application comes from the 'odm-deployer' project. 
 
 - go to 'odm-deployer' 
 - enter: 'docker-compose up -d' to build the image and start the deployment service.
 
 Refer to the README in the 'odm-deployer' project for more information.
 
-At this point, the whole Blockchain infrastructure is running and ready to receive Blockchain applications. 
-The next step will be to deploy the vehicle lifecycle application.
+At this point, the whole Blockchain infrastructure is up-and-running and ready to receive Blockchain applications. 
 
 The RES deployed in the Blockchain network is still empty at this point. It must but populated with the XOM of the vehicle lifecycle application and the Decision Service used by the Smart Contracts of this application.
+
+The next step will be to deploy the vehicle lifecycle Hyperledger Composer application.
 
 # 4/ Deploying the vehicle-lifecycle Composer application
 
@@ -111,32 +122,49 @@ The RES deployed in the Blockchain network is still empty at this point. It must
 
 Refer to the README in 'vehicle-lifecycle' directory for more information about this Composer application.
 
-# 5/ Deploying the XOM
+# 5/ Setting-up an Eclipse environment for ODM projects
+
+The ODM application is packaged as 2 eclipse projects that can be edited with ODM Rule Designer: 
+'vehicle-lifecycle-xom' and 'vehicle-lifecycle-decision-service'
+
+You need to import them in an Eclipse workspace. You need to perform these instructions only once.
+
+- Launch ODM 8.9.0 Rule Designer 
+- Create a fresh workspace in whatever location on your disk
+- import 'vehicle-lifecycle-xom' and 'vehicle-lifecycle-decision-service' projects into it. You don't need
+  to copy them, just import them. 
+
+The 2 projects should build without errors.
+
+  Note: if you are copying these project in a different location, the 'nmp run deployXom' and 'npm run deployRuleapp' can't be use. Please refer to the 'package.json' file in 'vehicle-lifecycle-cli' directory
+  to see how to point these commands to a different location. 
+
+# 6/ Deploying the XOM
 
 A deployment feature has been integrated in the vehicle lifecycle demo to deploy the XOM and the Decision Services through the Blockchain. 
 
 To deploy the XOM throught the Blockchain, you should perform the following actions:
 - in Rule Designer, you need to generate the XOM (and the Ruleapp):
-    - Launch ODM 8.9.0 Rule Designer 
-    - the first time you need to create a new workspace and import 'vehicle-lifecycle-xom' and 'vehicle-lifecycle-decision-service' projects into it
-    - right click on the 'deployment/deployer' file in the 'vehicle-lifecycle-decision-service' project explorer and select 'Rule Execution Server / Deploy...'
+  - right click on the 'deployment/deployer' file in the 'vehicle-lifecycle-decision-service' project explorer and select 'Rule Execution Server / Deploy...'
         - this operation generate a 'vehicle_lifecycle_ds.jar' in the 'output' directory
         - this operation generate a 'vehicle-lifecycle-xom.zip' in the 'output' directory
 - go to 'vehicle-lifecyle-cli' directory 
-- (the first time you need to perform: 'npm install')
+- <FIRST TIME ONLY>
+  - the first time you need to perform: 'npm install'
+  </FIRST TIME ONLY>
 - enter: 'npm run deployXom'
 
 This operation needs to be done each time you modify the XOM of the decision service. 
 
 Refer to the README in 'vehicle-lifecycle-cli' directory for more information about this command.
 
-# 6/ Deploying the Decision Service
+# 7/ Deploying the Decision Service
 
 The Decision Service is the packaging of the vehicle lifecyle business rules exposed as a REST service invoked from the Smart Contracts. It must be deployed in the RES associated to all nodes of the Blockchain network. 
 
 Like the XOM, the Decision Service is deployed through the Blockchain, leveraging a deployment feature integrated in the demo. 
 
-In the previous step, you should have generated the ruleapp supporting the vehicle lifecycle decision service using Rule Designer. The ruleapp is the 'vehicle_lifecycle_ds.jar' generated in the 'output' directory. 
+In the previous step, you should have generated the ruleapp supporting the vehicle lifecycle decision service using Rule Designer. The ruleapp is the 'vehicle_lifecycle_ds.jar' generated in the 'output' directory of the 'vehicle-lifecycle-decision-service' project. 
 
 - go to 'vehicle-lifecyle-cli' directory 
 - enter: 'npm run deployRuleapp'
@@ -149,15 +177,24 @@ When you change the rules, you need to increment the version number of the rules
 
 Refer to the README in 'vehicle-lifecycle-cli' directory for more information about this command.
 
-# 7/ Running the Vehicle Lifecycle demo
+# 8/ Running the Vehicle Lifecycle demo
 
 Refer to the README in 'vehicle-lifecycle-cli' directory to initialize the application and run a demo scenario that illustrates the application of the business rules when suspicious transactions are generated. 
 
 Assuming the XOM and the Ruleapp have been deployed, you can run the full demo from a fresh model
-using the following command from the 'vehicle-lifecycle-cli' directory: 'npm run demo'
+using the following command from the 'vehicle-lifecycle-cli' directory: 
+- 'npm run demo'
 
+The message "│ Cross Border Suspicious Transfer: please double check buyer regulation │" generated in your
+display is generated from the business rules of the decision service invoked from a Smart Contract.
 
+# 9/ End
+
+You're all set. Refer to the README in 'vehicle-lifecycle-cli' for more information about the demo scenario. 
+
+=======================
 # Demo Scenario summary
+=======================
 
 Here is a summary of all steps to run the demo. 
 
