@@ -55,7 +55,7 @@ This sample can only work on Linux and MacOS. If you are using a Windows box, yo
 
 You need to have IBM ODM 8.9.0 installed on your machine. Please refer to your company-specific instructions to have access to this product and install it on your computer. 
 
-The following prerequisite are required:
+The following prerequisites are required:
 
 Operating Systems: Ubuntu Linux 14.04 / 16.04 LTS (both 64-bit), or Mac OS 10.12
   - sw_vers
