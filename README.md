@@ -57,19 +57,19 @@ You need to have IBM ODM 8.9.0 installed on your machine. Please refer to your c
 
 The following prerequisites are required:
 
-Operating Systems: Ubuntu Linux 14.04 / 16.04 LTS (both 64-bit), or Mac OS 10.12
+- Operating Systems: Ubuntu Linux 14.04 / 16.04 LTS (both 64-bit), or Mac OS 10.12
   - sw_vers
-Docker Engine: Version 17.03 or higher
+- Docker Engine: Version 17.03 or higher
   - docker -v
-Docker-Compose: Version 1.8 or higher
+- Docker-Compose: Version 1.8 or higher
   - docker-compose -v
-Node: 6.x (note version 7 is not supported)
+- Node: 6.x (note version 7 is not supported)
   - node -v 
-npm: v3.x or v5.v
+- npm: v3.x or v5.v
   - npm -v
-git: 2.9.x
+- git: 2.9.x
   - git --version
-A code editor of your choice, we recommend VSCode (https://code.visualstudio.com).
+- A code editor of your choice, we recommend VSCode (https://code.visualstudio.com).
 
 
 Refer to the "Before you begin" section in https://hyperledger.github.io/composer/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
