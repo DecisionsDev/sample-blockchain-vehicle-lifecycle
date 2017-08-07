@@ -134,9 +134,9 @@ You need to import them in an Eclipse workspace. You need to perform these instr
 - import 'vehicle-lifecycle-xom' and 'vehicle-lifecycle-decision-service' projects into it. You don't need
   to copy them, just import them. 
 
-The 2 projects should build without errors.
+The 2 projects should build without errors. Warnings can be ignored.
 
-  Note: if you are copying these project in a different location, the 'nmp run deployXom' and 'npm run deployRuleapp' can't be use. Please refer to the 'package.json' file in 'vehicle-lifecycle-cli' directory
+  Note: if you are copying these project in a different location, the 'npm run deployXom' and 'npm run deployRuleapp' can't be use. Please refer to the 'package.json' file in 'vehicle-lifecycle-cli' directory
   to see how to point these commands to a different location. 
 
 # 6/ Deploying the XOM
@@ -145,8 +145,9 @@ A deployment feature has been integrated in the vehicle lifecycle demo to deploy
 
 To deploy the XOM throught the Blockchain, you should perform the following actions:
 - in Rule Designer, you need to generate the XOM (and the Ruleapp):
-  - right click on the 'deployment/deployer' file in the 'vehicle-lifecycle-decision-service' project explorer and select 'Rule Execution Server / Deploy...'
+  - right click on the 'deployment/deployer' file in the 'vehicle-lifecycle-decision-service' project explorer and select 'Rule Execution Server / Deploy ...'
         - this operation generate a 'vehicle_lifecycle_ds.jar' in the 'output' directory
+  - right click on the 'deployment/deployer' file in the 'vehicle-lifecycle-decision-service' project explorer and select 'Rule Execution Server / Deploy XOM ...' 
         - this operation generate a 'vehicle-lifecycle-xom.zip' in the 'output' directory
 - go to 'vehicle-lifecyle-cli' directory 
 - <FIRST TIME ONLY>
