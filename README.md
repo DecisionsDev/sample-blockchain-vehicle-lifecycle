@@ -53,7 +53,7 @@ is the ODM Decision Service that implements the decision logic invoked from the 
 
 This sample can only work on Linux and MacOS. If you are using a Windows box, you need to install a Ubuntu Virtual Machine. 
 
-You need to have IBM ODM 8.9.0 installed on your machine. Please refer to your company-specific instructions to have access to this product and install it on your computer. 
+You need to have IBM ODM 8.9.0 installed on your machine. Please refer to your company-specific instructions to have access to this product and install it on your computer. Note that it is not necessary to fully configure ODM on your machine as the only components that will be used are Rule Designer and the RES jar files used to build the RES docker image.
 
 The following prerequisites are required:
 
