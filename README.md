@@ -76,16 +76,27 @@ Refer to the "Before you begin" section in https://hyperledger.github.io/compose
 
 # 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.11.0
 
-Please refer to https://hyperledger.github.io/composer/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
+- Please refer to https://hyperledger.github.io/composer/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
 
 Following the steps described in this page should allow you to install Composer (0.11.0 or later) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
 
 Use 'composer -v' to check the version of Composer that has been installed.
 
 Note that 'downloadFabric.sh' and 'createComposerProfile.sh' should be done only once, the first time. 
-'startFabric.sh' and 'stopFabric.sh' can be used to start and stop Fabric on your machine. 
+
+- use 'startFabric.sh' to start HyperLedger Fabric processes. (You can use 'stopFabric.sh' to stop Fabric on your machine). 
 
 At this point you should have HyperLedger Fabric 1.0 running and Composer ready to deploy Composer applications. 
+
+Use 'docker ps -a' to check that you have the proper containers up and running:
+
+$ docker ps -a
+CONTAINER ID        IMAGE                                     COMMAND                  CREATED              STATUS              PORTS                                            NAMES
+1a4b387f872c        hyperledger/fabric-peer:x86_64-1.0.0      "peer node start -..."   About a minute ago   Up About a minute   0.0.0.0:7051->7051/tcp, 0.0.0.0:7053->7053/tcp   peer0.org1.example.com
+fa5689d9bbaa        hyperledger/fabric-orderer:x86_64-1.0.0   "orderer"                About a minute ago   Up About a minute   0.0.0.0:7050->7050/tcp                           orderer.example.com
+5d6a927ab0dd        hyperledger/fabric-couchdb:x86_64-1.0.0   "tini -- /docker-e..."   About a minute ago   Up About a minute   4369/tcp, 9100/tcp, 0.0.0.0:5984->5984/tcp       couchdb
+90a45895fcb8        hyperledger/fabric-ca:x86_64-1.0.0        "sh -c 'fabric-ca-..."   About a minute ago   Up About a minute   0.0.0.0:7054->7054/tcp                           ca.org1.example.com
+S
 
 Next step is to augment this installation with ODM capabilities.
 
