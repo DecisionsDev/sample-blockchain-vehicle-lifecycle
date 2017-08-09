@@ -3,7 +3,7 @@ This project contains a NodeJS application that implements several commands to m
 
 # initializing the client application
 
-Before running any command provided by this application the first time, you need to invoke: 'npm run install' to download the NodeJS dependencies. 
+Before running any command provided by this application the first time, you need to invoke: 'npm install' to download the NodeJS dependencies. 
 
 Make sure the 'package.json' point to the right version of Composer. 
 
