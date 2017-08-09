@@ -149,9 +149,7 @@ To deploy the XOM throught the Blockchain, you should perform the following acti
         - this operation generate a 'vehicle_lifecycle_ds.jar' in the 'output' directory
         - this operation generate a 'vehicle-lifecycle-xom.zip' in the 'output' directory
 - go to 'vehicle-lifecyle-cli' directory 
-- <FIRST TIME ONLY>
-  - the first time you need to perform: 'npm install'
-  </FIRST TIME ONLY>
+  - Note: the first time you need to perform: 'npm install'
 - enter: 'npm run deployXom'
 
 This operation needs to be done each time you modify the XOM of the decision service. 
