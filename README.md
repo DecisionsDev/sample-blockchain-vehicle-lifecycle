@@ -103,7 +103,7 @@ Next step is to augment this installation with ODM capabilities.
 
 - Launch a terminal window and go the `odm-runtime` project directory
 
-**&lt;FIRST TIME ONLY&gt;***
+**&lt;FIRST TIME ONLY&gt;**
 
 - You need to copy RES binary files from your ODM installation:
 
