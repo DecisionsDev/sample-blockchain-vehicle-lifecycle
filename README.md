@@ -10,46 +10,41 @@ This readme contains the instructions to go from the installation of the softwar
 
 The sample is made of several projects. Each project contains its own README with more detail information about what it contains. 
 
-odm-runtime
------------
+#### odm-runtime
 
-is a project that allows to build and run an ODM docker image that contains the ODM Rule Execution Server (RES) and a Database. The RES hosts the ODM rule engine and provide the interface to execute Decision Services. 
+Is a project that allows to build and run an ODM docker image that contains the ODM Rule Execution Server (RES) and a Database. The RES hosts the ODM rule engine and provide the interface to execute Decision Services. 
 
-odm-deployer
-------------
+#### odm-deployer
 
-is a NodeJS service that acts as a facade to the RES to receive Ruleapp deployment commands from the Blockchain application.
+Is a NodeJS service that acts as a facade to the RES to receive Ruleapp deployment commands from the Blockchain application.
 
-odm-deployer-webapp
--------------------
+#### odm-deployer-webapp
 
-is a Java WebApp that can be packaged in the same Liberty Server as a the RES to provide a facade to the RES to receive Ruleapp deployment commands from the Blockchain application.
+Is a Java WebApp that can be packaged in the same Liberty Server as a the RES to provide a facade to the RES to receive Ruleapp deployment commands from the Blockchain application.
  
 You will be using either odm-deployer or odm-deployer-webapp to provide this facade, not both. 
 
-vehicle-lifecycle
------------------
+#### vehicle-lifecycle
 
-is a HyperLedger Composer sample, derived from the one developed by the Composer Team. 
+Is a HyperLedger Composer sample, derived from the one developed by the Composer Team. 
 The JavaScript transaction processors in this sample are invoking decisions that are executed
 as Decision Services in ODM. 
 
-vehicle-lifecycle-cli
----------------------
+#### vehicle-lifecycle-cli
 
-is a command line application invoking Composer CLI to perform various operations like deploying RuleApps and submitting transactions. 
+Is a command line application invoking Composer CLI to perform various operations like deploying RuleApps and submitting transactions. 
 
-vehicle-lifecycle-xom
-----------------------
+#### vehicle-lifecycle-xom
 
-is a Java implementation of the model used in the ODM Decision Service. Its implementation is derived from the model used in the vehicle-lifecycle Composer Sample. 
+Is a Java implementation of the model used in the ODM Decision Service. Its implementation is derived from the model used in the vehicle-lifecycle Composer Sample. 
 
-vehicle-lifecycle-decision-service
------------------------------------
+#### vehicle-lifecycle-decision-service
 
-is the ODM Decision Service that implements the decision logic invoked from the Smart Contracts of the vehicle-lifecycle Blockchain application.
+Is the ODM Decision Service that implements the decision logic invoked from the Smart Contracts of the vehicle-lifecycle Blockchain application.
 
-# 1/ Pre-requisites
+# Installation
+
+### 1/ Pre-requisites
 
 This sample can only work on Linux and MacOS. If you are using a Windows box, you need to install a Ubuntu Virtual Machine. 
 
@@ -74,7 +69,7 @@ The following prerequisites are required:
 
 Refer to the "Before you begin" section in https://hyperledger.github.io/composer/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
 
-# 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.11.0
+### 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.11.0
 
 Please refer to https://hyperledger.github.io/composer/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
 
@@ -104,18 +99,18 @@ fa5689d9bbaa        hyperledger/fabric-orderer:x86_64-1.0.0   "orderer"         
 
 Next step is to augment this installation with ODM capabilities.
 
-# 3/ Setting-up IBM ODM with HyperLedger Fabric and Composer
+### 3/ Setting-up IBM ODM with HyperLedger Fabric and Composer
 
 - Launch a terminal window and go the `odm-runtime` project directory
 
-&lt;FIRST TIME ONLY&gt;
+**&lt;FIRST TIME ONLY&gt;***
 
 - You need to copy RES binary files from your ODM installation:
 
   - Open the `init.sh` script file and set the `ODM_HOME` variable to point to your actual ODM installation
   - **Save** the file and **Run** the `init.sh` script
   
-&lt;/FIRST TIME ONLY&gt;
+**&lt;/FIRST TIME ONLY&gt;**
 
 - Enter: `docker-compose up -d` to build the RES Docker image and start it as a Docker Container.
 
@@ -135,14 +130,14 @@ The RES deployed in the Blockchain network is still empty at this point. It must
 
 The next step will be to deploy the vehicle lifecycle Hyperledger Composer application.
 
-# 4/ Deploying the vehicle-lifecycle Composer application
+### 4/ Deploying the vehicle-lifecycle Composer application
 
 - Go to `vehicle-lifecycle` directory
 - Enter: `npm run deploy` to build and deploy the application. 
 
 Refer to the README in `vehicle-lifecycle` directory for more information about this Composer application.
 
-# 5/ Setting-up an Eclipse environment for ODM projects
+### 5/ Setting-up an Eclipse environment for ODM projects
 
 The ODM application is packaged as 2 eclipse projects that can be edited with ODM Rule Designer: 
 `vehicle-lifecycle-xom` and `vehicle-lifecycle-decision-service`
@@ -158,7 +153,7 @@ The 2 projects should build without errors. Warnings can be ignored.
   Note: if you are copying these project in a different location, the 'npm run deployXom' and 'npm run deployRuleapp' can't be use. Please refer to the 'package.json' file in 'vehicle-lifecycle-cli' directory
   to see how to point these commands to a different location. 
 
-# 6/ Deploying the XOM
+### 6/ Deploying the XOM
 
 A deployment feature has been integrated in the vehicle lifecycle demo to deploy the XOM and the Decision Services through the Blockchain. 
 
@@ -168,11 +163,11 @@ To deploy the XOM throught the Blockchain, you should perform the following acti
   - Right click on the `deployment/deployer` file in the `vehicle-lifecycle-decision-service` project explorer and select "Rule Execution Server / Deploy XOM ...". This operation generate a `vehicle-lifecycle-xom.zip` in the `output` directory
 - Go to `vehicle-lifecyle-cli` directory 
 
-&lt;FIRST TIME ONLY&gt;
+**&lt;FIRST TIME ONLY&gt;**
 
 - The first time you need to perform: `npm install`
   
-&lt;FIRST TIME ONLY&gt;
+**&lt;FIRST TIME ONLY&gt;**
 
 - Enter: `npm run deployXom`
 
@@ -180,7 +175,7 @@ This operation needs to be done each time you modify the XOM of the decision ser
 
 Refer to the README in `vehicle-lifecycle-cli` directory for more information about this command.
 
-# 7/ Deploying the Decision Service
+### 7/ Deploying the Decision Service
 
 The Decision Service is the packaging of the vehicle lifecyle business rules exposed as a REST service invoked from the Smart Contracts. It must be deployed in the RES associated to all nodes of the Blockchain network. 
 
@@ -199,7 +194,7 @@ When you change the rules, you need to increment the version number of the rules
 
 Refer to the README in `vehicle-lifecycle-cli` directory for more information about this command.
 
-# 8/ Running the Vehicle Lifecycle demo
+### 8/ Running the Vehicle Lifecycle demo
 
 Refer to the README in `vehicle-lifecycle-cli` directory to initialize the application and run a demo scenario that illustrates the application of the business rules when suspicious transactions are generated. 
 
@@ -213,13 +208,11 @@ The message
 
 generated in your display is generated from the business rules of the decision service invoked from a Smart Contract.
 
-# 9/ End
+### 9/ End
 
 You're all set. Refer to the README in `vehicle-lifecycle-cli` for more information about the demo scenario. 
 
-=======================
-# Demo Scenario summary
-=======================
+# All Steps and Demo Scenario summary
 
 Here is a summary of all steps to run the demo. 
 
