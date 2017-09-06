@@ -7,11 +7,13 @@
 		<feature>jdbc-4.0</feature>
 		<feature>ssl-1.0</feature>
 		<feature>appSecurity-2.0</feature>
-	</featureManager>
-	
+        <feature>jaxrs-1.1</feature>
+        <feature>json-1.0</feature>
+        </featureManager>
+
 	<!--  host="*" -->
 	<httpEndpoint id="defaultHttpEndpoint" enableWelcomePage="true" host="*" httpPort="9060" httpsPort="9453" />
-	
+
 	<!-- Datasource and libraries -->
 	<variable name="defaultHostName" value="localhost" />
 
@@ -22,10 +24,10 @@
 	<jdbcDriver id="DerbyJdbcDriver" libraryRef="DerbyLib" />
 	<dataSource id="jdbc/resdatasource" jndiName="jdbc/resdatasource" jdbcDriverRef="DerbyJdbcDriver">
 		<properties.derby.embedded createDatabase="create" user="RES" password="RES" databaseName="${server.config.dir}/dbdata/resdb" />	</dataSource>
-		
+
 	<!-- Logging -->
 	<logging traceSpecification="*=audit:com.ibm.rules.*=ALL:com.ibm.rules.res.execution.*=INFO:com.ibm.rules.res.execution=INFO:com.ibm.rules.res.htds=ALL" consoleLogLevel="INFO"/>
-	
+
 	<!-- Web application security -->
 	<basicRegistry id="basic" realm="customRealm">
 		<!-- For the runtime user -->
@@ -34,7 +36,7 @@
 		<user name="resMonitor" password="resMonitor"/>
 
 
-	
+
 		<group name="resAdministrators">
 			<member name="resAdmin" />
 		</group>
@@ -49,9 +51,9 @@
 		</group>
 
 	</basicRegistry>
-	
 
-	
+
+
 	<!-- Decision Server console -->
 	<application type="war" id="res" name="res" location="${server.config.dir}/apps/res.war">
 		<application-bnd>
@@ -71,6 +73,8 @@
 	<application type="war" autoStart="true" id="DecisionService" name="DecisionService" location="${server.config.dir}/apps/DecisionService.war">
 	</application>
 
+	<application type="war" autoStart="true" id="deployer" name="deployer" location="${server.config.dir}/apps/odm-deployer-webapp-1.0.war">
+	</application>
 
 	<webContainer deferServletLoad="false" enableDefaultIsElIgnoredInTag="true" enableJspMappingOverride="true" />
 	<applicationMonitor updateTrigger="mbean" />

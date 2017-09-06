@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # uncomment this variable declaration. This variable must point to the installation directory of IBM ODM 8.9.0
-#ODM_HOME=/Applications/IBM/ODM8.9.0
+ODM_HOME=/opt/IBM/ODM891/
 
 if [ -z ${ODM_HOME} ]; then
  echo "ODM_HOME is unset, please edit this script, uncomment ODM_HOME variable setting and point to your ODM 8.9 installation"

@@ -21,6 +21,7 @@ RUN chmod -R a+x $SCRIPT
 # Decision Server Console
 RUN mkdir -p /config/apps/res.war
 COPY ./target/liberty-bundle/WLP855/res.war /config/apps/res-file.war
+COPY ./target/odm-deployer-webapp-1.0.war /config/apps/odm-deployer-webapp-1.0.war
 RUN cd /config/apps/res.war && \ 
     unzip ../res-file.war && \
     rm ../res-file.war && \
@@ -35,9 +36,6 @@ RUN cd /config/apps/extract && \
     rm -rf DecisionService.war && \
     mv extract DecisionService.war && \
     cd /config/apps/DecisionService.war 
-
-# Decision Runner
-RUN chmod -R a+x $SCRIPT
 
 VOLUME ["/config/dbdata/"]
 EXPOSE 9060

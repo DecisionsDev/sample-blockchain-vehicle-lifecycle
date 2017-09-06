@@ -125,7 +125,7 @@ class VehicleLifecycle {
 	    let factory        = this.businessNetworkDefinition.getFactory();
 	    let transaction    = factory.newTransaction('com.ibm.rules','RuleAppUpdated');
         transaction.ruleAppName = 'vehicle_lifecycle_ds/isSuspiciousEntryPoint';		
-        transaction.resDeployerURL = 'http://odm-deployer:1880/deploy';		
+        transaction.resDeployerURL = 'http://odm-runtime:9060/deployer/rest/api/deploy';
         transaction.ruleapp_version = ruleappVersion;
         transaction.ruleset_version = rulesetVersion;
         transaction.managedXomURI = 'reslib://vehicle_lifecycle_ds_1.0/1.0';
@@ -156,13 +156,13 @@ class VehicleLifecycle {
             xomName = xomName.substring(0, idx);
         }*/
 
-        transaction.xomName = xomName; 
-        transaction.resDeployerURL = 'http://odm-deployer:1880/deployXom';		
+        transaction.xomName = xomName;
+        transaction.resDeployerURL = 'http://odm-runtime:9060/deployer/rest/api/deployXom';
         transaction.libraryName = 'vehicle_lifecycle_ds_1.0';
         transaction.library_version = libVersion;
         transaction.xom = VehicleLifecycle.base64_encode(filepath);
 
-        LOG.info(METHOD, 'Submitting RuleAppUpdated transaction');
+        LOG.info(METHOD, 'Submitting XomUpdated transaction');
         return this.bizNetworkConnection.submitTransaction(transaction);
     }
 
@@ -597,9 +597,9 @@ class VehicleLifecycle {
             LOG.info('Deployed Ruleapp');
         })
         .catch(function (error) {
-            //potentially some code for generating an error specific message here 
+            //potentially some code for generating an error specific message here
             throw error;
-        });  
+        });
     }
 
     /**
