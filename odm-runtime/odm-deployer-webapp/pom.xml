@@ -91,7 +91,7 @@
                     <!-- Package the webapp classes in a jar instead of in WEB-INF/classes -->
                     <archiveClasses>false</archiveClasses>
                     <!-- Add the dependencies that were copied with dependency:copy -->
-                    <outputDirectory>/config/apps/</outputDirectory>
+                    <!-- <outputDirectory>/config/apps/</outputDirectory>-->
                 </configuration>
             </plugin>
             <!-- set the correct WTP version -->

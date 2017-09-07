@@ -1,3 +1,13 @@
+#Creating a special image for building odm-deployer-webapp.
+#Useful to reduce the final image size.
+FROM ibmjava:8-sdk
+WORKDIR /odm-deployer-webapp
+RUN apt-get update && apt-get install -y maven
+# Building odm-deployer-webapp
+COPY ./odm-deployer-webapp /odm-deployer-webapp
+RUN mvn clean install
+
+
 FROM websphere-liberty:8.5.5.9-webProfile7
 ARG ODMDOCKERDIR
 MAINTAINER Laurent GRATEAU <laurent.grateau@fr.ibm.com>
@@ -9,27 +19,18 @@ RUN mkdir /config/resources && \
 	mkdir -p /config/apps/extract \
 	mkdir -p /config/dbdata
 
-# Install maven and openjdk
-RUN apt-get update && apt-get install -y maven openjdk-8-jdk
-
-COPY ./odm-runtime/server.xml /config/
-COPY ./odm-runtime/dbdriver/derby-10*.jar /config/resources
-COPY ./odm-runtime/script $SCRIPT
+COPY ./server.xml /config/
+COPY ./dbdriver/derby-10*.jar /config/resources
+COPY ./script $SCRIPT
 
 ENV CONNECTION_POOL_SIZE 20
 ENV SCRIPT /script
 RUN chmod -R a+x $SCRIPT
 
-# Building odm-deployer-webapp
-COPY ./odm-deployer-webapp /tmp/odm-deployer-webapp
-RUN ls /tmp/ && cd /tmp/odm-deployer-webapp/ && \
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 && \
-    mvn clean install && \
-    cd -
-
 # Decision Server Console
 RUN mkdir -p /config/apps/res.war
-COPY ./odm-runtime/target/liberty-bundle/WLP855/res.war /config/apps/res-file.war
+COPY ./target/liberty-bundle/WLP855/res.war /config/apps/res-file.war
+COPY --from=0 /odm-deployer-webapp/target/odm-deployer-webapp-1.0.war /config/apps/odm-deployer-webapp-1.0.war
 # COPY ./target/odm-deployer-webapp-1.0.war /config/apps/odm-deployer-webapp-1.0.war
 RUN cd /config/apps/res.war && \ 
     unzip ../res-file.war && \
@@ -38,7 +39,7 @@ RUN cd /config/apps/res.war && \
     perl -i -p0e 's/(<param-name>autoCreateSchema<\/param-name>.*?<param-value>)(false)(<\/param-value>)/\1true\3/s' /config/apps/res.war/WEB-INF/web.xml
 
 # Decision Server Runtime
-COPY ./odm-runtime/target/liberty-bundle/WLP855/DecisionService.war /config/apps/
+COPY ./target/liberty-bundle/WLP855/DecisionService.war /config/apps/
 RUN cd /config/apps/extract && \ 
     unzip ../DecisionService.war && \
 	cd ../ && \
