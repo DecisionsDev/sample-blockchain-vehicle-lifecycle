@@ -1,13 +1,13 @@
 #Creating a special image for building odm-deployer-webapp.
 #Useful to reduce the final image size.
-FROM ibmjava:8-sdk
+FROM ibmjava:8-sdk as odm-deployer-webapp_builder
 WORKDIR /odm-deployer-webapp
 RUN apt-get update && apt-get install -y maven
 # Building odm-deployer-webapp
 COPY ./odm-deployer-webapp /odm-deployer-webapp
 RUN mvn clean install
 
-
+#Final image used
 FROM websphere-liberty:8.5.5.9-webProfile7
 ARG ODMDOCKERDIR
 MAINTAINER Laurent GRATEAU <laurent.grateau@fr.ibm.com>
@@ -30,7 +30,7 @@ RUN chmod -R a+x $SCRIPT
 # Decision Server Console
 RUN mkdir -p /config/apps/res.war
 COPY ./target/liberty-bundle/WLP855/res.war /config/apps/res-file.war
-COPY --from=0 /odm-deployer-webapp/target/odm-deployer-webapp-1.0.war /config/apps/odm-deployer-webapp-1.0.war
+COPY --from=odm-deployer-webapp_builder /odm-deployer-webapp/target/odm-deployer-webapp-1.0.war /config/apps/odm-deployer-webapp-1.0.war
 # COPY ./target/odm-deployer-webapp-1.0.war /config/apps/odm-deployer-webapp-1.0.war
 RUN cd /config/apps/res.war && \ 
     unzip ../res-file.war && \
