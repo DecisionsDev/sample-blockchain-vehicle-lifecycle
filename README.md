@@ -222,9 +222,9 @@ Here is a summary of all steps to run the demo.
 - `./startFabric.sh`   
 - `./createComposerProfile.sh` (1st time only)
 
-2/ Run ODM Deployer webapp
-- go to `odm-deployer-webapp`
-- `mvn clean install`
+2/ (ONLY) If you have modified odm-deployer-webapp/
+- go to `{project_root}`
+- `docker build -f odm-runtime/Dockerfile .`
 
 3/ Run ODM RES
 - go to `odm-runtime`
