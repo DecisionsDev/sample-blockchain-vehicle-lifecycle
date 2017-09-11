@@ -1,6 +1,7 @@
 version: '2'
 services:
   odm-deployer:
+    container_name: odm-deployer
     image: smartcontract/odm-deployer:1.0.0
     build: 
       context: ./
