@@ -61,7 +61,6 @@ app.post('/deploy', function (req, res) {
     header['Content-Length'] = buf.length;
 
     var options = {
-      // host: 'odmruntime_odm-runtime_1',
       host: 'odm-runtime',
       port: '9060',
       path: '/res/api/v1/ruleapps?merging=REPLACE_MERGING_POLICY',
@@ -150,7 +149,6 @@ var updateArchiveXom = function(ruleappName, rulesetName, ruleappVersion, rulese
     header['Content-Length'] = body.length;
 
     var options = {
-      //host: 'odmruntime_odm-runtime_1',
       host: 'odm-runtime',
       port: '9060',
       path: '/res/api/v1/ruleapps/' + ruleappName + '/' + ruleappVersion + '/' + rulesetName + '/' + rulesetVersion + '/properties/ruleset.managedxom.uris',
@@ -222,7 +220,6 @@ app.post('/deployXom', function (req, res) {
     header['Content-Length'] = buf.length;
 
     var options = {
-      // host: 'odmruntime_odm-runtime_1',
       host: 'odm-runtime',
       port: '9060',
       path: '/res/api/v1/xoms/' + xomName,
@@ -315,7 +312,6 @@ var updateLibrary = function(uri, libraryName, libraryVersion)
     header['Content-Length'] = body.length;
 
     var options = {
-      // host: 'odmruntime_odm-runtime_1',
       host: 'odm-runtime',
       port: '9060',
       path: '/res/api/v1/libraries/' + libraryName + '/' + libraryVersion,

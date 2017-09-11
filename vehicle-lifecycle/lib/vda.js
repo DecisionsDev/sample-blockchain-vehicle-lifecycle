@@ -87,7 +87,6 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         // should be assigned to the Vehicle.suspiciousMessage field
         // The Decision Service receives all the data about the current transaction: buyer, seller and the vehicle
 
-        // var url = 'http://odmruntime_odm-runtime_1:9060/DecisionService/rest/' + rulesetPath;
         var url = 'http://odm-runtime:9060/DecisionService/rest/' + rulesetPath;
 
         var dsCallObject = factory.newResource(NS_DECISION, 'IsSuspiciousTransferDecisionService', "isSuspiciousTransfer");
