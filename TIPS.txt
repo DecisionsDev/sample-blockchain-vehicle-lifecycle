@@ -10,6 +10,35 @@ composer -v
 You can run playground: http://localhost:8080. You might have to do it from a private browser window 
 or call localstorage.clear() in the web browser console to start with a clean cache
 
+# updating the version of Hyperledger Composer
+
+The Hyperledger Composer team is shipping a new version of their product every 2 weeks. Follow this instruction to
+upgrade Composer version:
+
+- kill all docker containers
+  in fabric-tools, call 'tearDownAllDocker.sh', select option 1
+
+- upgrade composer:
+npm install -g composer-cli
+npm install -g generator-hyperledger-composer
+npm install -g composer-rest-server
+npm install -g yo
+npm install -g composer-playground
+
+composer -v should give you the version of Composer you've just installed
+
+- start fabric
+  in fabric-tools, call 'startFabric.sh'
+  call 'createConnectionProfile.sh'
+
+- upgrade client
+in 'vehicle-lifecycle-cli' update 'package.json' to point to the right version of Composer
+call 'npm install'
+
+Then you can restart ODM runtime and deployer, deploy the 'vehicle-lifecycle' application and run
+client commands
+
+
 # max size error when deploying ruleapp or xom
 
 Depending on the size of your XOM or the size of your Ruleapp, you may have the following error generated
