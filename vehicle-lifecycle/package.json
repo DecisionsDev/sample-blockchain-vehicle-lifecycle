@@ -4,7 +4,7 @@
 	"description": "Example of a Blockchain application using ODM Business Rules in Smart Contracts",
 	"main": "index.js",
 	"scripts": {
-		"deploy": "composer archive create --sourceName . --sourceType dir && composer network deploy --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i PeerAdmin -s adminpw && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
+		"deploy": "composer archive create --sourceName . --sourceType dir && composer network deploy --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i PeerAdmin -s adminpw -A admin -S && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
 		"update": "composer archive create --sourceName . --sourceType dir && composer network update --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i admin -s adminpw && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
 		"list": "composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw"
 	},
