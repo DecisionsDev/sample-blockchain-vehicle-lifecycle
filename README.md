@@ -48,7 +48,7 @@ Is the ODM Decision Service that implements the decision logic invoked from the 
 
 This sample can only work on Linux and MacOS. If you are using a Windows box, you need to install a Ubuntu Virtual Machine. 
 
-You need to have IBM ODM 8.9.0 installed on your machine. Please refer to your company-specific instructions to have access to this product and install it on your computer. Note that it is not necessary to fully configure ODM on your machine as the only components that will be used are Rule Designer and the RES jar files used to build the RES docker image.
+You need to have IBM ODM 8.9.0+ installed on your machine. Please refer to your company-specific instructions to have access to this product and install it on your computer. Note that it is not necessary to fully configure ODM on your machine as the only components that will be used are Rule Designer and the RES jar files used to build the RES docker image.
 
 The following prerequisites are required:
 
@@ -69,15 +69,15 @@ The following prerequisites are required:
 
 Refer to the "Before you begin" section in https://hyperledger.github.io/composer/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
 
-### 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.11.0
+### 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.16.0
 
 Please refer to https://hyperledger.github.io/composer/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
 
-Following the steps described in this page should allow you to install Composer (0.11.0 or later) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
+Following the steps described in this page should allow you to install Composer (0.16.0 or later) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
 
 Use `composer -v` to check the version of Composer that has been installed.
 
-Note that `downloadFabric.sh` and `createComposerProfile.sh` should be done only once, the first time. 
+Note that `downloadFabric.sh` and `createPeerAdminCard.sh` should be done only once, the first time. 
 
 Use `startFabric.sh` to start HyperLedger Fabric processes. (You can use `stopFabric.sh` to stop Fabric on your machine). 
 
@@ -219,8 +219,8 @@ Here is a summary of all steps to run the demo.
 1/ Run Fabric 1.0
 - go to the `fabric-tools` directory (created from instructions in https://hyperledger.github.io/composer/installing/development-tools.html)
 - `./downloadFabric.sh` (1st time only)
-- `./startFabric.sh`   
-- `./createComposerProfile.sh` (1st time only)
+- `./startFabric.sh`  
+- `./createPeerAdminCard.sh` (1st time only)
 
 2/ Run ODM RES
 - go to `odm-runtime`
@@ -250,6 +250,8 @@ Here is a summary of all steps to run the demo.
 
 Assuming the XOM and the Ruleapp have been deployed, you can run the full demo from a fresh model
 using the following command from the `vehicle-lifecycle-cli` directory: `npm run demo`
+
+Step 5 to 8 can be all done together using the following command from the `vehicle-lifecycle-cli` directory: `npm run deployAndRunDemo`. 
 
 # License
 [Apache 2.0](LICENSE)

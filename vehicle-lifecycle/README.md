@@ -11,18 +11,25 @@ Please refer to https://hyperledger.github.io/composer/reference/commands.html f
 the commands to use.
 
 To create the Business Network archive, launch the following command:
-composer archive create --sourceType dir --sourceName .
+`composer archive create --sourceName . --sourceType dir` 
 
-The first time you deploy your business network, you need to do this command:
-composer network deploy -a vehicle-lifecycle@1.0.0.bna -p hlfv1 -i PeerAdmin -s adminpw 
+
+The first time you deploy your business network, you need to perform these commands:
+
+`composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName vehicle-lifecycle`
+`composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile vehicle-lifecycle@1.0.0.bna --file networkadmin.card`
+`composer card import --file networkadmin.card` (Note that this last command should be done only once on a composer installation)
+
 
 If you want to update the business network with a new version, you need to use:
-composer network update -a vehicle-lifecycle@1.0.0.bna -p hlfv1 -i admin -s adminpw 
+`composer network update --archiveFile vehicle-lifecycle*.bna --card admin@vehicle-lifecycle`
 
 The following command list a business network and all its data
-composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw
+`composer network list --card admin@vehicle-lifecycle`
 
 Note that you can use the following commands:
-npm run deploy
-npm run update
-npm run list
+`npm run deploy`
+`npm run update`
+`npm run list`
+
+The command `npm run deploy` will fail importing the network admin card in your wallet if it has already been imported.

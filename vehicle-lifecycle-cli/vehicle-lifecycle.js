@@ -23,9 +23,6 @@ const winston = require('winston');
 let config = require('config').get('vehicle-lifecycle');
 const fs = require('fs');
 
-// these are the credentials to use to connect to the Hyperledger Fabric
-let participantId = config.get('participantId');
-let participantPwd = config.get('participantPwd');
 const LOG = winston.loggers.get('application');
 
 
@@ -40,7 +37,7 @@ class VehicleLifecycle {
     constructor() {
 
         this.bizNetworkConnection = new BusinessNetworkConnection();
-        this.CONNECTION_PROFILE_NAME = config.get('connectionProfile');
+        this.CARD_NAME = config.get('cardName');
         this.businessNetworkIdentifier = config.get('businessNetworkIdentifier');
     }
 
@@ -48,8 +45,7 @@ class VehicleLifecycle {
    * @return {Promise} A promise whose fullfillment means the initialization has completed
    */
     init() {
-
-        return this.bizNetworkConnection.connect(this.CONNECTION_PROFILE_NAME, this.businessNetworkIdentifier, participantId, participantPwd)
+        return this.bizNetworkConnection.connect(this.CARD_NAME)
       .then((result) => {
           this.businessNetworkDefinition = result;
           LOG.info('VehicleLifecycle:<init>', 'businessNetworkDefinition obtained', this.businessNetworkDefinition.getIdentifier());

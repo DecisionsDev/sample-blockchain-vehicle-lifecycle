@@ -1,8 +1,6 @@
 {
     "vehicle-lifecycle" : {
-        "participantId" : "admin",
-        "participantPwd" : "adminpw",
-        "connectionProfile" : "hlfv1",
+        "cardName" : "admin@vehicle-lifecycle",
         "businessNetworkIdentifier" : "vehicle-lifecycle"
     }
 }

@@ -4,9 +4,14 @@
 	"description": "Example of a Blockchain application using ODM Business Rules in Smart Contracts",
 	"main": "index.js",
 	"scripts": {
-		"deploy": "composer archive create --sourceName . --sourceType dir && composer network deploy --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i PeerAdmin -s adminpw -A admin -S && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
-		"update": "composer archive create --sourceName . --sourceType dir && composer network update --archiveFile vehicle-lifecycle*.bna  -p hlfv1 -i admin -s adminpw && composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw",
-		"list": "composer network list -n vehicle-lifecycle -p hlfv1 -i admin -s adminpw"
+		"install-runtime": "composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName vehicle-lifecycle",
+		"create-archive": "composer archive create --sourceName . --sourceType dir",
+		"start": "composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile vehicle-lifecycle@1.0.0.bna --file networkadmin.card && composer card import --file networkadmin.card",
+		"deploy" : "composer archive create --sourceName . --sourceType dir && composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName vehicle-lifecycle && composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile vehicle-lifecycle@1.0.0.bna --file networkadmin.card && composer card import --file networkadmin.card",
+		"update": "composer archive create --sourceName . --sourceType dir && composer network update --archiveFile vehicle-lifecycle*.bna --card admin@vehicle-lifecycle && composer network list --card admin@vehicle-lifecycle",
+		"undeploy": "composer network undeploy --card admin@vehicle-lifecycle",
+		"ping": "composer network ping --card admin@vehicle-lifecycle",
+		"list": "composer network list --card admin@vehicle-lifecycle"
 	},
 	"author": "IBM",
 	"license": "IBM"
