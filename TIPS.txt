@@ -1,7 +1,8 @@
 This file contains tips that you might need using this demo. 
 
 # using nvm to switch node version
-nvm use 6.10.3
+nvm use 6.10.3 (to use Composer 0.13)
+nvm use v7.10.0 (to use Composer 0.16+)
 
 # check the version of HyperLedger Composer you are running: 
 composer -v

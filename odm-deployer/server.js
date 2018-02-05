@@ -60,6 +60,8 @@ app.post('/deploy', function (req, res) {
     var body = buf.toString('binary');
     header['Content-Length'] = buf.length;
 
+    var rulesetPath = ruleappName + "/" + ruleappVersion + "/" + rulesetName + "/" + rulesetVersion;
+
     var options = {
       host: 'odm-runtime',
       port: '9060',
@@ -68,7 +70,20 @@ app.post('/deploy', function (req, res) {
       headers: header
     };
 
-    console.log("Deploying '" + ruleappName + "/" + ruleappVersion + "/" + rulesetName + "/" + rulesetVersion + "' to RES ");
+    /*
+    Note: if the ruleapps contains several ruleset, the following code should be used
+    instead. You should deploy ruleset individually passing the .dsar file instead of the ruleapp jar. 
+    Otherwise, the managedXomUri property is not set on all rulesets. 
+    var options = {
+      host: 'odm-runtime',
+      port: '9060',
+      path: '/res/api/v1/ruleapps/' + rulesetPath + '?merging=REPLACE_MERGING_POLICY',
+      method: 'POST',
+      headers: header
+    };
+    */
+
+    console.log("Deploying '" + rulesetPath + "' to RES ");
 
     var resreq = http.request(options, function(resResponse) {
       resResponse.setEncoding('utf-8');
