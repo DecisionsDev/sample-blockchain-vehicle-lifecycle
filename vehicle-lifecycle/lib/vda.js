@@ -48,7 +48,7 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         vehicleRegistry = registry;
     })
     .catch(function (err_ar) {
-        print("Cannot find vehicle registry: " + err_ar);
+        console.log("Cannot find vehicle registry: " + err_ar);
     })
     .then(function () {  
         return getAssetRegistry(NS_I + '.' + 'RuleAppCurrentVersion')
@@ -57,7 +57,7 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         ruleappVersionRegistry = registry;
     })
     .catch(function (err) {
-        print("Cannot find RuleAppCurrentVersion registry: " + err);        
+        console.log("Cannot find RuleAppCurrentVersion registry: " + err);        
     })
     .then(function () {
         return ruleappVersionRegistry.get(ruleAppName);
@@ -66,7 +66,7 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         currentVersion = cv;        
     })
     .catch(function (err) {
-        print("Can't get currentVersion assuming 1.0");
+        console.log("Can't get currentVersion assuming 1.0");
         currentVersion = null;
     })
     .then(function () {
@@ -92,11 +92,11 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         var dsCallObject = factory.newResource(NS_DECISION, 'IsSuspiciousTransferDecisionService', "isSuspiciousTransfer");
         dsCallObject.transaction = privateVehicleTransfer;
 
-        print("Calling ODM Decision Service: " + url);
+        console.log("Calling ODM Decision Service: " + url);
         return post( url, dsCallObject, {permitResourcesForRelationships: true, deduplicateResources: true});
     })
     .then(function (response) {
-        print("Receiving answer from ODM Decision Service: " + JSON.stringify(response));
+        console.log("Receiving answer from ODM Decision Service: " + JSON.stringify(response));
         if (response.body.result['status'] != null) {
             if (response.body.result.status === "REJECTED") {
                 // TODO: need to throw an exception to reject the transaction
@@ -107,8 +107,8 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         } 
     })
     .catch(function (error) {
-        print("Error calling out the ODM decision service");
-        print(error);
+        console.log("Error calling out the ODM decision service");
+        console.log(error);
         vehicle.suspiciousMessage = "Call to the Decision Service failed";
     })
     .then(function () { 
@@ -129,10 +129,10 @@ function privateVehicleTransfer(privateVehicleTransfer) {
         return vehicleRegistry.update(vehicle);
     })
     .then(function () {
-        print("Vehicle has been updated");
+        console.log("Vehicle has been updated");
     })
     .catch(function (err) {
-        print("Cannot update vehicle : " + err);                    
+        console.log("Cannot update vehicle : " + err);                    
     });
 }
 

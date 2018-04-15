@@ -16,20 +16,38 @@ To create the Business Network archive, launch the following command:
 
 The first time you deploy your business network, you need to perform these commands:
 
-`composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName vehicle-lifecycle`
-`composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile vehicle-lifecycle@1.0.0.bna --file networkadmin.card`
-`composer card import --file networkadmin.card` (Note that this last command should be done only once on a composer installation)
+- `composer network install --card PeerAdmin@hlfv1 --archiveFile vehicle-lifecycle@1.0.0.bna`
+- `composer network start --networkName vehicle-lifecycle --networkVersion 1.0.0 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --file networkadmin.card && composer card import --file networkadmin.card`
+- `composer card import --file networkadmin.card` (Note that this last command should be done only once on a composer installation)
 
 
 If you want to update the business network with a new version, you need to use:
-`composer network update --archiveFile vehicle-lifecycle*.bna --card admin@vehicle-lifecycle`
+- `composer archive create --sourceName . --sourceType dir && composer network upgrade -n vehicle-lifecycle -V 1.0.0 --card PeerAdmin@hlfv1`
 
 The following command list a business network and all its data
 `composer network list --card admin@vehicle-lifecycle`
 
 Note that you can use the following commands:
-`npm run deploy`
-`npm run update`
-`npm run list`
+- `npm run deploy`
+- `npm run update`
+- `npm run list`
 
 The latest command invoked in `npm run deploy` will fail importing the network admin card in your wallet if it has already been imported. This should not prevent using the deployed composer application.
+
+Important Note: updating the business network requires changing the version number of the application. The consequence is that you have to
+update the commands and the client code which refer to the business network version. 
+
+The Business Network is deployed as a docker image in the blockchain network. You can stop the corresponding image and remove it. 
+
+- identify the business network docker container: `docker ps -a`, identify the dev* image
+- `docker kill xxxx` where xxx is the id of the docker container
+- `docker rm xxx` 
+- `docker images dev-*` identify the id of the image
+- `docker rmi $(docker images dev-* -q)` removing the image
+
+At this point, you can redeploy the same version of the business network. 
+
+
+
+
+

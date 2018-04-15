@@ -21,14 +21,14 @@
 	"author": "IBM",
 	"license": "IBM",
 	"dependencies": {
-    	"composer-admin": "^0.16.6",
-    	"composer-client": "^0.16.6",
-    	"cli-table": "^0.3.1",
-    	"config": "^1.24.0",
-    	"jsonfile": "^2.4.0",
-    	"lodash": "^4.17.4",
-    	"sprintf-js": "^1.0.3",
-    	"winston": "^2.3.0",
-    	"yargs": "^6.5.0"
-  }
+		"composer-admin": "^0.19.1",
+		"composer-client": "^0.19.1",
+		"cli-table": "^0.3.1",
+		"config": "^1.24.0",
+		"jsonfile": "^2.4.0",
+		"lodash": "^4.17.4",
+		"sprintf-js": "^1.0.3",
+		"winston": "^2.3.0",
+		"yargs": "^6.5.0"
+	}
 }

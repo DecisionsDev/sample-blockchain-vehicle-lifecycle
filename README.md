@@ -44,17 +44,6 @@ Is the ODM Decision Service that implements the decision logic invoked from the 
 
 # Installation
 
-****************************
-IMPORTANT NOTE
-
-This sample is designed to work with HyperLedger Fabric 1.0 and HyperLedger Composer 0.16.x.
-
-A new version of Fabric (1.1) and Composer (0.19.x) have been released, but this sample has not
-been updated to those versions. Please refer to Composer 0.19 Release Notes to use previous releases: https://github.com/hyperledger/composer/releases/tag/v0.19.0
-
-****************************
-
-
 ### 1/ Pre-requisites
 
 This sample can only work on Linux and MacOS. If you are using a Windows box, you need to install a Ubuntu Virtual Machine. 
@@ -69,9 +58,9 @@ The following prerequisites are required:
   - `docker -v`
 - Docker-Compose: Version 1.8 or higher
   - `docker-compose -v`
-- Node: 7.10.0
+- Node: 8.9.4
   - `node -v`
-- npm: v4.6.1
+- npm: v5.6.0
   - `npm -v`
 - git: 2.9.x
   - `git --version`
@@ -80,11 +69,11 @@ The following prerequisites are required:
 
 Refer to the "Before you begin" section in https://hyperledger.github.io/composer/latest/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
 
-### 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.16.6
+### 2/ Setting up HyperLedger Fabric V1.1 & Composer 0.19.1
 
 Please refer to https://hyperledger.github.io/composer/latest/installing/development-tools.html to install and run HyperLedger Fabric and Composer. Tools to run Fabric should have been installed in a `fabric-tools` directory.
 
-Following the steps described in this page should allow you to install Composer (0.16.6 or subsequent version of this 
+Following the steps described in this page should allow you to install Composer (0.19.1 or subsequent version of this 
 release stream) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
 
 Use `composer -v` to check the version of Composer that has been installed.
@@ -99,14 +88,13 @@ Use `docker ps -a` to check that you have the proper containers up and running:
 
 ```
 $ docker ps -a
-CONTAINER ID        IMAGE                                     COMMAND                  CREATED              STATUS              PORTS                                            NAMES
-1a4b387f872c        hyperledger/fabric-peer:x86_64-1.0.0      "peer node start -..."   About a minute ago   Up About a minute   0.0.0.0:7051->7051/tcp, 0.0.0.0:7053->7053/tcp   peer0.org1.example.com
-
-fa5689d9bbaa        hyperledger/fabric-orderer:x86_64-1.0.0   "orderer"                About a minute ago   Up About a minute   0.0.0.0:7050->7050/tcp                           orderer.example.com
-
-5d6a927ab0dd        hyperledger/fabric-couchdb:x86_64-1.0.0   "tini -- /docker-e..."   About a minute ago   Up About a minute   4369/tcp, 9100/tcp, 0.0.0.0:5984->5984/tcp       couchdb
-
-90a45895fcb8        hyperledger/fabric-ca:x86_64-1.0.0        "sh -c 'fabric-ca-..."   About a minute ago   Up About a minute   0.0.0.0:7054->7054/tcp                           ca.org1.example.com
+CONTAINER ID        IMAGE                                                                                                                 COMMAND                  CREATED             STATUS              PORTS                                            NAMES
+cfdc706c3a77        smartcontract/odm-runtime:8.9.0                                                                                       "/script/runserver.sh"   17 minutes ago      Up 17 minutes       9080/tcp, 0.0.0.0:9060->9060/tcp, 9443/tcp       odm-runtime
+41f2dcfc28f8        smartcontract/odm-deployer:1.0.0                                                                                      "npm start"              17 minutes ago      Up 18 minutes       0.0.0.0:1880->1880/tcp                           odm-deployer
+1bed2bb3dc01        hyperledger/fabric-peer:x86_64-1.1.0                                                                                  "peer node start"        17 minutes ago      Up 18 minutes       0.0.0.0:7051->7051/tcp, 0.0.0.0:7053->7053/tcp   peer0.org1.example.com
+0b79eff2ced6        hyperledger/fabric-orderer:x86_64-1.1.0                                                                               "orderer"                17 minutes ago      Up 18 minutes       0.0.0.0:7050->7050/tcp                           orderer.example.com
+dae6557501ec        hyperledger/fabric-couchdb:x86_64-0.4.6                                                                               "tini -- /docker-ent…"   17 minutes ago      Up 18 minutes       4369/tcp, 9100/tcp, 0.0.0.0:5984->5984/tcp       couchdb
+efc2d5480841        hyperledger/fabric-ca:x86_64-1.1.0                                                                                    "sh -c 'fabric-ca-se…"   17 minutes ago      Up 18 minutes       0.0.0.0:7054->7054/tcp                           ca.org1.example.com
 ```
 
 Next step is to augment this installation with ODM capabilities.

@@ -4,12 +4,12 @@
 	"description": "Example of a Blockchain application using ODM Business Rules in Smart Contracts",
 	"main": "index.js",
 	"scripts": {
-		"install-runtime": "composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName vehicle-lifecycle",
 		"create-archive": "composer archive create --sourceName . --sourceType dir",
-		"start": "composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile vehicle-lifecycle@1.0.0.bna --file networkadmin.card && composer card import --file networkadmin.card",
-		"deploy" : "composer archive create --sourceName . --sourceType dir && composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName vehicle-lifecycle && composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile vehicle-lifecycle@1.0.0.bna --file networkadmin.card && composer card import --file networkadmin.card",
-		"update": "composer archive create --sourceName . --sourceType dir && composer network update --archiveFile vehicle-lifecycle*.bna --card admin@vehicle-lifecycle && composer network list --card admin@vehicle-lifecycle",
-		"undeploy": "composer network undeploy --card admin@vehicle-lifecycle",
+		"install": "composer network install --card PeerAdmin@hlfv1 --archiveFile vehicle-lifecycle@1.0.0.bna",
+		"start": "composer network start --networkName vehicle-lifecycle --networkVersion 1.0.0 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --file networkadmin.card && composer card import --file networkadmin.card",
+		"deploy" : "composer network install --card PeerAdmin@hlfv1 --archiveFile vehicle-lifecycle@1.0.0.bna && composer network start --networkName vehicle-lifecycle --networkVersion 1.0.0 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --file networkadmin.card && composer card import --file networkadmin.card",
+		"update": "composer archive create --sourceName . --sourceType dir && composer network upgrade -n vehicle-lifecycle -V 1.0.0 --card PeerAdmin@hlfv1 && composer network list --card admin@vehicle-lifecycle",
+		"undeploy": "composer network reset --card admin@vehicle-lifecycle",
 		"ping": "composer network ping --card admin@vehicle-lifecycle",
 		"list": "composer network list --card admin@vehicle-lifecycle"
 	},
