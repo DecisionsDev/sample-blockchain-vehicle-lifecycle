@@ -82,7 +82,7 @@ Note that `downloadFabric.sh` and `createPeerAdminCard.sh` should be done only o
 
 Go to `fabric-tools` directory and use `startFabric.sh` to start HyperLedger Fabric processes. (You can use `stopFabric.sh` to stop Fabric on your machine). 
 
-At this point you should have HyperLedger Fabric 1.0 running and Composer 0.16.6 ready to deploy Composer applications. 
+At this point you should have HyperLedger Fabric 1.1 running and Composer 0.19.1 ready to deploy Composer applications. 
 
 Use `docker ps -a` to check that you have the proper containers up and running:
 
