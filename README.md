@@ -67,11 +67,11 @@ The following prerequisites are required:
 - A code editor of your choice, we recommend VSCode (https://code.visualstudio.com).
 
 
-Refer to the "Before you begin" section in https://hyperledger.github.io/composer/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
+Refer to the "Before you begin" section in https://hyperledger.github.io/composer/latest/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
 
 ### 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.16.0
 
-Please refer to https://hyperledger.github.io/composer/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
+Please refer to https://hyperledger.github.io/composer/latest/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
 
 Following the steps described in this page should allow you to install Composer (0.16.0 or later) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
 
@@ -217,7 +217,7 @@ You're all set. Refer to the README in `vehicle-lifecycle-cli` for more informat
 Here is a summary of all steps to run the demo. 
 
 1/ Run Fabric 1.0
-- go to the `fabric-tools` directory (created from instructions in https://hyperledger.github.io/composer/installing/development-tools.html)
+- go to the `fabric-tools` directory (created from instructions in https://hyperledger.github.io/composer/latest/installing/development-tools.html)
 - `./downloadFabric.sh` (1st time only)
 - `./startFabric.sh`  
 - `./createPeerAdminCard.sh` (1st time only)
