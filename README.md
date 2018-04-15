@@ -50,7 +50,8 @@ IMPORTANT NOTE
 This sample is designed to work with HyperLedger Fabric 1.0 and HyperLedger Composer 0.16.x.
 
 A new version of Fabric (1.1) and Composer (0.19.x) have been released, but this sample has not
-been updated to those versions. Please refer to Composer 0.19 Release Notes to use previous releases.
+been updated to those versions. Please refer to Composer 0.19 Release Notes to use previous releases: https://github.com/hyperledger/composer/releases/tag/v0.19.0
+
 ****************************
 
 
