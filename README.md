@@ -44,8 +44,9 @@ Is the ODM Decision Service that implements the decision logic invoked from the 
 
 # Installation
 
+****************************
+IMPORTANT NOTE
 
-****** IMPORTANT NOTE ******
 This sample is designed to work with HyperLedger Fabric 1.0 and HyperLedger Composer 0.16.x.
 
 A new version of Fabric (1.1) and Composer (0.19.x) have been released, but this sample has not
