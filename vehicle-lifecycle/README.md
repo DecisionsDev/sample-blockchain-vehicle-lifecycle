@@ -32,4 +32,4 @@ Note that you can use the following commands:
 `npm run update`
 `npm run list`
 
-The command `npm run deploy` will fail importing the network admin card in your wallet if it has already been imported.
+The latest command invoked in `npm run deploy` will fail importing the network admin card in your wallet if it has already been imported. This should not prevent using the deployed composer application.

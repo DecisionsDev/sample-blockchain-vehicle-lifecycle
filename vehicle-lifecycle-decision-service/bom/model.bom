@@ -82,7 +82,6 @@ public class Business
     public composer.base.Address headquarters;
     public composer.business.Manager[] managers;
     public string name;
-    public Business();
 }
 
 public class Employee
@@ -94,14 +93,12 @@ public class Employee
     public string jobRole;
     public composer.business.Manager manager;
     public java.util.Date startDate;
-    public Employee();
 }
 
 public class Manager
         extends composer.business.Employee
 {
     public composer.business.Employee[] directReports;
-    public Manager();
 }
 
 package org.acme.vehicle.lifecycle;
@@ -375,7 +372,6 @@ public class VehicleTransaction
     public java.util.Date timestamp;
     public string transactionId;
     public org.vda.Vehicle vehicle;
-    public VehicleTransaction();
 }
 
 public class VehicleTransferLogEntry

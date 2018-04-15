@@ -21,8 +21,8 @@
 	"author": "IBM",
 	"license": "IBM",
 	"dependencies": {
-    	"composer-admin": "^0.16.0",
-    	"composer-client": "^0.16.0",
+    	"composer-admin": "^0.16.6",
+    	"composer-client": "^0.16.6",
     	"cli-table": "^0.3.1",
     	"config": "^1.24.0",
     	"jsonfile": "^2.4.0",

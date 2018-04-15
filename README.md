@@ -44,6 +44,15 @@ Is the ODM Decision Service that implements the decision logic invoked from the 
 
 # Installation
 
+
+****** IMPORTANT NOTE ******
+This sample is designed to work with HyperLedger Fabric 1.0 and HyperLedger Composer 0.16.x.
+
+A new version of Fabric (1.1) and Composer (0.19.x) have been released, but this sample has not
+been updated to those versions. Please refer to Composer 0.19 Release Notes to use previous releases.
+****************************
+
+
 ### 1/ Pre-requisites
 
 This sample can only work on Linux and MacOS. If you are using a Windows box, you need to install a Ubuntu Virtual Machine. 
@@ -58,9 +67,9 @@ The following prerequisites are required:
   - `docker -v`
 - Docker-Compose: Version 1.8 or higher
   - `docker-compose -v`
-- Node: 6.x (note version 7 is not supported)
+- Node: 7.10.0
   - `node -v`
-- npm: v3.x or v5.v
+- npm: v4.6.1
   - `npm -v`
 - git: 2.9.x
   - `git --version`
@@ -69,19 +78,20 @@ The following prerequisites are required:
 
 Refer to the "Before you begin" section in https://hyperledger.github.io/composer/latest/installing/development-tools.html to make sure you have all the pre-requisites to run HyperLedger Fabric and Composer on your machine. 
 
-### 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.16.0
+### 2/ Setting up HyperLedger Fabric V1.0 & Composer 0.16.6
 
-Please refer to https://hyperledger.github.io/composer/latest/installing/development-tools.html to install and run HyperLedger Fabric and Composer. 
+Please refer to https://hyperledger.github.io/composer/latest/installing/development-tools.html to install and run HyperLedger Fabric and Composer. Tools to run Fabric should have been installed in a `fabric-tools` directory.
 
-Following the steps described in this page should allow you to install Composer (0.16.0 or later) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
+Following the steps described in this page should allow you to install Composer (0.16.6 or subsequent version of this 
+release stream) on your machine, install Fabric images and run Fabric on your machine as Docker containers.
 
 Use `composer -v` to check the version of Composer that has been installed.
 
 Note that `downloadFabric.sh` and `createPeerAdminCard.sh` should be done only once, the first time. 
 
-Use `startFabric.sh` to start HyperLedger Fabric processes. (You can use `stopFabric.sh` to stop Fabric on your machine). 
+Go to `fabric-tools` directory and use `startFabric.sh` to start HyperLedger Fabric processes. (You can use `stopFabric.sh` to stop Fabric on your machine). 
 
-At this point you should have HyperLedger Fabric 1.0 running and Composer ready to deploy Composer applications. 
+At this point you should have HyperLedger Fabric 1.0 running and Composer 0.16.6 ready to deploy Composer applications. 
 
 Use `docker ps -a` to check that you have the proper containers up and running:
 

@@ -1,7 +1,7 @@
 This file contains tips that you might need using this demo. 
 
 # using nvm to switch node version
-nvm use 6.10.3 (to use Composer 0.13)
+nvm use 6.10.3 (up to Composer 0.13)
 nvm use v7.10.0 (to use Composer 0.16+)
 
 # check the version of HyperLedger Composer you are running: 
@@ -20,20 +20,20 @@ upgrade Composer version:
   in fabric-tools, call 'tearDownAllDocker.sh', select option 1
 
 - upgrade composer:
-npm install -g composer-cli
-npm install -g generator-hyperledger-composer
-npm install -g composer-rest-server
+npm install -g composer-cli@0.16.6
+npm install -g generator-hyperledger-composer@0.16.6
+npm install -g composer-rest-server@0.16.6
 npm install -g yo
-npm install -g composer-playground
+npm install -g composer-playground@0.16.6
 
 composer -v should give you the version of Composer you've just installed
 
 - start fabric
   in fabric-tools, call 'startFabric.sh'
-  call 'createConnectionProfile.sh'
+  call 'createPeerAdminCard.sh' 
 
 - upgrade client
-in 'vehicle-lifecycle-cli' update 'package.json' to point to the right version of Composer
+in 'vehicle-lifecycle-cli' update 'package.json' to point to the right version of Composer (0.16.6 for instance)
 call 'npm install'
 
 Then you can restart ODM runtime and deployer, deploy the 'vehicle-lifecycle' application and run
